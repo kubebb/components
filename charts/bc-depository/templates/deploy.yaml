@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fullnameOverride }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.fullnameOverride }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.fullnameOverride }}
+    spec:
+      serviceAccountName: {{ .Values.fullnameOverride }}
+      containers:
+        - name: depository
+          image: {{ .Values.deployment.image }}
+          command:
+            - depository
+          args:
+            - -v=5
+            - -profile=/opt/depository/network.json
+            - -contract={{ .Values.runtimeArgs.contract }}
+            - -db={{ .Values.runtimeArgs.db }}
+            - -dsn={{ .Values.runtimeArgs.dsn }}
+            - -auth={{ .Values.runtimeArgs.authMethod }}
+          ports:
+            - containerPort: 9999
+          {{- if eq .Values.runtimeArgs.auth "oidc"  }}
+          env:
+            - name: OIDC_CA_FILE
+              value: "/etc/oidc/oidc-server/ca.pem"
+            - name: OIDC_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: oidc.client-id
+                  name: {{ .Values.runtimeArgs.oidc.proxyConfigSecret }}
+            - name: OIDC_ISSUER_URL
+              valueFrom:
+                secretKeyRef:
+                  key: oidc.issuer-url
+                  name: {{ .Values.runtimeArgs.oidc.proxyConfigSecret }}
+            - name: OIDC_USERNAME_CLAIM
+              valueFrom:
+                secretKeyRef:
+                  key: oidc.username-claim
+                  name: {{ .Values.runtimeArgs.oidc.proxyConfigSecret }}
+            - name: OIDC_GROUPS_CLAIM
+              valueFrom:
+                secretKeyRef:
+                  key: oidc.group-claim
+                  name: {{ .Values.runtimeArgs.oidc.proxyConfigSecret }}
+          {{- end }}
+          volumeMounts:
+            - name: network-json
+              mountPath: /opt/depository
+            {{- if eq .Values.runtimeArgs.auth "oidc" }}
+            - mountPath: /etc/oidc/oidc-server
+              name: oidc-server-ca
+              readOnly: true
+            {{- end }}
+      volumes:
+        - name: network-json
+          secret:
+            secretName: {{ .Values.fullnameOverride }}
+        {{- if eq .Values.runtimeArgs.auth "oidc" }}
+        - name: oidc-server-ca
+          secret:
+            defaultMode: 420
+            items:
+              - key: ca.crt
+                path: ca.pem
+            secretName: {{ .Values.runtimeArgs.oidc.serverRootSecret }}
+        {{- end }}
