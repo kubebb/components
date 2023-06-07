@@ -1,0 +1,21 @@
+fullnameOverride: bc-depository
+deployment:
+  image: hyperledgerk8s/bc-saas:v0.0.1-20230524
+ingress:
+  # set `enabled` to `true` if you want to expose the service to the internet
+  enabled: false
+  ingressClassName: portal-ingress
+  ingressDomain: 172.18.0.2.nip.io
+runtimeArgs:
+  # set `auth` to `oidc` if you want to enable oidc auth
+  auth: none
+  # set `oidc` once you enabled oidc auth
+  oidc:
+    serverRootSecret: oidc-server-root-secret
+    proxyConfigSecret: kube-oidc-proxy-config
+  # contract name
+  contract: depository
+  # Currently, if the field is not pg it will be implemented by log by default.
+  db: pg
+  # set db connection address if you want to use db: pg
+  dsn: "postgres://bestchains:Passw0rd!@bc-explorer-postgresql.baas-system.svc.cluster.local:5432/bc-saas?sslmode=disable"

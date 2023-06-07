@@ -1,0 +1,19 @@
+apiVersion: v2
+name: bc-depository
+description: bc-depository represents depository-as-a-service in bestchains which provides quick way to create a depository service.
+type: application
+version: v0.0.1
+icon: https://avatars.githubusercontent.com/u/116370569
+keywords:
+  - depository
+  - saas
+  - bestchains
+sources:
+  - https://github.com/bestchains/bc-saas
+maintainers:
+  - name: bjwswang
+    url: https://github.com/bjwswang
+  - name: Abirdcfly
+    url: https://github.com/Abirdcfly
+  - name: 0xff-dev
+    url: https://github.com/0xff-dev
