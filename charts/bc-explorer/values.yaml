@@ -1,0 +1,9 @@
+deployment:
+  imaeg: hyperledgerk8s/bc-explorer:v20230504
+ingress:
+  enable: false
+  ingressClassName: portal-ingress
+  ingressDomain: 172.18.0.2.nip.io
+runtimeArgs:
+  explorerDB: pg
+  pgAddr: postgres://bestchains:Passw0rd!@postgresql:5432/bestchains?sslmode=disable
