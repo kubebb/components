@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-bc-explorer-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: {{ .Release.Name }}-bc-explorer
+  ports:
+    - protocol: TCP
+      port: 9998
+      targetPort: 9998
