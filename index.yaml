@@ -25,4 +25,27 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/bc-depository-v0.0.1/bc-depository-v0.0.1.tgz
     version: v0.0.1
-generated: "2023-06-07T05:30:28.150305783Z"
+  bc-explorer:
+  - apiVersion: v2
+    created: "2023-06-09T06:23:15.74044672Z"
+    description: a comprehensive blockchain explorer
+    digest: 77a8f76d5b5f1177ba39eb449c18c7056ff955ee78a9a831013fc9196ea18f4b
+    icon: https://avatars.githubusercontent.com/u/116370569
+    keywords:
+    - explorer
+    - bestchains
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: bc-explorer
+    sources:
+    - https://github.com/bestchains/bc-explorer
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/bc-explorer-v0.0.1/bc-explorer-v0.0.1.tgz
+    version: v0.0.1
+generated: "2023-06-09T06:23:15.74045182Z"
