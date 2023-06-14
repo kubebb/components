@@ -1,5 +1,5 @@
 deployment:
-  imaeg: hyperledgerk8s/bc-explorer:v20230504
+  image: hyperledgerk8s/bc-explorer:v20230504
 ingress:
   enable: false
   ingressClassName: portal-ingress
