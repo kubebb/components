@@ -77,4 +77,30 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/ingress-nginx-4.7.0/ingress-nginx-4.7.0.tgz
     version: 4.7.0
-generated: "2023-06-16T06:44:49.841212839Z"
+  kubebb:
+  - apiVersion: v2
+    created: "2023-06-19T06:38:55.832372699Z"
+    description: Kubebb Core provides core implementations on Component Lifecycle
+      Management.Our design and development follows operator pattern which extends
+      kubernetes APIs.
+    digest: bc9b7c77b0717356ba2508c64f7bccfda78755b319c382c235966f1a5a1bb1ea
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - repository
+    - helm
+    - lifecycle-management
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: kubebb
+    sources:
+    - https://github.com/kubebb/core
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/kubebb-v0.0.1/kubebb-v0.0.1.tgz
+    version: v0.0.1
+generated: "2023-06-19T06:38:55.832376999Z"
