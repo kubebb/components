@@ -103,4 +103,20 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/kubebb-v0.0.1/kubebb-v0.0.1.tgz
     version: v0.0.1
-generated: "2023-06-19T06:38:55.832376999Z"
+  weaviate:
+  - apiVersion: v2
+    appVersion: 1.19.1
+    created: "2023-06-19T06:39:00.244582792Z"
+    description: A Helm Chart to run Weaviate with all dependencies
+    digest: 9654544ffde3cac61fdce0f58f40e96d55ff2a8197f3a17a76001d0242a019e3
+    home: https://github.com/weaviate/weaviate
+    icon: https://raw.githubusercontent.com/weaviate/weaviate/19de0956c69b66c5552447e84d016f4fe29d12c9/docs/assets/weaviate-logo.png
+    maintainers:
+    - name: weaviate
+      url: https://github.com/weaviate/weaviate
+    name: weaviate
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
+    version: 16.3.0
+generated: "2023-06-19T06:39:00.244589592Z"
