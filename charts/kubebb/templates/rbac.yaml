@@ -1,0 +1,166 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Name }}
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - configmaps/status
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - componentplans
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - componentplans/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - componentplans/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - components
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - components/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - components/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - repositories
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - repositories/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - repositories/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - repositorys
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - repositorys/status
+  verbs:
+  - get
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - subscriptions
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - subscriptions/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - subscriptions/status
+  verbs:
+  - get
+  - patch
+  - update
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Release.Name }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Release.Name }}
+subjects:
+- kind: ServiceAccount
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}

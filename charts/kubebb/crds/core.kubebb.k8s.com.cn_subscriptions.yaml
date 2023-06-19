@@ -1,0 +1,416 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.9.2
+  creationTimestamp: null
+  name: subscriptions.core.kubebb.k8s.com.cn
+spec:
+  group: core.kubebb.k8s.com.cn
+  names:
+    kind: Subscription
+    listKind: SubscriptionList
+    plural: subscriptions
+    shortNames:
+    - sub
+    - subs
+    singular: subscription
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Subscription is the Schema for the subscriptions API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: SubscriptionSpec defines the desired state of Subscription
+            properties:
+              atomic:
+                description: Atomic is pass to helm install/upgrade --atomic if set,
+                  the installation process deletes the installation on failure. The
+                  --wait flag will be set automatically if --atomic is used
+                type: boolean
+              component:
+                description: ComponentRef is a reference to the Component
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of
+                      an entire object, this string should contain a valid JSON/Go
+                      field access statement, such as desiredState.manifest.containers[2].
+                      For example, if the object reference is to a container within
+                      a pod, this would take on a value like: "spec.containers{name}"
+                      (where "name" refers to the name of the container that triggered
+                      the event) or if no container name is specified "spec.containers[2]"
+                      (container with index 2 in this pod). This syntax is chosen
+                      only to have some well-defined way of referencing a part of
+                      an object. TODO: this design is not final and this field is
+                      subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference
+                      is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+              componentPlanInstallMethod:
+                description: ComponentPlanInstallMethod is the method used to install
+                  the component
+                type: string
+              dependencyUpdate:
+                description: DependencyUpdate is pass to helm install/upgrade --dependency-update
+                  update dependencies if they are missing before installing the chart
+                type: boolean
+              description:
+                description: Description is pass to helm install/upgrade --description
+                  add a custom description
+                type: string
+              devel:
+                description: Devel is pass to helm install/upgrade --devel use development
+                  versions, too. Equivalent to version '>0.0.0-0'. If --version is
+                  set, this is ignored
+                type: boolean
+              disableOpenAPIValidation:
+                description: DisableOpenAPIValidation is pass to helm install/upgrade
+                  --disable-openapi-validation if set, the installation process will
+                  not validate rendered templates against the Kubernetes OpenAPI Schema
+                type: boolean
+              enableDNS:
+                description: EnableDNS is pass to helm install/upgrade --enable-dns
+                  enable DNS lookups when rendering templates
+                type: boolean
+              force:
+                description: FIXME reconsider there config because we will use helm
+                  template not helm install Force is pass to helm install/upgrade
+                  --force force resource updates through a replacement strategy
+                type: boolean
+              maxRetry:
+                description: MaxRetry
+                format: int64
+                type: integer
+              name:
+                description: Name is pass to helm install <chart> <name>, name arg
+                type: string
+              nameTemplate:
+                description: NameTemplate is pass to helm install --name-template
+                  FIXME add logic
+                type: string
+              override:
+                description: Override defines the override settings for the component
+                  FIXME fix comment
+                properties:
+                  set:
+                    description: 'Set is passed to helm install --set set values on
+                      the command line (can specify multiple or separate values with
+                      commas: key1=val1,key2=val2)'
+                    items:
+                      type: string
+                    type: array
+                  set-file:
+                    description: 'SetFile is passed to helm install --set-file set
+                      values from respective files specified via the command line
+                      (can specify multiple or separate values with commas: key1=path1,key2=path2)
+                      https://github.com/helm/helm/pull/3758'
+                    items:
+                      type: string
+                    type: array
+                  set-json:
+                    description: 'SetJSON is passed to helm install --set-json set
+                      JSON values on the command line (can specify multiple or separate
+                      values with commas: key1=jsonval1,key2=jsonval2) https://github.com/helm/helm/pull/10693'
+                    items:
+                      type: string
+                    type: array
+                  set-literal:
+                    description: SetLiteral is passed to helm install --set-literal
+                      set a literal STRING value on the command line https://github.com/helm/helm/pull/9182
+                    items:
+                      type: string
+                    type: array
+                  set-string:
+                    description: 'SetString is passed to helm install --set-string
+                      set STRING values on the command line (can specify multiple
+                      or separate values with commas: key1=val1,key2=val2) https://github.com/helm/helm/pull/3599'
+                    items:
+                      type: string
+                    type: array
+                  values:
+                    description: Values is passed to helm install --values or -f specify
+                      values in a YAML file or a URL (can specify multiple)
+                    items:
+                      type: string
+                    type: array
+                type: object
+              recreate-pods:
+                description: Recreate is pass to helm upgrade --recreate-pods performs
+                  pods restart for the resource if applicable
+                type: boolean
+              replace:
+                description: Replace is pass to helm install --replace re-use the
+                  given name, only if that name is a deleted release which remains
+                  in the history. This is unsafe in production
+                type: boolean
+              repository:
+                description: RepositoryRef is a reference to the Repository
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of
+                      an entire object, this string should contain a valid JSON/Go
+                      field access statement, such as desiredState.manifest.containers[2].
+                      For example, if the object reference is to a container within
+                      a pod, this would take on a value like: "spec.containers{name}"
+                      (where "name" refers to the name of the container that triggered
+                      the event) or if no container name is specified "spec.containers[2]"
+                      (container with index 2 in this pod). This syntax is chosen
+                      only to have some well-defined way of referencing a part of
+                      an object. TODO: this design is not final and this field is
+                      subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference
+                      is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+              skipCRDs:
+                description: SkipCRDs is pass to helm install/upgrade --skip-crds
+                  if set, no CRDs will be installed. By default, CRDs are installed
+                  if not already present
+                type: boolean
+              timeoutSeconds:
+                description: TimeoutSeconds is pass to helm install/upgrade --timeout,
+                  default is 300s time to wait for any individual Kubernetes operation
+                  (like Jobs for hooks)
+                type: integer
+              wait:
+                description: Wait is pass to helm install/upgrade --wait if set, will
+                  wait until all Pods, PVCs, Services, and minimum number of Pods
+                  of a Deployment, StatefulSet, or ReplicaSet are in a ready state
+                  before marking the release as successful. It will wait for as long
+                  as --timeout
+                type: boolean
+              waitForJobs:
+                description: WaitForJobs is pass to helm install/upgrade --wait-for-jobs
+                  if set and --wait enabled, will wait until all Jobs have been completed
+                  before marking the release as successful. It will wait for as long
+                  as --timeout
+                type: boolean
+            required:
+            - component
+            type: object
+          status:
+            description: SubscriptionStatus defines the state of Subscription
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource.
+                  properties:
+                    lastTransitionTime:
+                      description: LastTransitionTime is the last time this condition
+                        transitioned from one status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A Message containing details about this condition's
+                        last transition from one status to another, if any.
+                      type: string
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown
+                      type: string
+                    type:
+                      description: Type of this condition. At most one of each condition
+                        type may apply to a resource at any point in time.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              installed:
+                description: Installed records all componentplans installed, ordered
+                  by install time.
+                items:
+                  properties:
+                    componentPlan:
+                      description: ComponentPlanRef is a reference to the latest ComponentPlan
+                      properties:
+                        apiVersion:
+                          description: API version of the referent.
+                          type: string
+                        fieldPath:
+                          description: 'If referring to a piece of an object instead
+                            of an entire object, this string should contain a valid
+                            JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                            For example, if the object reference is to a container
+                            within a pod, this would take on a value like: "spec.containers{name}"
+                            (where "name" refers to the name of the container that
+                            triggered the event) or if no container name is specified
+                            "spec.containers[2]" (container with index 2 in this pod).
+                            This syntax is chosen only to have some well-defined way
+                            of referencing a part of an object. TODO: this design
+                            is not final and this field is subject to change in the
+                            future.'
+                          type: string
+                        kind:
+                          description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                          type: string
+                        name:
+                          description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                          type: string
+                        namespace:
+                          description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                          type: string
+                        resourceVersion:
+                          description: 'Specific resourceVersion to which this reference
+                            is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                          type: string
+                        uid:
+                          description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                          type: string
+                      type: object
+                      x-kubernetes-map-type: atomic
+                    installedTime:
+                      description: InstalledTime is the time that the version was
+                        installed in cluster
+                      format: date-time
+                      type: string
+                    installedVersion:
+                      description: InstalledVersion is the version currently installed
+                        in cluster
+                      properties:
+                        appVersion:
+                          type: string
+                        createdAt:
+                          format: date-time
+                          type: string
+                        deprecated:
+                          type: boolean
+                        digest:
+                          type: string
+                        updatedAt:
+                          format: date-time
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - appVersion
+                      - createdAt
+                      - deprecated
+                      - digest
+                      - updatedAt
+                      - version
+                      type: object
+                  type: object
+                type: array
+              repositoryHealth:
+                description: RepositoryHealth contains the Subscription's view of
+                  its relevant Repository' status. It is used to determine SubscriptionStatusConditions
+                  related to Repository
+                properties:
+                  healthy:
+                    description: Healthy is true if the Repository is healthy; false
+                      otherwise.
+                    type: boolean
+                  lastUpdated:
+                    description: LastUpdated represents the last time that the RepositoryHealth
+                      changed
+                    format: date-time
+                    type: string
+                  repository:
+                    description: RepositoryRef is a reference to a Repository.
+                    properties:
+                      apiVersion:
+                        description: API version of the referent.
+                        type: string
+                      fieldPath:
+                        description: 'If referring to a piece of an object instead
+                          of an entire object, this string should contain a valid
+                          JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                          For example, if the object reference is to a container within
+                          a pod, this would take on a value like: "spec.containers{name}"
+                          (where "name" refers to the name of the container that triggered
+                          the event) or if no container name is specified "spec.containers[2]"
+                          (container with index 2 in this pod). This syntax is chosen
+                          only to have some well-defined way of referencing a part
+                          of an object. TODO: this design is not final and this field
+                          is subject to change in the future.'
+                        type: string
+                      kind:
+                        description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                        type: string
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                        type: string
+                      namespace:
+                        description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                        type: string
+                      resourceVersion:
+                        description: 'Specific resourceVersion to which this reference
+                          is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                        type: string
+                      uid:
+                        description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                        type: string
+                    type: object
+                    x-kubernetes-map-type: atomic
+                required:
+                - healthy
+                - lastUpdated
+                - repository
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

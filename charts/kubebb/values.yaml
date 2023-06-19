@@ -1,0 +1,10 @@
+deployment:
+  image: kubebb/core
+  imagePullPolcy: IfNotPresent
+  resources:
+    limits:
+      cpu: 5000m
+      memory: 1280Mi
+    requests:
+      cpu: 10m
+      memory: 64Mi
