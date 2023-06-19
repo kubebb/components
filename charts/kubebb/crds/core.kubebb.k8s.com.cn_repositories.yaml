@@ -1,0 +1,152 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.9.2
+  creationTimestamp: null
+  name: repositories.core.kubebb.k8s.com.cn
+spec:
+  group: core.kubebb.k8s.com.cn
+  names:
+    kind: Repository
+    listKind: RepositoryList
+    plural: repositories
+    shortNames:
+    - repo
+    - repos
+    singular: repository
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Repository is the Schema for the repositories API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: RepositorySpec defines the desired state of Repository
+            properties:
+              authSecret:
+                description: AuthSecret if the chart repository requires auth authentication,
+                  set the username and password to secret, with the fields user and
+                  password respectively.
+                type: string
+              filter:
+                items:
+                  properties:
+                    deprecated:
+                      description: If True, the current version will be retained even
+                        if it is deprecated.
+                      type: boolean
+                    name:
+                      description: Name of the component
+                      type: string
+                    operation:
+                      default: keep
+                      description: default is keep
+                      enum:
+                      - keep
+                      - ignore
+                      type: string
+                    versionedFilterCond:
+                      description: VersionedFilterCond filters which version in component
+                        are pulled/ignored from the repository
+                      properties:
+                        regexp:
+                          description: Filter version by regexp
+                          type: string
+                        versionConstraint:
+                          description: VersionConstraint Support for user-defined
+                            version ranges, etc. Refer to the documentation for more
+                            details https://github.com/Masterminds/semver#semver
+                          type: string
+                        versions:
+                          description: Accurately match each item in the versions
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                  type: object
+                type: array
+              insecure:
+                type: boolean
+              pullStategy:
+                description: PullStategy pullStategy for this repository
+                properties:
+                  intervalSeconds:
+                    description: Interval for pulling
+                    type: integer
+                  retry:
+                    description: Retry upon timeout
+                    type: integer
+                  timeoutSeconds:
+                    description: Timeout for pulling
+                    type: integer
+                type: object
+              repositoryType:
+                type: string
+              url:
+                description: URL chart repository address
+                type: string
+            required:
+            - url
+            type: object
+          status:
+            description: RepositoryStatus defines the observed state of Repository
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource.
+                  properties:
+                    lastTransitionTime:
+                      description: LastTransitionTime is the last time this condition
+                        transitioned from one status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A Message containing details about this condition's
+                        last transition from one status to another, if any.
+                      type: string
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown
+                      type: string
+                    type:
+                      description: Type of this condition. At most one of each condition
+                        type may apply to a resource at any point in time.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+              urlHistory:
+                description: URLHistory URL change history
+                items:
+                  type: string
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
