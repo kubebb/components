@@ -103,6 +103,71 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/kubebb-v0.0.1/kubebb-v0.0.1.tgz
     version: v0.0.1
+  kubebb-core:
+  - apiVersion: v2
+    created: "2023-07-03T09:03:55.860948365Z"
+    description: Kubebb Core provides core implementations on Component Lifecycle
+      Management.Our design and development follows operator pattern which extends
+      kubernetes APIs.
+    digest: f431f661c41c9683c9ea717aaca4b5e02a0e6a09bdf570a787e8af866e264f11
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - repository
+    - helm
+    - lifecycle-management
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: kubebb-core
+    sources:
+    - https://github.com/kubebb/core
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/kubebb-core-v0.1.0/kubebb-core-v0.1.0.tgz
+    version: v0.1.0
+  minio:
+  - apiVersion: v1
+    appVersion: RELEASE.2023-02-10T18-48-39Z
+    created: "2023-07-03T09:03:55.998503794Z"
+    description: Multi-Cloud Object Storage
+    digest: cf3d46b8abeb363e7913d907c243071109d8738dfdb30a7236c9f082c7bd29ba
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - minio
+    - storage
+    - object-storage
+    - s3
+    - cluster
+    maintainers:
+    - email: dev@minio.io
+      name: MinIO, Inc
+    name: minio
+    sources:
+    - https://github.com/minio/minio
+    urls:
+    - https://github.com/kubebb/components/releases/download/minio-5.0.7/minio-5.0.7.tgz
+    version: 5.0.7
+  tekton-operator:
+  - apiVersion: v2
+    appVersion: v0.64.0
+    created: "2023-07-03T09:03:56.142080594Z"
+    description: A Helm chart to deploy the Tekton Operator and its CRDs
+    digest: 5447734e686651a85ac4fdcbb00f6da996331bd10d1ee9abc353fb1a1fcf040d
+    maintainers:
+    - email: jack.henschel@cern.ch
+      name: Jack Henschel
+    name: tekton-operator
+    sources:
+    - https://github.com/tektoncd/operator
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/tekton-operator-0.64.0/tekton-operator-0.64.0.tgz
+    version: 0.64.0
   weaviate:
   - apiVersion: v2
     appVersion: 1.19.1
@@ -119,4 +184,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-06-19T06:39:00.244589592Z"
+generated: "2023-07-03T09:03:56.142088194Z"
