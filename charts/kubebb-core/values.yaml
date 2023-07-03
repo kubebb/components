@@ -1,5 +1,5 @@
 deployment:
-  image: kubebb/core
+  image: kubebb/core:v0.1.0
   imagePullPolcy: IfNotPresent
   resources:
     limits:
