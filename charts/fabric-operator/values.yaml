@@ -1,0 +1,52 @@
+namespace: baas-system
+serviceAccountName: operator-controller-manager
+ingressDomain: 172.18.0.4.nip.io
+ingressClassName: portal-ingress
+storageClassName: standard
+iamServer: https://oidc-server.u4a-system.svc.cluster.local
+minio:
+  host: fabric-minio.baas-system.svc.cluster.local:9000
+  accessKey: "your minio access key"
+  secretKey: "your minio secret key"
+tekton:
+  namespace: default
+  dockerConfigSecret: dockerhub-secret
+operator:
+  watchNamespace: ""
+  clusterType: K8S
+  image: hyperledgerk8s/fabric-operator:7776e71
+  imagePullPolicy: IfNotPresent
+  clusterRoleName: manager-role
+  clusterRoleBindingName: operator
+  resources:
+    limits:
+      cpu: 1
+      memory: 512Mi
+      ephemeral-storage: 1Gi
+    requests:
+      cpu: 1
+      memory: 512Mi
+      ephemeral-storage: 100Mi
+  readinessProbe:
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    tcpSocket:
+      port: 8383
+    timeoutSeconds: 5
+  tolerations:
+  - operator: "Exists"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: Exists
+leaderElection:
+  roleName: leader-election-role
+  roleBindingName: leader-election-rolebinding
+authProxy:
+  authProxyServiceName: controller-manager-metrics-service
+  proxyClusterRoleName: proxy-role
+  proxyClusterRoleBindingName: proxy-rolebinding
+  metricReaderClusterRoleName: metrics-reader
