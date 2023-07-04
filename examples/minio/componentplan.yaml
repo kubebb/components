@@ -1,0 +1,12 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: fabric-minio
+  namespace: default
+spec:
+  approved: true
+  name: fabric-minio # similar to helm release name
+  version: 5.0.7
+  component:
+    name: kubebb.minio
+    namespace: kubebb-system
