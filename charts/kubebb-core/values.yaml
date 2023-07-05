@@ -1,6 +1,6 @@
 deployment:
-  image: kubebb/core:v0.1.0
-  imagePullPolcy: IfNotPresent
+  image: kubebb/core:latest
+  imagePullPolcy: Always
   resources:
     limits:
       cpu: 5000m
