@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    httpSend: /
+    ingress-lb: portal-ingress
+    kubernetes.io/ingress.class: portal-ingress
+  labels:
+    ingress-lb: portal-ingress
+  name: grafana-ingress
+  namespace: default
+spec:
+  rules:
+    - host: grafana.{ingressNodeIP}.nip.io
+      http:
+        paths:
+          - backend:
+              service:
+                name: grafana
+                port:
+                  number: 3000
+            path: /
+            pathType: ImplementationSpecific

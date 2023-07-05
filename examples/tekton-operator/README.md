@@ -7,7 +7,7 @@
 2. Create a repo [kubebb](https://github.com/kubebb/components/blob/main/repos/repository_kubebb.yaml)
 
 ```shell
-    kubectl apply -n kubebbs-sytem -f repos/repository_kubebb.yaml
+    kubectl apply -n kubebb-system -f repos/repository_kubebb.yaml
 ```
 
 ## Install Tekton Operator

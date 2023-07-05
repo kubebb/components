@@ -1,0 +1,28 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: grafana
+  namespace: default
+spec:
+  approved: true
+  name: grafana # similar to helm release name
+  version: 6.57.4
+  component:
+    name: grafana.grafana
+    namespace: kubebb-system
+  override:
+    values:
+      adminUser: admin
+      adminPassword: passw0rd
+      grafana.ini:
+        server:
+          root_url: https://grafana.{ingressNodeIP}.nip.io
+        auth.generic_oauth:
+          enabled: true
+          client_id: bff-client
+          client_secret: 61324af0-1234-4f61-b110-ef57013267d6
+          scopes: "openid profile email groups offline_access"
+          auth_url: https://portal.{ingressNodeIP}.nip.io/oidc/auth
+          token_url: https://portal.{ingressNodeIP}.nip.io/oidc/token
+          api_url: https://portal.{ingressNodeIP}.nip.io/oidc/userinfo
+          tls_skip_verify_insecure: true
