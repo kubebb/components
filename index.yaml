@@ -48,6 +48,43 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/bc-explorer-v0.0.1/bc-explorer-v0.0.1.tgz
     version: v0.0.1
+  cluster-component:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-07-05T08:48:03.481503951Z"
+    dependencies:
+    - condition: cert-manager.enabled
+      name: cert-manager
+      repository: ""
+      version: 0.1.0
+    - condition: metallb.enabled
+      name: metallb
+      repository: ""
+      version: 0.1.0
+    - condition: ingress-nginx.enabled
+      name: ingress-nginx
+      repository: ""
+      version: 4.2.1
+    - condition: openebs.enabled
+      name: openebs
+      repository: ""
+      version: 3.3.1
+    description: A Helm chart for cluster-component
+    digest: cb9c07fb65a1874631b37f48070aaf675ee79fe174e3efc8e37da2047821d2e9
+    maintainers:
+    - name: nkwangleiGIT
+      url: https://github.com/nkwangleiGIT
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: cluster-component
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/cluster-component-0.1.0/cluster-component-0.1.0.tgz
+    version: 0.1.0
   fabric-operator:
   - apiVersion: v2
     appVersion: v0.1.0
@@ -213,4 +250,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-07-05T06:18:40.638713798Z"
+generated: "2023-07-05T08:48:03.481513851Z"
