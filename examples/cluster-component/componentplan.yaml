@@ -1,0 +1,12 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: cluster-compnent
+  namespace: kubebb-system
+spec:
+  approved: true
+  name: cluster-component
+  version: 0.1.0
+  component:
+    name: kubebb.cluster-component
+    namespace: kubebb-system
