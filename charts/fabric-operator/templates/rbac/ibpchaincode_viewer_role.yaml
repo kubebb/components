@@ -1,0 +1,20 @@
+# permissions for end users to view federations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: chaincode-viewer-role
+rules:
+- apiGroups:
+  - ibp.com
+  resources:
+  - chaincodes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ibp.com
+  resources:
+  - chaincodes/status
+  verbs:
+  - get

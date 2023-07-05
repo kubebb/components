@@ -1,0 +1,24 @@
+# permissions for end users to edit chaincodebuilds.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: chaincodebuild-editor-role
+rules:
+- apiGroups:
+  - ibp.com
+  resources:
+  - chaincodebuilds
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ibp.com
+  resources:
+  - chaincodebuilds/status
+  verbs:
+  - get
