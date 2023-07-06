@@ -234,6 +234,34 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/tekton-operator-0.64.0/tekton-operator-0.64.0.tgz
     version: 0.64.0
+  u4a-component:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-07-06T09:27:11.508015563Z"
+    dependencies:
+    - condition: addon-component.enabled
+      name: addon-component
+      repository: ""
+      version: 0.1.0
+    - name: crds
+      repository: ""
+      version: 0.1.0
+    description: A Helm chart for u4a-component
+    digest: 1765a458fad59e2f46a792e187fb203adc5428ab89d6023c4da9bc28eb3d5744
+    maintainers:
+    - name: nkwangleiGIT
+      url: https://github.com/nkwangleiGIT
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: u4a-component
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/u4a-component-0.1.0/u4a-component-0.1.0.tgz
+    version: 0.1.0
   weaviate:
   - apiVersion: v2
     appVersion: 1.19.1
@@ -250,4 +278,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-07-05T08:48:03.481513851Z"
+generated: "2023-07-06T09:27:11.508028163Z"
