@@ -1,0 +1,61 @@
+{{- if .Values.oidcServer.enabled -}}
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: oidc-server
+  namespace: {{ .Release.Namespace }}
+  labels:
+    system/component: u4a
+    system/u4a: oidc-server
+data:
+  config.yaml: |
+    issuer: {{ tpl .Values.oidcServer.issuer . }}
+    storage:
+      type: {{ .Values.oidcServer.storageType }}
+      config:
+        inCluster: true
+    logger:
+      # Support error,info,debug log level
+      level: info
+    web:
+      https: {{ .Values.oidcServer.webHttps }}
+      tlsCert: /etc/oidc-server/tls/tls.crt
+      tlsKey: /etc/oidc-server/tls/tls.key
+    additionalConfig:
+      defaultUserGroups:
+      - iam.tenxcloud.com
+      - obsevability
+      - resource-reader
+      - bestchains
+    connectors:
+    {{- range .Values.oidcServer.connectors }}
+    - type: {{ .type }}
+      name: {{ .name }}
+      id: {{ .id }}
+      config:
+        host: {{ .config.host }}
+        insecureSkipVerify: {{ .config.insecureSkipVerify }}
+    {{- end }}
+    oauth2:
+      # Enable for password grant type if needed, such as kubelogin
+      # passwordConnector: k8scrd
+      skipApprovalScreen: true
+    staticClients:
+    {{- range .Values.oidcServer.staticClients }}
+    - id: {{ .id }}
+      name: {{ .name }}
+      secret: {{ .secret }}
+      redirectURIs:
+      {{- range .redirectURIs }}
+      - {{ tpl . $ }}
+      {{- end }}
+    {{- end }}
+    enablePasswordDB: true
+#    staticPasswords:
+#    {{- range .Values.oidcServer.staticPasswords }}
+#    - email: {{ .email }}
+#      hash: {{ .hash }}
+#      username: {{ .username }}
+#      userID: {{ .userID }}
+#    {{- end }}
+{{- end }}
