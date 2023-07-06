@@ -1,0 +1,12 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: u4a-component
+  namespace: kubebb-system
+spec:
+  approved: true
+  name: u4a-component
+  version: 0.1.0
+  component:
+    name: kubebb.u4a-component
+    namespace: kubebb-system
