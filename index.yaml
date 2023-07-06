@@ -1,6 +1,53 @@
 apiVersion: v1
 entries:
+  bc-apis:
+  - apiVersion: v2
+    created: "2023-07-06T10:35:47.542824955Z"
+    description: bc-apis is a service that provides composited APIs for the console.
+    digest: 42f28bbba61b9621708c28904fcf539cc032b686d7f238396aba056a5a8e1e38
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - apis
+    - bestchains
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Carrotzpc
+      url: https://github.com/Carrotzpc
+    - name: dayuy
+      url: https://github.com/dayuy
+    name: bc-apis
+    sources:
+    - https://github.com/bestchains/bc-apis
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/bc-apis-v0.0.1/bc-apis-v0.0.1.tgz
+    version: v0.0.1
   bc-depository:
+  - apiVersion: v2
+    created: "2023-07-06T10:35:47.740906987Z"
+    description: bc-depository represents depository-as-a-service in bestchains which
+      provides quick way to create a depository service.
+    digest: a1f387fd36cde9af424e207277a6043317f0df5f1bc1ffc6b10fe1e7dffee6e2
+    icon: https://avatars.githubusercontent.com/u/116370569
+    keywords:
+    - depository
+    - saas
+    - bestchains
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: bc-depository
+    sources:
+    - https://github.com/bestchains/bc-saas
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/bc-depository-v0.0.2/bc-depository-v0.0.2.tgz
+    version: v0.0.2
   - apiVersion: v2
     created: "2023-06-07T05:30:28.150299883Z"
     description: bc-depository represents depository-as-a-service in bestchains which
@@ -26,6 +73,28 @@ entries:
     - https://github.com/kubebb/components/releases/download/bc-depository-v0.0.1/bc-depository-v0.0.1.tgz
     version: v0.0.1
   bc-explorer:
+  - apiVersion: v2
+    created: "2023-07-06T10:35:47.976450792Z"
+    description: a comprehensive blockchain explorer
+    digest: cac47708a1b02a06db12c5bbb364a09d08b77c7e3a4d5f8fa25543a6a5aa0c94
+    icon: https://avatars.githubusercontent.com/u/116370569
+    keywords:
+    - explorer
+    - bestchains
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: bc-explorer
+    sources:
+    - https://github.com/bestchains/bc-explorer
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/bc-explorer-v0.0.2/bc-explorer-v0.0.2.tgz
+    version: v0.0.2
   - apiVersion: v2
     created: "2023-06-09T06:23:15.74044672Z"
     description: a comprehensive blockchain explorer
@@ -278,4 +347,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-07-06T09:27:11.508028163Z"
+generated: "2023-07-06T10:35:47.976461592Z"
