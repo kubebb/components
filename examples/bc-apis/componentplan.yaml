@@ -1,0 +1,22 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: fabric-bc-apis
+  namespace: kubebb-system
+spec:
+  approved: true
+  name: fabric-bc-apis
+  version: v0.0.1
+  override:
+    set:
+      - ingressDomain={ingressNodeIP}.nip.io
+      - iamServer=https://oidc-server.u4a-system
+      - k8sOIDCProxyURL=https://k8s.{ingressNodeIP}.nip.io
+      - OIDCServerURL=https://portal.{ingressNodeIP}.nip.io/oidc
+      - OIDCServerClientID=bff-client
+      - OIDCServerClientSecret=61324af0-1234-4f61-b110-ef57013267d6
+      - hostAliases[0].hostnames={oidc.{ingressNodeIP}.nip.io}
+      - hostAliases[0].ip={ingressNodeIP}
+  component:
+    name: kubebb.bc-apis
+    namespace: kubebb-system

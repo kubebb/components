@@ -1,20 +1,19 @@
-{{- if .Values.ingress.enable }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    description: bc-explorer-ingress
-    displayName: bc-explorer-ingress
+    description: bc-apis-ingress
+    displayName: bc-apis-ingress
     httpSend: /
-    ingress-lb: {{ .Values.ingress.ingressClassName }}
-    kubernetes.io/ingress.class:  {{ .Values.ingress.ingressClassName }}
+    ingress-lb: {{ .Values.ingressClassName }}
+    kubernetes.io/ingress.class: {{ .Values.ingressClassName }}
     nginx.ingress.kubernetes.io/configuration-snippet: |
       proxy_cache static-cache;
       proxy_cache_valid 404 10m;
       proxy_cache_use_stale error timeout updating http_404 http_500 http_502 http_503 http_504;
       proxy_cache_bypass $http_x_purge;
       add_header X-Cache-Status $upstream_cache_status; # check X-Cache-Status to see if it's HIT
-      rewrite ^/bc-explorer(/|$)(.*)$ /$2 break;
+      rewrite ^/bc-apis(/|$)(.*)$ /$2 break;
     nginx.ingress.kubernetes.io/enable-access-log: "false"
     nginx.ingress.kubernetes.io/enable-rewrite-log: "false"
     nginx.ingress.kubernetes.io/load-balance: round_robin
@@ -25,29 +24,32 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/upstream-vhost: $host
   labels:
-    ingress-lb: {{ .Values.ingress.ingressClassName }}
-  name: {{ .Release.Name }}
+    ingress-lb: {{ .Values.ingressClassName}}
+  name: {{ .Release.Name }}-ingress
   namespace: {{ .Release.Namespace }}
 spec:
   rules:
-  - host: bc-explorer.{{ .Values.ingress.ingressDomain }}
+  - host: portal.{{ .Values.ingressDomain }}
     http:
       paths:
       - backend:
           service:
-            name: {{ .Release.Name }}-bc-explorer-service
+            name: {{ .Release.Name }}
             port:
-              number: 9998
-        path: /
+              number: 8024
+        path: /bc-public
         pathType: ImplementationSpecific
-  - host: portal.{{ .Values.ingress.ingressDomain }}
-    http:
-      paths:
       - backend:
           service:
-            name: {{ .Release.Name }}-bc-explorer-service
+            name: {{ .Release.Name }}
             port:
-              number: 9998
-        path: /bc-explorer
+              number: 8024
+        path: /bc-apis
         pathType: ImplementationSpecific
-{{- end }}
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 8025
+        path: /bc-ws
+        pathType: ImplementationSpecific

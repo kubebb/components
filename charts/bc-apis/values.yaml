@@ -1,0 +1,23 @@
+ingressDomain: <replaced-ingress-nginx-ip>.nip.io
+ingressClassName: portal-ingress
+storageClassName: standard
+iamServer: <replaced-iam-server>
+env:
+  k8sOIDCProxyURL: <replace-with-k8s-oidc-proxy-url>
+  OIDCServerURL: <replace-with-oidc-server-url>
+  OIDCServerClientID: <replace-with-oidc-client-id>
+  OIDCServerClientSecret: <replace-with-oidc-client-secret>
+  imageNamespace: hyperledgerk8s
+  imageFabricCATag: iam-20230131
+  imageFabricOrdererTag: 2.4.7
+  imageFabricPeerTag: 2.4.7-external
+  logLevels: log,error,warn
+  minioAccessKey: ylc9dZGbZg2oYgnE
+  minioSecretKey: ykCAHG3snLaToaRsbPo3rhCyZNqCKcIt
+  minioEndpoint: fabric-minio.baas-system.svc.cluster.local
+image: hyperledgerk8s/bc-apis:20230703.143401.87
+imagePullPolicy: IfNotPresent
+hostAliases:
+  - hostnames:
+      - oidc.<replaced-ingress-nginx-ip>.nip.io
+    ip: <replaced-ingress-nginx-ip>
