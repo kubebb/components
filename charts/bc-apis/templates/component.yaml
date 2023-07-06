@@ -1,0 +1,16 @@
+apiVersion: component.t7d.io/v1beta1
+kind: Component
+metadata:
+  name: bc
+spec:
+  application:
+    helmChart:
+      name: bc-helm-chart
+      valuesConfig: values.yaml from helm
+      version: v0.1
+    name: bc
+  menu:
+    name: bc-root-menu
+  portal:
+    entry: /bc-public/index.html
+    path: /bc

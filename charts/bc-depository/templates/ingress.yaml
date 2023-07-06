@@ -14,6 +14,7 @@ metadata:
       proxy_cache_use_stale error timeout updating http_404 http_500 http_502 http_503 http_504;
       proxy_cache_bypass $http_x_purge;
       add_header X-Cache-Status $upstream_cache_status; # check X-Cache-Status to see if it's HIT
+      rewrite ^/bc-saas(/|$)(.*)$ /$2 break;
     nginx.ingress.kubernetes.io/enable-access-log: "false"
     nginx.ingress.kubernetes.io/enable-rewrite-log: "false"
     nginx.ingress.kubernetes.io/load-balance: round_robin
@@ -38,4 +39,14 @@ spec:
                   number: 9999
             path: /
             pathType: ImplementationSpecific
+    - host: portal.{{ .Values.ingress.ingressDomain }}
+      http:
+        paths:
+        - backend:
+            service:
+              name: {{ .Values.fullnameOverride }}
+              port:
+                number: 9999
+          path: /bc-saas
+          pathType: ImplementationSpecific
 {{- end -}}
