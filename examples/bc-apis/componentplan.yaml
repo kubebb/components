@@ -11,10 +11,18 @@ spec:
     set:
       - ingressDomain={ingressNodeIP}.nip.io
       - iamServer=https://oidc-server.u4a-system
-      - k8sOIDCProxyURL=https://k8s.{ingressNodeIP}.nip.io
-      - OIDCServerURL=https://portal.{ingressNodeIP}.nip.io/oidc
-      - OIDCServerClientID=bff-client
-      - OIDCServerClientSecret=61324af0-1234-4f61-b110-ef57013267d6
+      - env.k8sOIDCProxyURL=https://k8s.{ingressNodeIP}.nip.io
+      - env.OIDCServerURL=https://portal.{ingressNodeIP}.nip.io/oidc
+      - env.OIDCServerClientID=bff-client
+      - env.OIDCServerClientSecret=61324af0-1234-4f61-b110-ef57013267d6
+      - env.imageNamespace=hyperledgerk8s
+      - env.imageFabricCATag=iam-20230131
+      - env.imageFabricOrdererTag=2.4.7
+      - env.imageFabricPeerTag=2.4.7-external
+      - env.minioAccessKey=ylc9dZGbZg2oYgnE
+      - env.minioSecretKey=ykCAHG3snLaToaRsbPo3rhCyZNqCKcIt
+      - env.minioEndpoint=fabric-minio.baas-system.svc.cluster.local
+      - image=hyperledgerk8s/bc-apis:20230703.143401.87
       - hostAliases[0].hostnames={oidc.{ingressNodeIP}.nip.io}
       - hostAliases[0].ip={ingressNodeIP}
   component:
