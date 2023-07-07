@@ -1,0 +1,10 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Repository
+metadata:
+  name: gitea
+  namespace: kubebb-system
+spec:
+  url: https://dl.gitea.io/charts/
+  pullStategy:
+    intervalSeconds: 300
+    retry: 5
