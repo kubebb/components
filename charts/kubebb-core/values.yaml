@@ -8,3 +8,8 @@ deployment:
     requests:
       cpu: 10m
       memory: 64Mi
+pvc:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  storageSize: 5Gi
