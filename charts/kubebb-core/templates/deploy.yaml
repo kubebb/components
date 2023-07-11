@@ -24,12 +24,26 @@ spec:
         # versions < 1.19 or on vendors versions which do NOT support this field by default (i.e. Openshift < 4.11 ).
         # seccompProfile:
         #   type: RuntimeDefault
+      volumes:
+      - name: helm
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}
       containers:
       - command:
         - /manager
         image: {{ .Values.deployment.image }}
         imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
+        env:
+        - name: HELM_CACHE_HOME
+          value: /opt/helm/cache/helm
+        - name: HELM_CONFIG_HOME
+          value: /opt/helm/config/helm
+        - name: HELM_DATA_HOME
+          value: /opt/helm/data/helm
         name: manager
+        volumeMounts:
+        - mountPath: /opt/helm
+          name: helm
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
