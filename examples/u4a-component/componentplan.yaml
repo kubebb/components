@@ -2,11 +2,16 @@ apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
   name: u4a-component
-  namespace: kubebb-system
+  namespace: u4a-system
 spec:
   approved: true
   name: u4a-component
   version: 0.1.0
+  override:
+    valuesFrom:
+      kind: ConfigMap
+      name: u4acm
+      valuesKey: "values.yaml"
   component:
     name: kubebb.u4a-component
     namespace: kubebb-system
