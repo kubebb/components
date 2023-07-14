@@ -10,10 +10,16 @@
     kubectl apply -n kubebbs-sytem -f repos/repository_kubebb.yaml
 ```
 
-## Install Fabric Operator
+## Install Cluster Component
+
+According to the documentation [kind-cluster](https://kubebb.github.io/website/docs/core/get_started#kind%E5%BC%80%E5%8F%91%E9%9B%86%E7%BE%A4), 
+we know that the cluster has only one node named `kubebb-core-control-plane`.
+Select `kubebb-core-control-plane` as the deployment node for ingress.
+
+**Currently the u4a-compnent component is not fully adapted and can only be deployed under u4as-system namespace**
 
 1. Apply `componentplan.yaml`
 
 ```shell
-    kubectl apply -f  examples/fabric-operator/componentplan.yaml
+    kubectl apply -f  examples/cluster-component/componentplan.yaml
 ```

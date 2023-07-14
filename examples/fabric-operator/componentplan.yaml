@@ -2,14 +2,18 @@ apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
   name: fabric-operator
-  namespace: kubebb-system
+  namespace: baas-system
 spec:
   approved: true
   name: fabric-operator
   version: 0.1.0
   override:
     set:
-    - namespace=kubebb-system
+    - namespace=baas-system
+    - ingressDomain=172.18.0.5.nip.io
+    - minio.accessKey=somesecretkey
+    - mino.secretKey=somesecretkey
+    - minio.host=fabric-minio.default.svc.cluster.local:9000
   component:
     name: kubebb.fabric-operator
     namespace: kubebb-system
