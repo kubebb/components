@@ -19,7 +19,7 @@ According to the deployment documentation for [cluster-component](../cluster-com
 we know that ingress-nginx is also deployed to the node `kubebb-core-control-plane`
 
 
-**Currently the u4a-compnent component is not fully adapted and can only be deployed under u4as-system namespace**
+**Currently, the u4a-component component is not fully adapted and can only be deployed under u4as-system namespace**
 
 1. checkout kubebb-core-control-plane node ip
 

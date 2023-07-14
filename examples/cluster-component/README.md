@@ -16,7 +16,7 @@ According to the documentation [kind-cluster](https://kubebb.github.io/website/d
 we know that the cluster has only one node named `kubebb-core-control-plane`.
 Select `kubebb-core-control-plane` as the deployment node for ingress.
 
-**Currently the u4a-compnent component is not fully adapted and can only be deployed under u4as-system namespace**
+**Currently, the u4a-component component is not fully adapted and can only be deployed under u4as-system namespace**
 
 1. Apply `componentplan.yaml`
 
