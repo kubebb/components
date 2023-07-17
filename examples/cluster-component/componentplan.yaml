@@ -1,7 +1,7 @@
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
-  name: cluster-compnent
+  name: cluster-component
   namespace: u4a-system
 spec:
   approved: true
@@ -10,7 +10,7 @@ spec:
   override:
     set:
     # according to https://kubebb.github.io/website/docs/core/get_started#kind%E5%BC%80%E5%8F%91%E9%9B%86%E7%BE%A4
-    - ingress-nginx.deployedHost: kubebb-core-control-plane
+    - ingress-nginx.controller.nodeSelector.kubernetes\.io/hostname=kubebb-core-worker
   component:
     name: kubebb.cluster-component
     namespace: kubebb-system
