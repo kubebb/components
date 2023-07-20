@@ -817,41 +817,6 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
-  name: user-panel-platform-setting
-spec:
-  getTitleForReplaceSider: {}
-  icon: '{"name":"system-setting","data":"<defs><style></style></defs><path d=\"M903.4
-    98.2H120.2c-30.9 0-55.9 25-55.9 55.9v606.5c0 30.9 25 55.9 55.9 55.9H344v55.9c0
-    30.9 25 55.9 55.9 55.9h223.8c30.9 0 55.9-25 55.9-55.9v-55.9h223.8c30.9 0 55.9-25
-    55.9-55.9V154.1c0-30.9-25-55.9-55.9-55.9zm-6.8 648.7H127.4V168.4h769.3v578.5zM594.9
-    547.6c-12 9.9-25.8 17.6-40.5 22.7v28.9c0 11.9-9.7 21.6-21.6 21.6h-44.6c-11.9 0-21.6-9.7-21.6-21.6v-28.9c-14.7-5.1-28.4-12.8-40.5-22.7l-24.5
-    14.2c-10.3 6-23.5 2.4-29.5-7.9l-22.3-38.7c-6-10.3-2.4-23.5 7.9-29.5l23.4-13.5c-3-15.9-3-32.2
-    0-48.1l-23.4-13.5c-10.3-6-13.9-19.2-7.9-29.5l22.3-38.7c6-10.3 19.2-13.9 29.5-7.9l24.5
-    14.2c12.1-9.9 25.8-17.6 40.5-22.7v-28.9c0-11.9 9.7-21.6 21.6-21.6h44.6c11.9 0
-    21.6 9.7 21.6 21.6V326c14.9 5.2 28.6 13 40.5 22.7l24.5-14.2c10.3-6 23.5-2.4 29.5
-    7.9l22.3 38.7c6 10.3 2.4 23.5-7.9 29.5l-23.4 13.5c3 15.9 3 32.2 0 48.1l23.4 13.5c10.3
-    6 13.9 19.2 7.9 29.5l-22.3 38.7c-6 10.3-19.2 13.9-29.5 7.9l-24.5-14.2zM510.5 513c36.4
-    0 65.9-29 65.9-64.8s-29.5-64.8-65.9-64.8-65.9 29-65.9 64.8 29.5 64.8 65.9 64.8z\"></path>"}'
-  parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
-    blockOwnerDeletion: false
-    controller: false
-    kind: Menu
-    name: user-panel
-    uid: ""
-  rankingInColumn: 200
-  text: 平台信息
-  textEn: Platform Info
-status: {}
-
----
-apiVersion: component.t7d.io/v1beta1
-kind: Menu
-metadata:
-  annotations:
-    helm.sh/hook: post-install,post-upgrade
-    helm.sh/hook-weight: "-6"
-  creationTimestamp: null
   name: user-panel-toolbox
 spec:
   getTitleForReplaceSider: {}
