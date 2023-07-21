@@ -9,7 +9,7 @@ spec:
   version: 0.1.0
   override:
     valuesFrom:
-      kind: ConfigMap
+    - kind: ConfigMap
       name: u4acm
       valuesKey: "values.yaml"
   component:
