@@ -5,6 +5,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: platform-management-cluster-configs
 spec:
   getTitleForReplaceSider: {}
@@ -21,6 +23,7 @@ spec:
     uid: ""
   pathname: /oidc/management/clusters/:clusterID/configs
   rankingInColumn: 100
+  tenant: true
   text: 集群设置
   textEn: Configurations
 status: {}
@@ -33,6 +36,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: platform-management-cluster-nodes
 spec:
   getTitleForReplaceSider: {}
@@ -54,6 +59,7 @@ spec:
     uid: ""
   pathname: /oidc/management/clusters/:clusterID/hosts
   rankingInColumn: 200
+  tenant: true
   text: 集群节点
   textEn: Nodes
 status: {}
@@ -66,6 +72,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: platform-management-cluster-labels
 spec:
   getTitleForReplaceSider: {}
@@ -89,7 +97,8 @@ spec:
     uid: ""
   pathname: /oidc/management/clusters/:clusterID/labels
   rankingInColumn: 300
-  text: 集群标签
+  tenant: true
+  text: 节点标签
   textEn: Labels
 status: {}
 
@@ -101,6 +110,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: tenant-project-manage-management-projects-roles
 spec:
   getTitleForReplaceSider: {}
@@ -122,6 +133,7 @@ spec:
   rankingInColumn: 100
   requiredRoles:
   - TenantAdmin
+  tenant: true
   text: 项目角色
   textEn: Roles
 status: {}
@@ -134,6 +146,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: tenant-project-manage-management-projects-members
 spec:
   getTitleForReplaceSider: {}
@@ -159,6 +173,7 @@ spec:
   rankingInColumn: 200
   requiredRoles:
   - TenantAdmin
+  tenant: true
   text: 项目成员
   textEn: Members
 status: {}
@@ -171,6 +186,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: tenant-project-manage-management-projects-clusters
 spec:
   getTitleForReplaceSider: {}
@@ -199,6 +216,7 @@ spec:
   rankingInColumn: 300
   requiredRoles:
   - TenantAdmin
+  tenant: true
   text: 项目授权集群
   textEn: Authorized Clusters
 status: {}
@@ -211,6 +229,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-tenant-project-manage
 spec:
   getTitleForReplaceSider:
@@ -242,6 +262,7 @@ spec:
   pathname: /oidc/management/tenants/:id/projects
   rankingInColumn: 100
   replaceSiderBackNextPathnamePattern: management-projects
+  tenant: true
   text: 项目管理
   textEn: Project Management
   useChildrenReplaceSider: true
@@ -255,6 +276,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-tenant-tenant-cluster
 spec:
   getTitleForReplaceSider: {}
@@ -278,6 +301,7 @@ spec:
   requiredRoles:
   - SystemAdmin
   - PlatformAdmin
+  tenant: true
   text: 租户授权集群
   textEn: Authorized Clusters
 status: {}
@@ -290,6 +314,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-projects-roles
 spec:
   getTitleForReplaceSider: {}
@@ -309,6 +335,7 @@ spec:
     uid: ""
   pathname: /oidc/management/projects/:id/role
   rankingInColumn: 100
+  tenant: true
   text: 项目角色
   textEn: Roles
 status: {}
@@ -321,6 +348,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-projects-members
 spec:
   getTitleForReplaceSider: {}
@@ -344,6 +373,7 @@ spec:
     uid: ""
   pathname: /oidc/management/projects/:id/member
   rankingInColumn: 200
+  tenant: true
   text: 项目成员
   textEn: Members
 status: {}
@@ -356,6 +386,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-projects-clusters
 spec:
   getTitleForReplaceSider: {}
@@ -386,6 +418,7 @@ spec:
   - SystemAdmin
   - PlatformAdmin
   - TenantAdmin
+  tenant: true
   text: 项目授权集群
   textEn: Authorized Clusters
 status: {}
@@ -398,6 +431,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-cluster
 spec:
   getTitleForReplaceSider:
@@ -433,6 +468,7 @@ spec:
   requiredRoles:
   - SystemAdmin
   - PlatformAdmin
+  tenant: true
   text: 集群管理
   textEn: Cluster Management
   useChildrenReplaceSider: true
@@ -446,6 +482,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-tenant
 spec:
   getTitleForReplaceSider:
@@ -484,6 +522,7 @@ spec:
   - SystemAdmin
   - PlatformAdmin
   - TenantAdmin
+  tenant: true
   text: 租户管理
   textEn: Tenant Management
   useChildrenReplaceSider: true
@@ -497,6 +536,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-projects
 spec:
   getTitleForReplaceSider:
@@ -531,6 +572,7 @@ spec:
   - User
   - SystemAdmin
   - PlatformAdmin
+  tenant: true
   text: 项目管理
   textEn: Project Management
   useChildrenReplaceSider: true
@@ -544,6 +586,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-users
 spec:
   getTitleForReplaceSider: {}
@@ -563,6 +607,7 @@ spec:
     uid: ""
   pathname: /oidc/management/users
   rankingInColumn: 100
+  tenant: true
   text: 成员管理
   textEn: User Management
 status: {}
@@ -575,6 +620,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: platform-management-tenant-cluster
 spec:
   getTitleForReplaceSider: {}
@@ -623,6 +670,7 @@ spec:
     name: platform-manage
     uid: ""
   rankingInColumn: 100
+  tenant: true
   text: 租户和集群
   textEn: Tenant & Cluster
 status: {}
@@ -635,6 +683,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: platform-management-user-management
 spec:
   getTitleForReplaceSider: {}
@@ -686,6 +736,7 @@ spec:
   requiredRoles:
   - SystemAdmin
   - PlatformAdmin
+  tenant: true
   text: 用户管理
   textEn: User Management
 status: {}
@@ -698,6 +749,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: platform-management-approval
 spec:
   getTitleForReplaceSider: {}
@@ -709,6 +762,7 @@ spec:
     name: platform-manage
     uid: ""
   rankingInColumn: 300
+  tenant: true
   text: 配置管理
   textEn: "Configurations"
 status: {}
@@ -721,6 +775,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: platform-manage
 spec:
   getTitleForReplaceSider: {}
@@ -741,6 +797,7 @@ spec:
   - PlatformAdmin
   - SystemAdmin
   - TenantAdmin
+  tenant: true
   text: 管理工作台
   textEn: Management Console
 status: {}
@@ -753,6 +810,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: user-panel-accounts-my-account
 spec:
   getTitleForReplaceSider: {}
@@ -770,6 +829,7 @@ spec:
     uid: ""
   pathname: /oidc/management/account
   rankingInColumn: 100
+  tenant: true
   text: 我的账户
   textEn: My Account
 status: {}
@@ -782,6 +842,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: user-panel-accounts
 spec:
   getTitleForReplaceSider: {}
@@ -805,6 +867,7 @@ spec:
     name: user-panel
     uid: ""
   rankingInColumn: 100
+  tenant: true
   text: 账户中心
   textEn: Account Center
 status: {}
@@ -817,6 +880,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: user-panel-toolbox
 spec:
   getTitleForReplaceSider: {}
@@ -851,6 +916,7 @@ spec:
     uid: ""
   pathname: /oidc/management/toolbox
   rankingInColumn: 300
+  tenant: true
   text: API 凭证
   textEn: API Tokens
 status: {}
@@ -863,6 +929,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: user-panel
 spec:
   getTitleForReplaceSider: {}
@@ -894,6 +962,7 @@ spec:
     name: ""
     uid: ""
   rankingInColumn: 200
+  tenant: true
   text: 个人设置
   textEn: User Settings
 status: {}
@@ -906,6 +975,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: management-operation-audit
 spec:
   getTitleForReplaceSider: {}
@@ -943,6 +1014,8 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"
   creationTimestamp: null
+  labels:
+    portal: oidc
   name: oidc-platform-ops
 spec:
   getTitleForReplaceSider: {}
@@ -987,8 +1060,48 @@ spec:
     name: monitoring-and-ops
     uid: ""
   rankingInColumn: 300
+  tenant: true
   text: 平台运维
   textEn: Operation Management
 status: {}
 
 ---
+apiVersion: component.t7d.io/v1beta1
+kind: Menu
+metadata:
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-6"
+  creationTimestamp: null
+  name: monitoring-and-ops
+spec:
+  column: 30
+  getTitleForReplaceSider: {}
+  icon: '{"name":"security-ops-color","data":"<path d=\"M644.832 438.272l-50.976-7.264A28.832
+    28.832 0 01572 415.232l-23.392-45.984a28.896 28.896 0 00-51.904 0l-22.688 46.272a29.216
+    29.216 0 01-21.76 15.936l-50.976 7.52a28.96 28.96 0 00-15.936 49.344l37.024 35.84a28.992
+    28.992 0 018.448 25.6l-8.544 50.784a28.96 28.96 0 0042.08 30.368l45.344-24.096a29.088
+    29.088 0 0127.232 0l6.816 3.52h.576l-.224.416 38.304 20a28.96 28.96 0 0041.92-30.656l-9.056-50.72a30.336
+    30.336 0 010-6.816l.096-.16a29.024 29.024 0 018.608-18.848l36.768-36.288a28.992
+    28.992 0 00-15.904-48.992z\"></path><path d=\"M512.896.16C230.176.16.96 229.344.96
+    512.064.96 794.816 230.176 1024 512.896 1024c282.72 0 511.936-229.184 511.936-511.936C1024.832
+    229.344 795.616.16 512.896.16zM832.64 407.232a605.856 605.856 0 01-13.504 131.36l-.096.192C769.536
+    762.336 597.6 822.432 541.792 835.808l.064.096a127.52 127.52 0 01-16.32 3.392
+    61.824 61.824 0 01-17.184 0c-12.448-1.888-305.408-50.944-305.408-431.904V304.448a38.183
+    38.183 0 0115.36-30.112 53.44 53.44 0 0132.544-11.072h3.232c.704.448 8.544.448
+    20.672.448a506.688 506.688 0 0097.536-9.056c56.864-11.616 115.072-64.864 117.088-66.048a55.744
+    55.744 0 0153.952 0c16.224 9.152 71.712 55.808 119.904 65.92 31.904 6.144 64.32
+    9.152 96.8 9.056 12.128 0 19.968-.448 20.576-.448h3.264a53.19 53.19 0 0133.024
+    11.168 38.628 38.628 0 0115.776 29.984v102.944z\"></path><path d=\"M615.232 545.216a30.336
+    30.336 0 000 6.816l9.056 50.72a28.896 28.896 0 01-41.92 30.656l-38.912-20.32a210.656
+    210.656 0 00-2.464 225.6c55.072-13.056 228.32-72.736 278.016-297.216a210.24 210.24
+    0 00-203.776 3.744z\" opacity=\"0.15\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: ""
+    kind: ""
+    name: ""
+    uid: ""
+  rankingInColumn: 200
+  tenant: true
+  text: 监控与运维
+  textEn: Monitoring and Operation

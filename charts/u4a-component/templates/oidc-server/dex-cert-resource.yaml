@@ -15,6 +15,8 @@ spec:
   isCA: true
   commonName: oidc-server-selfsigned-ca
   secretName: oidc-server-root-secret
+  duration: 87600h # the certificate expiration date is 10 years.
+  renewBefore: 720h # renew certificate Before 1 month.
   privateKey:
     algorithm: RSA
     encoding: PKCS1

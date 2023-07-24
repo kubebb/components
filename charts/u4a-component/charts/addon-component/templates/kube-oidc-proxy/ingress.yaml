@@ -6,8 +6,8 @@ metadata:
     description: kube-oidc-proxy-ingress
     displayName: kube-oidc-proxy-ingress
     httpSend: /
-    ingress-lb: {{ .Values.ingress.name }}
-    kubernetes.io/ingress.class: {{ .Values.ingress.name }}
+    ingress-lb: {{ .Values.kubeOidcProxy.ingress.name }}
+    kubernetes.io/ingress.class: {{ .Values.kubeOidcProxy.ingress.name }}
     nginx.ingress.kubernetes.io/enable-access-log: "false"
     nginx.ingress.kubernetes.io/enable-rewrite-log: "false"
     nginx.ingress.kubernetes.io/load-balance: round_robin
@@ -15,21 +15,26 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/server-alias: ""
     nginx.ingress.kubernetes.io/upstream-vhost: $host
+    nginx.ingress.kubernetes.io/backend-protocol: https
   labels:
-    ingress-lb: {{ .Values.ingress.name }}
+    ingress-lb: {{ .Values.kubeOidcProxy.ingress.name }}
   name: kube-oidc-proxy-server-ingress
   namespace: {{ .Release.Namespace }}
 spec:
-#  ingressClassName: {{ .Values.ingress.name }}
+#  ingressClassName: {{ .Values.kubeOidcProxy.ingress.name }}
   rules:
-  - host: {{ .Values.kubeOidcProxy.host }}
+  - host: {{ .Values.kubeOidcProxy.ingress.host }}
     http:
       paths:
       - backend:
           service:
-            name: kube-oidc-proxy-server
+            name: kube-oidc-proxy
             port:
-              number: 8022
+              number: 443
         path: /
         pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - {{ .Values.kubeOidcProxy.ingress.host }}
+    secretName: oidc-server-root-secre
 {{- end }}
