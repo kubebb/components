@@ -27,8 +27,8 @@ ingress-nginx:
     updateStrategy:
       type: Recreate
     extraArgs:
-      update-status:
-      report-node-internal-ip-address:
+      update-status: false
+      report-node-internal-ip-address: false
       http-port: 8080
       https-port: 8443
       enable-ssl-passthrough: true
