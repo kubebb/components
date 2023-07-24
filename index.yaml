@@ -515,6 +515,33 @@ entries:
   u4a-component:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2023-07-24T10:02:09.5207519Z"
+    dependencies:
+    - condition: addon-component.enabled
+      name: addon-component
+      repository: ""
+      version: 0.1.0
+    - name: crds
+      repository: ""
+      version: 0.1.1
+    description: A Helm chart for u4a-component
+    digest: 6e9fd03df6b8bffb08aa33cb7cc01a522f7641129796f6419c5cccd9032c143b
+    maintainers:
+    - name: nkwangleiGIT
+      url: https://github.com/nkwangleiGIT
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: u4a-component
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/u4a-component-0.1.3/u4a-component-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2023-07-24T08:17:27.921900293Z"
     dependencies:
     - condition: addon-component.enabled
@@ -610,4 +637,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-07-24T09:21:08.358378469Z"
+generated: "2023-07-24T10:02:09.520789001Z"
