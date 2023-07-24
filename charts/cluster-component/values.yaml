@@ -4,16 +4,17 @@
 
 # Overwrite ingress-nginx chart template
 ingress-nginx:
+  enabled: true
   # MUST update this value
   deployedHost: &deployedHost
-    kind-worker
+    <replaced-ingress-node-name>
   controller:
     ingressClassResource:
       name: portal-ingress
     ingressClass: portal-ingress
     image:
       repository: hub.tenxcloud.com/u4a-component/ingress-nginx-controller
-      tag: v1.3.0
+      tag: "v1.3.0"
     admissionWebhooks:
       enabled: false
       patch:
@@ -21,6 +22,7 @@ ingress-nginx:
         image:
           registry: hub.tenxcloud.com
           image: u4a-component/kube-webhook-certgen
+          tag: "0.30.0"
           digest: ""
     updateStrategy:
       type: Recreate
@@ -30,7 +32,8 @@ ingress-nginx:
       http-port: 8080
       https-port: 8443
       enable-ssl-passthrough: true
-      ssl-passthrough-proxy-port: 16443
+      # it'll be 442 by default
+      ssl-passthrough-proxy-port: 8442
     service:
       enabled: false
       type: ClusterIP

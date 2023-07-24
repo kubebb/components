@@ -14,6 +14,8 @@ metadata:
   name: iam-provider-certificate
   namespace: {{ .Release.Namespace }}
 spec:
+  duration: 87600h # the certificate expiration date is 10 years.
+  renewBefore: 720h # renew certificate Before 1 month.
   secretName: iam-provider-secret
   dnsNames:
     - oidc-server

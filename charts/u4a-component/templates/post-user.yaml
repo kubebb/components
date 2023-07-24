@@ -17,6 +17,6 @@ spec:
   - iam.tenxcloud.com
   - observability
   - resource-reader
-  password: baas-admin
-  phone: "18890901212"
+  password: 'kubebb-admin'
+  phone: "18820221212"
 {{- end }}
