@@ -2,24 +2,41 @@
 
 ## Prerequisites
 
-1. Install [kubebb-core](https://github.com/kubebb/components/tree/main/charts/kubebb-core) v0.1.0+
+- [kubebb-core](https://github.com/kubebb/components/tree/main/charts/kubebb-core) installed
 
-2. Create a repo [kubebb](https://github.com/kubebb/components/blob/main/repos/repository_kubebb.yaml)
+- Repository [kubebb](https://github.com/kubebb/components/blob/main/repos/repository_kubebb.yaml) created and synced
 
 ```shell
-    kubectl apply -n kubebbs-sytem -f repos/repository_kubebb.yaml
+    kubectl apply -n kubebb-system -f repos/repository_kubebb.yaml
 ```
 
-## Install Cluster Component
-
-According to the documentation [kind-cluster](https://kubebb.github.io/website/docs/core/get_started#kind%E5%BC%80%E5%8F%91%E9%9B%86%E7%BE%A4), 
-we know that the cluster has only one node named `kubebb-core-control-plane`.
-Select `kubebb-core-control-plane` as the deployment node for ingress.
+## Install Cluster Component with KubeBB Core
 
 **Currently, the u4a-component component is not fully adapted and can only be deployed under u4as-system namespace**
 
-1. Apply `componentplan.yaml`
+1. Create namespace `u4a-system` if not exists
 
 ```shell
-    kubectl apply -f  examples/cluster-component/componentplan.yaml
+    kubectl create namespace u4a-system
+```
+
+2. Get the deployment node for `ingress-nginx` which exposes port `80` a nd `443`
+
+For example,if your kubernetes cluster deployed according to the documentation [kind-cluster](https://kubebb.github.io/website/docs/core/get_started#kind%E5%BC%80%E5%8F%91%E9%9B%86%E7%BE%A4), the deployment node would be `kubebb-core-control-plane`.
+
+3. Edit `componentplan.yaml`
+
+- set the cluster-component `version` based on your needs
+- replace `overrides` with the deployment node 
+
+```yaml
+  override:
+    set:
+    - ingress-nginx.controller.nodeSelector.kubernetes\.io/hostname=kubebb-core-control-plane
+```
+
+4. Apply `componentplan.yaml`
+
+```shell
+    kubectl apply -f examples/cluster-component/componentplan.yaml
 ```

@@ -2,13 +2,15 @@
 
 ## Prerequisites
 
-1. Install [kubebb-core](https://github.com/kubebb/components/tree/main/charts/kubebb-core) v0.1.0+
+- [kubebb-core](https://github.com/kubebb/components/tree/main/charts/kubebb-core) installed
 
-2. Create a repo [kubebb](https://github.com/kubebb/components/blob/main/repos/repository_kubebb.yaml)
+- Repository [kubebb](https://github.com/kubebb/components/blob/main/repos/repository_kubebb.yaml) created and synced
 
 ```shell
-    kubectl apply -n kubebbs-sytem -f repos/repository_kubebb.yaml
+    kubectl apply -n kubebb-system -f repos/repository_kubebb.yaml
 ```
+
+- [Minio](https://github.com/kubebb/components/tree/main/examples/minio) installed
 
 ## Install Fabric Operator
 
