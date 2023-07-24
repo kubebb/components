@@ -6,7 +6,8 @@ metadata:
 spec:
   approved: true
   name: u4a-component
-  version: 0.1.0
+  version: 0.1.3
+  wait: true
   override:
     valuesFrom:
     - kind: ConfigMap
