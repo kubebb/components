@@ -11,9 +11,11 @@ kubeOidcProxy:
   enabled: true
   auditEnabled: true
   hostNetwork:
-    enabled: true
-  ingress:
     enabled: false
+  ingress:
+    enabled: true
+    name: portal-ingress
+    host: k8s.ingress-nginx-ip.nip.io
   # oidc-proxy certificate info
   # ipAddresses: the node IP address where kube-oidc-proxy is scheduled.
   certificate:

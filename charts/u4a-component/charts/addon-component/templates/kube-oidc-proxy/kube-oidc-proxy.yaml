@@ -31,8 +31,6 @@ spec:
       hostNetwork: {{ .Values.kubeOidcProxy.hostNetwork.enabled }}
       serviceAccountName: kube-oidc-proxy
       dnsPolicy: ClusterFirstWithHostNet
-      nodeSelector:
-        kubernetes.io/hostname: {{ .Values.kubeOidcProxy.nodeName }}
       tolerations:
         - operator: Exists
       containers:
