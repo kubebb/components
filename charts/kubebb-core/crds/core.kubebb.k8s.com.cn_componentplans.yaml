@@ -292,7 +292,8 @@ spec:
                 type: integer
               latest:
                 description: Latest indicates whether the ComponentPlan corresponds
-                  to the latest helm release Revision FIXME rethink this field
+                  to the latest helm release Revision, add some test FIXME rethink
+                  this field
                 type: boolean
               observedGeneration:
                 description: observedGeneration is the most recent metadata.generation
