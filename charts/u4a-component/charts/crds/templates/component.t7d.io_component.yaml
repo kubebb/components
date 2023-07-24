@@ -3,11 +3,8 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.5.0
-  creationTimestamp: "2022-09-09T09:50:24Z"
-  generation: 1
+  creationTimestamp: null
   name: components.component.t7d.io
-  resourceVersion: "199002057"
-  uid: 499fca18-3057-471e-a4a8-4a588801555c
 spec:
   conversion:
     strategy: None
