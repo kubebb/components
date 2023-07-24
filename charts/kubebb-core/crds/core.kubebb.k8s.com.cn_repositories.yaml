@@ -46,7 +46,7 @@ spec:
               filter:
                 items:
                   properties:
-                    deprecated:
+                    keepDeprecated:
                       description: If True, the current version will be retained even
                         if it is deprecated.
                       type: boolean
@@ -130,6 +130,7 @@ spec:
                     type: integer
                 type: object
               repositoryType:
+                default: unknown
                 type: string
               url:
                 description: URL chart repository address
