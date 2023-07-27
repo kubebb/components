@@ -13,3 +13,5 @@ pvc:
   accessModes:
     - ReadWriteOnce
   storageSize: 5Gi
+tekton:
+  enable: false
