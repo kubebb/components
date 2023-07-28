@@ -1,0 +1,18 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: jupyterlab
+  namespace: default
+spec:
+  approved: true
+  name: jupyterlab
+  version: 0.1.1
+  override:
+    set:
+      - ingress.enabled=true
+      - ingress.host=jupyterlab.{ingressNodeIP}.nip.io
+      - persistence.enable=true
+  component:
+    name: arcadia.jupyterlab
+    # If you have changed the namespace in step 1, you should update this field.
+    namespace: kubebb-system
