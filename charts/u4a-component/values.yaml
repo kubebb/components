@@ -21,7 +21,7 @@ deploymentConfig:
   # Enable https for bff server
   bffHttpsEnabled: true
 
-registryServer: hub.tenxcloud.com
+registryServer: docker.io
 
 issuerConfig:
   # oidc certificate info
@@ -58,7 +58,7 @@ ingress:
 # Optional but the default: Use Kubernetes CRD for user provider - iam provider
 iamProvider:
   enabled: true
-  image: u4a-component/iam-provider:v0.1.0-20230513
+  image: kubebb/iam-provider-ce:v0.1.0
 
 # Required: Use dex as the odic service
 oidcServer:
@@ -67,7 +67,7 @@ oidcServer:
   cert:
     ipAddresses: *oidcIPs
     dnsNames: *dnsNames
-  image: u4a-component/oidc-server:v0.1.0-20230209
+  image: kubebb/oidc-server-ce:v0.1.0
   issuer: https://{{ .Values.deploymentConfig.bffHost }}/oidc
   storageType: kubernetes
   webHttps: 0.0.0.0:5556
@@ -98,7 +98,7 @@ oidcServer:
 # Optional but the default: BFF server for all API endpoints
 bffServer:
   enabled: true
-  image: u4a-component/bff-server:v0.1.0-20230423
+  image: kubebb/bff-server-ce:v0.1.0
   host: *bffHost
   connectorId: k8scrd
   clientId: *clientId
@@ -119,7 +119,7 @@ k8s:
 # Generate tenant/namespace/user view for query
 # Install if it's host cluster
 resourceView:
-  image: u4a-component/resource-viewer:v0.1.0-20221024
+  image: kubebb/resource-viewer-ce:v0.1.0
 
 addon-component:
   enabled: true

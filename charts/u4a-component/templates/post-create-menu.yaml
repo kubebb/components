@@ -1,4 +1,4 @@
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -15,7 +15,7 @@ spec:
     779.98v146.022h146.022V779.981H440.525zm536.013 0H830.515v146.022h146.023V779.981zM489.523
     293.018H392.55v-97.024h96.973v97.024zm146.023 0h-97.997v-97.024h96.973v97.024z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -29,7 +29,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -51,7 +51,7 @@ spec:
     158.464-91.456.128-50.112zm29.184-304.96h84.224l104.512 182.656-42.176 66.24H407.36l-40.128-66.176
     102.4-182.72z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -65,7 +65,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -89,7 +89,7 @@ spec:
     0013.056-62.08zm-493.12 298.368L171.968 483.392l59.264-378.048 369.792 98.624L884.16
     638.592 455.104 918.016z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -103,7 +103,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -123,7 +123,7 @@ spec:
     512c-104.512 0-186.624-82.112-186.624-186.688s82.112-186.688 186.688-186.688 186.688
     82.112 186.688 186.688S618.368 512 513.792 512z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -139,7 +139,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -163,7 +163,7 @@ spec:
     0 256 113.344 256 256 0 10.944 0 25.6-3.648 36.544h73.152c0-10.944 3.648-25.6
     3.648-36.544-.064-142.656-84.16-259.712-204.864-307.2z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -179,7 +179,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -206,7 +206,7 @@ spec:
     33.28 0 000 66.432H393.6a33.28 33.28 0 000-66.432zm0 221.888H207.04a33.28 33.28
     0 000 66.432H393.6a33.28 33.28 0 000-66.432z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -222,7 +222,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -253,7 +253,7 @@ spec:
     16.448 36.544 36.544V768a36.608 36.608 0 01-36.544 36.608v73.152A109.952 109.952
     0 001024 768V109.696C1024 49.216 974.784 0 914.304 0z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -269,7 +269,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -290,7 +290,7 @@ spec:
     64v160H64V800h160zm368 0v160H432V800h160zM256 384V64h512v320H256zm704 576H800V800h160v160z\"></path><path
     d=\"M352 192h128v64H352zm192 0h128v64H544z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -307,7 +307,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -327,7 +327,7 @@ spec:
     512c-104.512 0-186.624-82.112-186.624-186.688s82.112-186.688 186.688-186.688 186.688
     82.112 186.688 186.688S618.368 512 513.792 512z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -341,7 +341,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -365,7 +365,7 @@ spec:
     0 256 113.344 256 256 0 10.944 0 25.6-3.648 36.544h73.152c0-10.944 3.648-25.6
     3.648-36.544-.064-142.656-84.16-259.712-204.864-307.2z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -379,7 +379,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -406,7 +406,7 @@ spec:
     33.28 0 000 66.432H393.6a33.28 33.28 0 000-66.432zm0 221.888H207.04a33.28 33.28
     0 000 66.432H393.6a33.28 33.28 0 000-66.432z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -424,7 +424,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -457,7 +457,7 @@ spec:
     0V784.32H435.84v138.432h138.496zm-341.568 0V784.32H94.336v138.432h138.432zm503.104-535.36V101.248H269.696v286.144h466.176z\"></path><path
     d=\"M528.128 281.216v-69.248h129.216v69.248H528.128zm-175.36 0v-69.248h129.216v69.248H352.768z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -475,7 +475,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -510,7 +510,7 @@ spec:
     12.288-31.744 32.32 0-.576 0 0 0 0zm-255.872-32.384H256.448c-19.392 0-32.32 12.352-32.32
     32.32 0 19.392 12.928 32.32 32.32 32.32h191.744c19.392 0 32.32-12.352 32.32-32.32-.576-19.968-13.504-32.32-32.32-32.32z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -529,7 +529,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -560,7 +560,7 @@ spec:
     16.448 36.544 36.544V768a36.608 36.608 0 01-36.544 36.608v73.152A109.952 109.952
     0 001024 768V109.696C1024 49.216 974.784 0 914.304 0z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -579,7 +579,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -599,7 +599,7 @@ spec:
     512c-104.512 0-186.624-82.112-186.624-186.688s82.112-186.688 186.688-186.688 186.688
     82.112 186.688 186.688S618.368 512 513.792 512z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -613,7 +613,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -663,7 +663,7 @@ spec:
     4.992-13.632 5.056-14.528 10.944-28.8 17.536-42.816 2.688-5.76 5.312-11.52 8.256-17.152
     8.64-16.384 18.24-32.384 28.928-47.808a451.84 451.84 0 01100.16-103.424z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -676,7 +676,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -726,7 +726,7 @@ spec:
     4.992-13.632 5.056-14.528 10.944-28.8 17.536-42.816 2.688-5.76 5.312-11.52 8.256-17.152
     8.64-16.384 18.24-32.384 28.928-47.808a451.84 451.84 0 01100.16-103.424z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -742,7 +742,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -755,7 +755,7 @@ metadata:
 spec:
   getTitleForReplaceSider: {}
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -768,7 +768,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -803,7 +803,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -821,7 +821,7 @@ spec:
     0 50.752 22.72 50.752 50.688v216.96H826.56c39.808 0 72.064-32.256 72.064-72v-382.4c16
     14.464 38.72 13.376 52.032-1.472a36.032 36.032 0 00-2.624-50.88L562.752 82.56z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -835,7 +835,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -860,7 +860,7 @@ spec:
     6 13.9 19.2 7.9 29.5l-22.3 38.7c-6 10.3-19.2 13.9-29.5 7.9l-24.5-14.2zM510.5 513c36.4
     0 65.9-29 65.9-64.8s-29.5-64.8-65.9-64.8-65.9 29-65.9 64.8 29.5 64.8 65.9 64.8z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -873,7 +873,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -908,7 +908,7 @@ spec:
     22.905a517.274 517.274 0 0046.258-50.992c16.25-19.962 30.902-41.139 43.954-63.34
     13.116-22.649 23.609-46.066 32.886-69.738 8.51-21.562 15.675-43.379 21.05-65.516l-62.541-62.508z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -922,7 +922,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -968,7 +968,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -994,7 +994,7 @@ spec:
     0 01103.56.021h328.442c5.312 0 9.663 4.352 9.663 9.664v67.647a9.6 9.6 0 01-9.6
     9.6z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -1007,7 +1007,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
@@ -1053,7 +1053,7 @@ spec:
     2.56-7.68 10.24-10.24 15.36-2.56 5.12 7.68 15.36 15.36 17.92 12.8 0 15.36-10.24
     20.48-17.92z\"></path>"}'
   parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
     blockOwnerDeletion: false
     controller: false
     kind: Menu
@@ -1066,7 +1066,7 @@ spec:
 status: {}
 
 ---
-apiVersion: component.t7d.io/v1beta1
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
   annotations:
