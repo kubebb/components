@@ -55,6 +55,13 @@ rules:
   verbs:
   - list
 - apiGroups:
+  - core.kubebb.k8s.com.cn
+  resources:
+  - menus
+  - portals
+  verbs:
+  - list
+- apiGroups:
   - extensions
   - policy
   resourceNames:
