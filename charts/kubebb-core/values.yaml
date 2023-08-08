@@ -8,6 +8,8 @@ deployment:
     requests:
       cpu: 10m
       memory: 64Mi
+webhook:
+  enable: false
 pvc:
   storageClassName: standard
   accessModes:
