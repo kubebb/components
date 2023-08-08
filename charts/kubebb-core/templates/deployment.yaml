@@ -28,6 +28,12 @@ spec:
       - name: helm
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}
+{{- if .Values.webhook.enable }}
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: {{ .Release.Name }}-cert
+{{- end }}
       containers:
       - command:
         - /manager
@@ -40,10 +46,19 @@ spec:
           value: /opt/helm/config/helm
         - name: HELM_DATA_HOME
           value: /opt/helm/data/helm
+{{- if .Values.webhook.enable }}
+        - name: ENABLE_WEBHOOKS
+          value: "true"
+{{- end }}
         name: manager
         volumeMounts:
         - mountPath: /opt/helm
           name: helm
+{{- if .Values.webhook.enable }}
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+{{- end }}
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
