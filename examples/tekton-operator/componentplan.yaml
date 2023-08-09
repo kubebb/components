@@ -1,11 +1,11 @@
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
-  name: fabric-tekton
+  name: my-tekton
   namespace: default
 spec:
   approved: true
-  name: fabric-tekton # similar to helm release name
+  name: my-tekton # similar to helm release name
   version: 0.64.0
   component:
     name: kubebb.tekton-operator
