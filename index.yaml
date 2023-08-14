@@ -146,6 +146,28 @@ entries:
   chartmuseum:
   - apiVersion: v2
     appVersion: 0.16.0
+    created: "2023-08-14T08:36:07.186243368Z"
+    description: Host your own Helm Chart Repository
+    digest: 40d85cd21c5f49ed0b9961a457594fd43fd19e2bc1763dfb318e2a6fb8706ce4
+    home: https://github.com/helm/chartmuseum
+    icon: https://raw.githubusercontent.com/chartmuseum/charts/main/logo.jpg
+    keywords:
+    - chartmuseum
+    - helm
+    - charts repo
+    maintainers:
+    - name: chartmuseum
+      url: https://github.com/chartmuseum
+    name: chartmuseum
+    sources:
+    - https://github.com/chartmuseum/charts/tree/main/src/chartmuseum
+    - https://github.com/chartmuseum
+    - https://github.com/helm/chartmuseum
+    urls:
+    - https://github.com/kubebb/components/releases/download/chartmuseum-3.10.2/chartmuseum-3.10.2.tgz
+    version: 3.10.2
+  - apiVersion: v2
+    appVersion: 0.16.0
     created: "2023-07-27T07:49:45.023571147Z"
     description: Host your own Helm Chart Repository
     digest: 7d9181335a24d8907c2d0f3d72eb0aaf82831287273ccc250b80946d50577e7b
@@ -818,4 +840,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-08-09T07:35:04.795207545Z"
+generated: "2023-08-14T08:36:07.187146704Z"
