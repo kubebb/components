@@ -15,4 +15,4 @@ sources:
 - https://github.com/chartmuseum/charts/tree/main/src/chartmuseum
 - https://github.com/chartmuseum
 - https://github.com/helm/chartmuseum
-version: 3.10.1
+version: 3.10.2
