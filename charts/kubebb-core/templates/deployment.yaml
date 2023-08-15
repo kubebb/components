@@ -50,6 +50,16 @@ spec:
         - name: ENABLE_WEBHOOKS
           value: "true"
 {{- end }}
+{{- if .Values.deployment.rating_enable }}
+        - name: RATING_ENABLE
+          value: "{{ .Values.deployment.rating_enable }}"
+        - name: PIPELINERUN_SERVICEACCOUNT
+          value: "{{ .Release.Namespace }}.{{ .Release.Name }}"
+        - name: PIPELINERUN_CLUSETRROLE
+          value: "{{ .Release.Namespace }}.{{ .Release.Name }}"
+        - name: PIPELINERUN_CLUSETRROLEBINDING
+          value: "{{ .Release.Namespace }}.{{ .Release.Name }}"
+{{- end }}
         name: manager
         volumeMounts:
         - mountPath: /opt/helm
