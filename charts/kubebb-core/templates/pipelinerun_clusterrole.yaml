@@ -1,0 +1,10 @@
+{{- if .Values.deployment.rating_enable }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Namespace }}.{{ .Release.Name }}
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["*"]
+{{- end }}
