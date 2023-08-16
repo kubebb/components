@@ -17,3 +17,5 @@
 ```shell
     kubectl apply -f  examples/minio/componentplan.yaml
 ```
+
+> Default username and password is `admin/Passw0rd!`
