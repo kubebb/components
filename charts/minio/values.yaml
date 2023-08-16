@@ -29,7 +29,7 @@ mcImage:
   pullPolicy: IfNotPresent
 
 ## minio mode, i.e. standalone or distributed
-mode: distributed ## other supported values are "standalone"
+mode: distributed
 
 ## Additional labels to include with deployment or statefulset
 additionalLabels: {}
@@ -182,10 +182,12 @@ service:
 ingress:
   enabled: false
   ingressClassName: "portal-ingress"
-  labels: {}
+  labels:
+    {}
     # node-role.kubernetes.io/ingress: platform
 
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
     # kubernetes.io/ingress.allow-http: "false"
@@ -210,10 +212,12 @@ consoleService:
 consoleIngress:
   enabled: true
   ingressClassName: "portal-ingress"
-  labels: {}
+  labels:
+    {}
     # node-role.kubernetes.io/ingress: platform
 
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
     # kubernetes.io/ingress.allow-http: "false"
@@ -270,7 +274,7 @@ policies:
 # - name: custom
 #   statements:
 #     - resources:
-#         - 'arn:aws:s3:::bestchains'
+#         - 'arn:aws:s3:::kubebb'
 #       actions:
 #         - "s3:ListBucket"
 #         - "s3:GetBucketLocation"
@@ -279,7 +283,7 @@ policies:
 #         AWS:
 #         - "*"
 #     - resources:
-#         - 'arn:aws:s3:::bestchains/*'
+#         - 'arn:aws:s3:::kubebb/*'
 #       actions:
 #         - "s3:GetObject"
 #       effect: 'Allow'
@@ -329,17 +333,18 @@ makePolicyJob:
 
 ## List of users to be created after minio install
 ##
-users: []
+users:
+  []
   ## Username, password and policy to be assigned to the user
   ## Default policies are [readonly|readwrite|writeonly|consoleAdmin|diagnostics]
   ## Add new policies as explained here https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html#access-management
   ## NOTE: this will fail if LDAP is enabled in your MinIO deployment
   ## make sure to disable this if you are using LDAP.
-  #- accessKey: q18aRFqWOAX7pEin
+  # - accessKey: q18aRFqWOAX7pEin
   #  secretKey: nCbZIP6q4s8KtQpL7n8CD2N88H6XABGf
   #  policy: readwrite
   # Or you can refer to specific secret
-  #- accessKey: externalSecret
+  # - accessKey: externalSecret
   #  existingSecret: my-secret
   #  existingSecretKey: password
   #  policy: readonly
@@ -359,30 +364,30 @@ makeUserJob:
 ## List of service accounts to be created after minio install
 ##
 # svcaccts:
-  ## accessKey, secretKey and parent user to be assigned to the service accounts
-  ## Add new service accounts as explained here https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#service-accounts
-  # - accessKey: console-svcacct
-  #   secretKey: console123
-  #   user: console
-  ## Or you can refer to specific secret
-  # - accessKey: externalSecret
-  #   existingSecret: my-secret
-  #   existingSecretKey: password
-  #   user: console
-  ## You also can pass custom policy
-  # - accessKey: console-svcacct
-  #   secretKey: console123
-  #   user: console
-  #   policy:
-  #     statements:
-  #       - resources:
-  #           - 'arn:aws:s3:::example*/*'
-  #         actions:
-  #           - "s3:AbortMultipartUpload"
-  #           - "s3:GetObject"
-  #           - "s3:DeleteObject"
-  #           - "s3:PutObject"
-  #           - "s3:ListMultipartUploadParts"
+## accessKey, secretKey and parent user to be assigned to the service accounts
+## Add new service accounts as explained here https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#service-accounts
+# - accessKey: console-svcacct
+#   secretKey: console123
+#   user: console
+## Or you can refer to specific secret
+# - accessKey: externalSecret
+#   existingSecret: my-secret
+#   existingSecretKey: password
+#   user: console
+## You also can pass custom policy
+# - accessKey: console-svcacct
+#   secretKey: console123
+#   user: console
+#   policy:
+#     statements:
+#       - resources:
+#           - 'arn:aws:s3:::example*/*'
+#         actions:
+#           - "s3:AbortMultipartUpload"
+#           - "s3:GetObject"
+#           - "s3:DeleteObject"
+#           - "s3:PutObject"
+#           - "s3:ListMultipartUploadParts"
 
 makeServiceAccountJob:
   securityContext:
@@ -398,41 +403,41 @@ makeServiceAccountJob:
 ## List of buckets to be created after minio install
 ##
 buckets:
-     # Name of the bucket
-   - name: bestchains
-     # Policy to be set on the
-     # bucket [none|download|upload|public|custom]
-     # if set to custom, customPolicy must be set.
-     policy: "custom"
-     # Purge if bucket exists already
-     purge: false
-     # set versioning for
-     # bucket [true|false]
-     versioning: false
-     # set objectlocking for
-     # bucket [true|false] NOTE: versioning is enabled by default if you use locking
-     objectlocking: false
-     # set custom policy
-     customPolicy:
-       Version: '2012-10-17'
-       Statement:
-         - Effect: Allow
-           Principal:
-             AWS:
-               - "*"
-           Action:
-             - s3:ListBucket
-             - s3:GetBucketLocation
-           Resource:
-             - arn:aws:s3:::bestchains
-         - Effect: Allow
-           Principal:
-             AWS:
-               - "*"
-           Action:
-             - s3:GetObject
-           Resource:
-             - arn:aws:s3:::bestchains/*
+  # Name of the bucket
+  - name: kubebb
+    # Policy to be set on the
+    # bucket [none|download|upload|public|custom]
+    # if set to custom, customPolicy must be set.
+    policy: "custom"
+    # Purge if bucket exists already
+    purge: false
+    # set versioning for
+    # bucket [true|false]
+    versioning: false
+    # set objectlocking for
+    # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
+    # set custom policy
+    customPolicy:
+      Version: "2012-10-17"
+      Statement:
+        - Effect: Allow
+          Principal:
+            AWS:
+              - "*"
+          Action:
+            - s3:ListBucket
+            - s3:GetBucketLocation
+          Resource:
+            - arn:aws:s3:::kubebb
+        - Effect: Allow
+          Principal:
+            AWS:
+              - "*"
+          Action:
+            - s3:GetObject
+          Resource:
+            - arn:aws:s3:::kubebb/*
 
 ## Additional Annotations for the Kubernetes Job makeBucketJob
 makeBucketJob:
@@ -533,7 +538,8 @@ metrics:
     # for node metrics
     relabelConfigs: {}
     # for cluster metrics
-    relabelConfigsCluster: {}
+    relabelConfigsCluster:
+      {}
       # metricRelabelings:
       #   - regex: (server|pod)
       #     action: labeldrop

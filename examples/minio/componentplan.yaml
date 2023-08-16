@@ -10,3 +10,7 @@ spec:
   component:
     name: kubebb.minio
     namespace: kubebb-system
+  override:
+    set:
+      - rootUser=admin
+      - rootPassword=Passw0rd!
