@@ -53,12 +53,12 @@ spec:
 {{- if .Values.deployment.rating_enable }}
         - name: RATING_ENABLE
           value: "{{ .Values.deployment.rating_enable }}"
-        - name: PIPELINERUN_SERVICEACCOUNT
-          value: "{{ .Release.Namespace }}.{{ .Release.Name }}"
-        - name: PIPELINERUN_CLUSETRROLE
-          value: "{{ .Release.Namespace }}.{{ .Release.Name }}"
-        - name: PIPELINERUN_CLUSETRROLEBINDING
-          value: "{{ .Release.Namespace }}.{{ .Release.Name }}"
+        - name: RATING_SERVICEACCOUNT
+          value: {{ template "rating-name" . }}
+        - name: RATING_CLUSTERROLE
+          value: {{ template "rating-name" . }}
+        - name: RATING_CLUSTERROLEBINDING
+          value: {{ template "rating-name" . }}
 {{- end }}
         name: manager
         volumeMounts:
