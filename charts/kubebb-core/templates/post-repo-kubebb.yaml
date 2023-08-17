@@ -1,0 +1,13 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Repository
+metadata:
+  name: kubebb
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "6"
+spec:
+  url: https://kubebb.github.io/components
+  pullStategy:
+    intervalSeconds: 120
+    retry: 5
