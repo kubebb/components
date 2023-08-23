@@ -1,0 +1,12 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: arcadia
+  namespace: default
+spec:
+  approved: true
+  name: arcadia # similar to helm release name
+  version: 0.1.5
+  component:
+    name: arcadia.arcadia
+    namespace: kubebb-system
