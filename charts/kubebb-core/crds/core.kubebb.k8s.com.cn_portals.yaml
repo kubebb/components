@@ -41,9 +41,23 @@ spec:
               path:
                 description: the path for request acccessing
                 type: string
+            required:
+            - entry
+            - path
             type: object
           status:
             description: PortalStatus defines the observed state of Portal
+            properties:
+              conflictsInEntry:
+                description: conflicted portals with same Entry
+                items:
+                  type: string
+                type: array
+              conflictsInPath:
+                description: conflicted portals with same Path
+                items:
+                  type: string
+                type: array
             type: object
         type: object
     served: true
