@@ -6,7 +6,7 @@ metadata:
 spec:
   approved: true
   name: fabric-bc-apis
-  version: v0.0.2
+  version: 0.0.3
   override:
     set:
       - ingressDomain={ingressNodeIP}.nip.io
