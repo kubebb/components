@@ -1,0 +1,11 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Subscription
+metadata:
+  name: arcadia
+  namespace: default
+spec:
+  component:
+    name: arcadia.arcadia
+    namespace: kubebb-system
+  componentPlanInstallMethod: auto
+  name: arcadia
