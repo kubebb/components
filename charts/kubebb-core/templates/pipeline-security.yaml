@@ -63,8 +63,6 @@ spec:
     - name: URL
       description: the full URL of the component tgz file.
   results:
-  - name: HELM_LINT
-    value: $(tasks.{{ .Release.Name }}-helm-lint.results.LINT)
   - name: RBACCM
     value: $(tasks.{{ .Release.Name }}-rback.results.RBACCM)
   tasks:
