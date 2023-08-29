@@ -30,8 +30,8 @@ data:
           resources: ["tenants", "capsuleconfigurations"]
         - group: "common.tenxcloud.com" # core API group
           resources: ["licenses"]
-        - group: "component.t7d.io"
-          resources: ["components", "menus"]
+        - group: "core.kubebb.k8s.com.cn"
+          resources: ["portals", "menus"]
         - group: "iam.tenxcloud.com"
           resources: ["users", "roletemplates"]
       # 3. Add audit for your resources
