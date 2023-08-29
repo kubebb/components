@@ -5,6 +5,32 @@ entries:
       component-store.kubebb.k8s.com.cn/license: Apache-2.0
       component-store.kubebb.k8s.com.cn/source: official
     apiVersion: v2
+    created: "2023-08-29T03:18:42.12648497Z"
+    description: bc-apis is a service that provides composited APIs for the console.
+    digest: 60977176d446e352aea3a8f138dab57fd80c65c9f271965bca08def13be288cc
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - apis
+    - bestchains
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Carrotzpc
+      url: https://github.com/Carrotzpc
+    - name: dayuy
+      url: https://github.com/dayuy
+    name: bc-apis
+    sources:
+    - https://github.com/bestchains/bc-apis
+    - https://github.com/kubebb/components
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/bc-apis-0.0.3/bc-apis-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      component-store.kubebb.k8s.com.cn/license: Apache-2.0
+      component-store.kubebb.k8s.com.cn/source: official
+    apiVersion: v2
     created: "2023-08-09T07:35:04.631466099Z"
     description: bc-apis is a service that provides composited APIs for the console.
     digest: 03afca81d8229734002f73d62476f5a56d3b895fbfd39aff9406db9276739869
@@ -50,6 +76,30 @@ entries:
     - https://github.com/kubebb/components/releases/download/bc-apis-v0.0.1/bc-apis-v0.0.1.tgz
     version: v0.0.1
   bc-depository:
+  - apiVersion: v2
+    created: "2023-08-29T03:18:42.299526754Z"
+    description: bc-depository represents depository-as-a-service in bestchains which
+      provides quick way to create a depository service.
+    digest: d62ed72f83aafbc905c891c82b87a2b4f3591e62f119eaf41445c59548a2ebc7
+    icon: https://avatars.githubusercontent.com/u/116370569
+    keywords:
+    - depository
+    - saas
+    - bestchains
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: bc-depository
+    sources:
+    - https://github.com/bestchains/bc-saas
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/bc-depository-0.0.3/bc-depository-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     created: "2023-07-06T10:35:47.740906987Z"
     description: bc-depository represents depository-as-a-service in bestchains which
@@ -99,6 +149,28 @@ entries:
     - https://github.com/kubebb/components/releases/download/bc-depository-v0.0.1/bc-depository-v0.0.1.tgz
     version: v0.0.1
   bc-explorer:
+  - apiVersion: v2
+    created: "2023-08-29T03:18:42.489948906Z"
+    description: a comprehensive blockchain explorer
+    digest: adbb430d1b00f95596aaa9ea68932b3eade95e4da16de22d0601724de05754a2
+    icon: https://avatars.githubusercontent.com/u/116370569
+    keywords:
+    - explorer
+    - bestchains
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: bc-explorer
+    sources:
+    - https://github.com/bestchains/bc-explorer
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/bc-explorer-0.0.3/bc-explorer-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     created: "2023-07-06T10:35:47.976450792Z"
     description: a comprehensive blockchain explorer
@@ -418,6 +490,34 @@ entries:
     - https://github.com/kubebb/components/releases/download/kubebb-v0.0.1/kubebb-v0.0.1.tgz
     version: v0.0.1
   kubebb-core:
+  - annotations:
+      core.kubebb.k8s.com.cn/displayname: 内核
+    apiVersion: v2
+    appVersion: v0.1.4
+    created: "2023-08-29T03:18:42.653595308Z"
+    description: Kubebb Core provides core implementations on Component Lifecycle
+      Management.Our design and development follows operator pattern which extends
+      kubernetes APIs.
+    digest: 796ce4109443d283f45f8e7e29e9f53d7dfdabce24d71394f1ea7f5d82aeb0e6
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - repository
+    - helm
+    - lifecycle-management
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: kubebb-core
+    sources:
+    - https://github.com/kubebb/core
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/kubebb-core-0.1.13/kubebb-core-0.1.13.tgz
+    version: 0.1.13
   - apiVersion: v2
     appVersion: v0.1.4
     created: "2023-08-28T02:07:58.600704247Z"
@@ -816,6 +916,33 @@ entries:
   u4a-component:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2023-08-29T03:18:42.804690632Z"
+    dependencies:
+    - condition: addon-component.enabled
+      name: addon-component
+      repository: ""
+      version: 0.1.1
+    - name: crds
+      repository: ""
+      version: 0.1.1
+    description: A Helm chart for u4a-component
+    digest: 90ac8937903c28d1847e265efb56470fad9dc347c1527fbc76ec3a1f385ea694
+    maintainers:
+    - name: nkwangleiGIT
+      url: https://github.com/nkwangleiGIT
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: u4a-component
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/u4a-component-0.1.7/u4a-component-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2023-08-25T04:00:53.007631807Z"
     dependencies:
     - condition: addon-component.enabled
@@ -1019,4 +1146,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-08-28T02:07:58.60103705Z"
+generated: "2023-08-29T03:18:42.805128831Z"
