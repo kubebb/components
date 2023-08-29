@@ -52,8 +52,6 @@ spec:
   results:
   - name: HELM_LINT
     value: $(tasks.{{ .Release.Name }}-helm-lint.results.LINT)
-  - name: RBACCM
-    value: $(tasks.{{ .Release.Name }}-rback.results.RBACCM)
   tasks:
     - name: {{ .Release.Name }}-helm-lint
       retries: 2
