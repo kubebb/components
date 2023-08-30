@@ -3,6 +3,8 @@ kind: Repository
 metadata:
   name: kubebb
   namespace: kubebb-system
+  labels:
+    kubebb.repository.source: official
 spec:
   url: https://kubebb.github.io/components
   pullStategy:
