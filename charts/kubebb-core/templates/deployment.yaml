@@ -25,9 +25,11 @@ spec:
         # seccompProfile:
         #   type: RuntimeDefault
       volumes:
+{{- if .Values.storage.enable }}
       - name: helm
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}
+{{- end }}
 {{- if .Values.webhook.enable }}
       - name: cert
         secret:
@@ -40,12 +42,14 @@ spec:
         image: {{ .Values.deployment.image }}
         imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
         env:
+{{- if .Values.storage.enable }}
         - name: HELM_CACHE_HOME
           value: /opt/helm/cache/helm
         - name: HELM_CONFIG_HOME
           value: /opt/helm/config/helm
         - name: HELM_DATA_HOME
           value: /opt/helm/data/helm
+{{- end }}
 {{- if .Values.webhook.enable }}
         - name: ENABLE_WEBHOOKS
           value: "true"
@@ -62,8 +66,10 @@ spec:
 {{- end }}
         name: manager
         volumeMounts:
+{{- if .Values.storage.enable }}
         - mountPath: /opt/helm
           name: helm
+{{- end }}
 {{- if .Values.webhook.enable }}
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert

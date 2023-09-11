@@ -11,8 +11,10 @@ deployment:
       memory: 64Mi
 webhook:
   enable: false
-pvc:
-  storageClassName: standard
+
+storage:
+  enable: false
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   storageSize: 5Gi
