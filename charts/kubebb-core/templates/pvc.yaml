@@ -1,11 +1,13 @@
+{{- if .Values.storage.enable }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
-  storageClassName: {{ .Values.pvc.storageClassName }}
-  accessModes: {{ toYaml .Values.pvc.accessModes | nindent 4 }}
+  storageClassName: {{ .Values.storage.storageClassName }}
+  accessModes: {{ toYaml .Values.storage.accessModes | nindent 4 }}
   resources:
     requests:
-      storage: {{ .Values.pvc.storageSize }}
+      storage: {{ .Values.storage.storageSize }}
+{{- end }}
