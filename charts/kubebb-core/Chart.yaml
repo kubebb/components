@@ -4,8 +4,8 @@ annotations:
   core.kubebb.k8s.com.cn/displayname: "内核"
 description: Kubebb Core provides core implementations on Component Lifecycle Management.Our design and development follows operator pattern which extends kubernetes APIs.
 type: application
-version: 0.1.15
-appVersion: v0.1.4
+version: v0.1.16
+appVersion: v0.1.5
 icon: https://avatars.githubusercontent.com/u/85277200
 keywords:
   - repository
