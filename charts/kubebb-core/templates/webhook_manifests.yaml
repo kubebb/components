@@ -14,6 +14,26 @@ webhooks:
     service:
       name: {{ .Release.Name }}-webhook-svc
       namespace: {{ .Release.Namespace }}
+      path: /mutate-core-kubebb-k8s-com-cn-v1alpha1-component
+  failurePolicy: Fail
+  name: component.kb.io
+  rules:
+  - apiGroups:
+    - core.kubebb.k8s.com.cn
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - components
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: {{ .Release.Name }}-webhook-svc
+      namespace: {{ .Release.Namespace }}
       path: /mutate-core-kubebb-k8s-com-cn-v1alpha1-componentplan
   failurePolicy: Fail
   name: mcomponentplan.kb.io
@@ -34,6 +54,26 @@ webhooks:
     service:
       name: {{ .Release.Name }}-webhook-svc
       namespace: {{ .Release.Namespace }}
+      path: /mutate-core-kubebb-k8s-com-cn-v1alpha1-portal
+  failurePolicy: Fail
+  name: mportal.kb.io
+  rules:
+  - apiGroups:
+    - core.kubebb.k8s.com.cn
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - portals
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: {{ .Release.Name }}-webhook-svc
+      namespace: {{ .Release.Namespace }}
       path: /mutate-core-kubebb-k8s-com-cn-v1alpha1-subscription
   failurePolicy: Fail
   name: msubscription.kb.io
@@ -47,6 +87,26 @@ webhooks:
     - UPDATE
     resources:
     - subscriptions
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: {{ .Release.Name }}-webhook-svc
+      namespace: {{ .Release.Namespace }}
+      path: /mutate-core-kubebb-k8s-com-cn-v1alpha1-repository
+  failurePolicy: Fail
+  name: mrepository.kb.io
+  rules:
+  - apiGroups:
+    - core.kubebb.k8s.com.cn
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - repositories
   sideEffects: None
 ---
 apiVersion: admissionregistration.k8s.io/v1
@@ -77,6 +137,27 @@ webhooks:
     - DELETE
     resources:
     - componentplans
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: {{ .Release.Name }}-webhook-svc
+      namespace: {{ .Release.Namespace }}
+      path: /validate-core-kubebb-k8s-com-cn-v1alpha1-portal
+  failurePolicy: Fail
+  name: vportal.kb.io
+  rules:
+  - apiGroups:
+    - core.kubebb.k8s.com.cn
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    - DELETE
+    resources:
+    - portals
   sideEffects: None
 - admissionReviewVersions:
   - v1
