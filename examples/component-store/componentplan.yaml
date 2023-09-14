@@ -1,0 +1,16 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: component-store
+  namespace: kubebb-system
+spec:
+  approved: true
+  name: component-store
+  version: 0.0.1
+  override:
+    set:
+      - ingressDomain=172.22.96.136.nip.io
+      - image=kubebb/component-store:v0.1.3.09111744
+  component:
+    name: kubebb.component-store
+    namespace: kubebb-system
