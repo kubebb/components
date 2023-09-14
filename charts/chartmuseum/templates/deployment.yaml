@@ -63,6 +63,12 @@ spec:
         securityContext:
           {{- toYaml .Values.containerSecurityContext | nindent 10 }}
         env:
+{{- if .Values.tls.enable }}
+        - name: TLS_CERT
+          value: "/etc/ssl/certs/tls.crt"
+        - name: TLS_KEY 
+          value: "/etc/ssl/certs/tls.key"
+{{- end }}        
 {{- range $name, $value := .Values.env.open }}
 {{- if not (empty $value) }}
         - name: {{ $name | quote }}
@@ -108,14 +114,38 @@ spec:
         -  name: AUTH_CERT_PATH
            value: /var/keys/public-key.pem
 {{ end }}
+{{- if .Values.tls.enable }}
+        args:
+        - --port=8443
+{{- else }}
         args:
         - --port=8080
+{{ end }}
 {{- if eq .Values.env.open.STORAGE "local" }}
         - --storage-local-rootdir={{ .Values.persistence.path }}
 {{- end }}
 {{- if .Values.extraArgs }}
 {{ toYaml .Values.extraArgs | indent 8 }}
 {{- end }}
+{{- if .Values.tls.enable }}
+        ports:
+        - name: https
+          containerPort: 8443
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8443
+            scheme: HTTPS
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8443
+            scheme: HTTPS
+          initialDelaySeconds: 10
+          periodSeconds: 10
+{{- else }}
         ports:
         - name: http
           containerPort: 8080
@@ -131,9 +161,15 @@ spec:
             port: http
 {{ toYaml .Values.probes.readinessHttpGetConfig | indent 12 }}
 {{ toYaml .Values.probes.readiness | indent 10 }}
+{{- end }}
         volumeMounts:
 {{- if .Values.deployment.extraVolumeMounts }}
         {{- toYaml .Values.deployment.extraVolumeMounts | nindent 8 }}
+{{- end }}
+{{- if .Values.tls.enable }}
+        - mountPath: /etc/ssl/certs/
+          name: tls-certs
+          readOnly: true
 {{- end }}
 {{- if eq .Values.env.open.STORAGE "local" }}
         - mountPath: {{ .Values.persistence.path }}
@@ -219,4 +255,9 @@ spec:
       - name: public-key
         secret:
           secretName: {{ .Values.bearerAuth.secret.publicKeySecret }}
+{{- end }}
+{{- if .Values.tls.enable }}
+      - name: tls-certs
+        secret:
+          secretName: {{ .Release.Name }}-cert
 {{- end }}

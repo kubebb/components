@@ -355,3 +355,6 @@ bearerAuth:
   secret:
     enabled: false
     publicKeySecret: chartmuseum-public-key
+tls:
+  enable: false
+  dnsnames:

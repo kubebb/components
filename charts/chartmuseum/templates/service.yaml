@@ -31,6 +31,7 @@ spec:
   {{- end }}
   {{- end }}
   ports:
+{{- if not .Values.tls.enable }}
   - port: {{ .Values.service.externalPort }}
 {{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort))) }}
     nodePort: {{.Values.service.nodePort}}
@@ -41,8 +42,12 @@ spec:
 {{- else }}
     targetPort: http
     name: http
+{{- end }} 
+{{- else }}
+  - port: 8443
+    targetPort: https
+    name: https
 {{- end }}
     protocol: TCP
-    
   selector:
     {{- include "chartmuseum.selectorLabels" . | nindent 4 }}
