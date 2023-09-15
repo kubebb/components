@@ -33,9 +33,13 @@ spec:
         # Read this Pod's namespace
         NAMESPACE=$(cat ${SERVICEACCOUNT}/namespace)
         NAME=$(params.repository)"."$(params.component)"."$(params.version)
-
-        cat <<EOF |jq --arg dot "$(cat r.dot |base64)" '.binaryData.r = $dot' | jq --arg name "$NAME" '.metadata.name = $name' | jq --arg namespace "$NAMESPACE" '.metadata.namespace = $namespace' | kubectl apply -f -
-        {"kind": "ConfigMap","apiVersion": "v1","metadata": {"name": "configmap","namespace": "default"},"binaryData": {"r": ""}}
+        helm template $(params.component) |yq 'select(.kind=="ServiceAccount" or .kind=="ClusterRoleBinding" or .kind=="ClusterRole" or .kind=="Role" or .kind=="RoleBinding")' > rbac.yaml
+        cat <<EOF |jq --arg dot "$(cat r.dot |base64)" '.binaryData.r = $dot' \
+                  | jq --arg rbac "$(cat rbac.yaml |base64)" '.binaryData.rbac = $rbac' \
+                  | jq --arg name "$NAME" '.metadata.name = $name' \
+                  | jq --arg namespace "$NAMESPACE" '.metadata.namespace = $namespace' \
+                  | kubectl apply -f -
+        {"kind": "ConfigMap","apiVersion": "v1","metadata": {"name": "configmap","namespace": "default"},"binaryData": {"r": "","rbac": ""}}
         EOF
         echo ${NAME} | tee $(results.RBACCM.path)
 ---
