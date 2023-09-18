@@ -1,0 +1,210 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store-management-publish
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: component-store-management
+    uid: ""
+  pathname: /component-store/components/management/publish
+  rankingInColumn: 100
+  text: 我发布的
+  textEn: I Published
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store-management-installed
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: component-store-management
+    uid: ""
+  pathname: /component-store/components/management/install
+  project: true
+  rankingInColumn: 200
+  tenant: true
+  text: 我安装的
+  textEn: I Installed
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store-management-subscribed
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: component-store-management
+    uid: ""
+  pathname: /component-store/components/management/subscription
+  project: true
+  rankingInColumn: 300
+  tenant: true
+  text: 我订阅的
+  textEn: I Subscribed
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store-repository
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"kubebb-warehouse","data":"<path d=\"M1004.8 432h19.2L512 80 0 432z\"></path><path
+    d=\"M352 681.6h320v96H352zm0 160h320v96H352z\" opacity=\"0.6\"></path><path d=\"M128
+    425.6h128v512H128zm640 0h128v512H768zM256 432h512v128H256z\" opacity=\"0.8\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: component-store-index
+    uid: ""
+  pathname: /component-store/components/warehouse
+  rankingInColumn: 100
+  text: 组件仓库管理
+  textEn: Component Repository
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store-market
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"kubebb-market","data":"<path d=\"M876.8 556.8v294.4c0 25.6-19.2
+    44.8-44.8 44.8H185.6c-25.6 0-44.8-19.2-44.8-44.8V556.8h89.6v153.6h563.2V556.8h83.2z\"
+    opacity=\"0.6\"></path><path d=\"M64 390.4v6.4c0 64 51.2 121.6 115.2 121.6 57.6
+    0 102.4-38.4 108.8-96 12.8 51.2 57.6 96 108.8 96 57.6 0 102.4-38.4 108.8-96 12.8
+    51.2 57.6 96 108.8 96 57.6 0 102.4-38.4 108.8-96 12.8 51.2 57.6 96 108.8 96 64
+    0 115.2-51.2 115.2-121.6v-6.4H64z\" opacity=\"0.8\"></path><path d=\"M76.8 345.6c-6.4
+    12.8-6.4 25.6-12.8 38.4h896c0-12.8-6.4-25.6-12.8-38.4L838.4 128H192L76.8 345.6z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: component-store-index
+    uid: ""
+  pathname: /component-store/components/market
+  rankingInColumn: 200
+  text: 组件市场
+  textEn: Component Market
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store-management
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"kubebb-components","data":"<path d=\"M288 819.2l320-601.6-364.8
+    32-6.4-121.6H121.6c-32 0-57.6 25.6-57.6 57.6V832c0 38.4 25.6 64 57.6 64h172.8l-6.4-76.8z\"></path><path
+    d=\"M902.4 128h-192l32 76.8-313.6 601.6 358.4-25.6L748.8 896h153.6c32 0 57.6-25.6
+    57.6-57.6V185.6c0-32-25.6-57.6-57.6-57.6z\" opacity=\"0.6\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: component-store-index
+    uid: ""
+  rankingInColumn: 300
+  tenant: true
+  text: 组件管理
+  textEn: Component Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store-index
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: component-store
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: 组件市场
+  textEn: Component Market
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: component-store
+  name: component-store
+spec:
+  column: 1
+  getTitleForReplaceSider: {}
+  icon: '{"name":"kubebb-market","data":"<path d=\"M876.8 556.8v294.4c0 25.6-19.2
+    44.8-44.8 44.8H185.6c-25.6 0-44.8-19.2-44.8-44.8V556.8h89.6v153.6h563.2V556.8h83.2z\"
+    opacity=\"0.6\"></path><path d=\"M64 390.4v6.4c0 64 51.2 121.6 115.2 121.6 57.6
+    0 102.4-38.4 108.8-96 12.8 51.2 57.6 96 108.8 96 57.6 0 102.4-38.4 108.8-96 12.8
+    51.2 57.6 96 108.8 96 57.6 0 102.4-38.4 108.8-96 12.8 51.2 57.6 96 108.8 96 64
+    0 115.2-51.2 115.2-121.6v-6.4H64z\" opacity=\"0.8\"></path><path d=\"M76.8 345.6c-6.4
+    12.8-6.4 25.6-12.8 38.4h896c0-12.8-6.4-25.6-12.8-38.4L838.4 128H192L76.8 345.6z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: ""
+    kind: ""
+    name: ""
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: 组件市场
+  textEn: Component Market
+status: {}
+
+---
