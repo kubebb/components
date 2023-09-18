@@ -405,6 +405,30 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/cluster-component-0.1.0/cluster-component-0.1.0.tgz
     version: 0.1.0
+  component-store:
+  - apiVersion: v2
+    created: "2023-09-18T07:36:58.570866833Z"
+    description: Component store to list, view and deploy various components.
+    digest: 5afed2d178f378b496bfdf6f7b486e5ccab7f695d364dd6caffcc1e7f64d26cd
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - kubebb
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Carrotzpc
+      url: https://github.com/Carrotzpc
+    - name: dayuy
+      url: https://github.com/dayuy
+    - name: Jandiasnow
+      url: https://github.com/Jandiasnow
+    name: component-store
+    sources:
+    - https://github.com/kubebb/component-store
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/component-store-0.0.1/component-store-0.0.1.tgz
+    version: 0.0.1
   fabric-operator:
   - apiVersion: v2
     appVersion: v0.1.0
@@ -1230,4 +1254,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-09-14T01:38:49.836625361Z"
+generated: "2023-09-18T07:36:58.571049737Z"
