@@ -1,12 +1,15 @@
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
-  name: my-tekton
-  namespace: default
+  name: tekton
+  namespace: kubebb-addons
 spec:
   approved: true
-  name: my-tekton # similar to helm release name
+  name: tekton # similar to helm release name
   version: 0.64.0
   component:
     name: kubebb.tekton-operator
     namespace: kubebb-system
+  override:
+    set:
+      - operator.defaultTargetNamespace=kubebb-addons
