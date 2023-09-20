@@ -516,6 +516,36 @@ entries:
   kubebb-core:
   - annotations:
       core.kubebb.k8s.com.cn/displayname: 内核
+      core.kubebb.k8s.com.cn/restrict-tenants: system-tenant
+      core.kubebb.k8s.com.cn/restricted-namespaces: kubebb-system
+    apiVersion: v2
+    appVersion: v0.1.5
+    created: "2023-09-20T08:52:30.032249251Z"
+    description: Kubebb Core provides core implementations on Component Lifecycle
+      Management.Our design and development follows operator pattern which extends
+      kubernetes APIs.
+    digest: 1a812f193f9710002f4b8c03c3cabeb9aecb0176913a5b0880acfa4b7920ccd4
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - repository
+    - helm
+    - lifecycle-management
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: kubebb-core
+    sources:
+    - https://github.com/kubebb/core
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/kubebb-core-0.1.17/kubebb-core-0.1.17.tgz
+    version: 0.1.17
+  - annotations:
+      core.kubebb.k8s.com.cn/displayname: 内核
     apiVersion: v2
     appVersion: v0.1.5
     created: "2023-09-14T01:38:49.836405759Z"
@@ -963,6 +993,28 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: RELEASE.2023-02-10T18-48-39Z
+    created: "2023-09-20T08:52:30.369518845Z"
+    description: Multi-Cloud Object Storage
+    digest: 4d7ed9e65a98a06e5a9e8c300a6440c5525f8529dc35fb8f92d27ee5e9e6773d
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - minio
+    - storage
+    - object-storage
+    - s3
+    - cluster
+    maintainers:
+    - email: dev@minio.io
+      name: MinIO, Inc
+    name: minio
+    sources:
+    - https://github.com/minio/minio
+    urls:
+    - https://github.com/kubebb/components/releases/download/minio-5.0.9/minio-5.0.9.tgz
+    version: 5.0.9
+  - apiVersion: v1
+    appVersion: RELEASE.2023-02-10T18-48-39Z
     created: "2023-08-16T04:27:42.388058016Z"
     description: Multi-Cloud Object Storage
     digest: 3d67a50567bff4ee9ea71663f169f658bf23223da77d064b0c0668f47c422e0e
@@ -1254,4 +1306,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-09-18T07:36:58.571049737Z"
+generated: "2023-09-20T08:52:30.369721446Z"
