@@ -2,16 +2,15 @@ apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
   name: chartmuseum
-  namespace: kubebb-system
+  namespace: kubebb-addons
 spec:
   approved: true
   name: chartmuseum
   version: 3.10.2
   override:
     set:
-      - env.secret.BASIC_AUTH_USER=admin 
+      - env.secret.BASIC_AUTH_USER=admin
       - env.secret.BASIC_AUTH_PASS=password
   component:
     name: kubebb.chartmuseum
     namespace: kubebb-system
-
