@@ -2,7 +2,7 @@ apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
   name: chartmuseum
-  namespace: kubebb-system
+  namespace: kubebb-addons
 spec:
   approved: true
   name: chartmuseum
@@ -10,4 +10,3 @@ spec:
   component:
     name: kubebb.chartmuseum
     namespace: kubebb-system
-

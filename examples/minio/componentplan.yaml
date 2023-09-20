@@ -2,7 +2,7 @@ apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
   name: my-minio
-  namespace: default
+  namespace: kubebb-addons
 spec:
   approved: true
   name: my-minio # similar to helm release name
