@@ -12,41 +12,51 @@
 
 ## Install chartmuseum Component 
 
+### Without basic auth enabled
 
-1. Apply `componentplan.yaml` or `componentplan_auth.yaml` support basic_auth
+1. Apply `componentplan.yaml`
 
 ```shell
-    kubectl apply -f  examples/chartmuseum/componentplan.yaml  or  kubectl apply -f  examples/chartmuseum/componentplan_auth.yaml
+    kubectl apply -f  examples/chartmuseum/componentplan.yaml
 ```
 
 2. Get service for CLUSTER-IP
 
 ```shell
-    kubectl get svc -n kubebb-system
+    kubectl get svc -n kubebb-addons
     NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
     chartmuseum   ClusterIP   10.96.116.173   <none>        8080/TCP   17h 
 ```
 
-## Use chartmuseum Component as Service
+### With basici auth enabled
 
-After installing the chartmuseum component, we can use it as service. 
+1. Apply `componentplan_auth.yaml`(basic_auth enabled)
 
-Modify the following `spec.url` according to the clusterIP of the service `chartmuseum` and save it to `repository_chartmuseum.yaml` (chartmuseum with basic authentication can be found in `examples/chartmuseum/repository_chartmuseum.yaml`)
-
-```yaml
-apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-kind: Repository
-metadata:
-  name: chartmuseum
-  namespace: kubebb-system
-spec:
-  url: http://10.96.116.173:8080
-  pullStategy:
-    intervalSeconds: 120
-    retry: 5
+```shell
+    kubectl apply -f  examples/chartmuseum/componentplan_auth.yaml
 ```
 
-1. Apply `repository_chartmuseum.yaml`
+2. Get service for CLUSTER-IP
+
+```shell
+    kubectl get svc -n kubebb-addons
+    NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+    chartmuseum_auth   ClusterIP   10.96.116.173   <none>        8080/TCP   17h 
+```
+
+## Use chartmuseum service  as a kubebb Repository
+
+After installing the chartmuseum component, we can use it as a kubebb repository. 
+
+Based on the componentplan used for chartmuseum deployment, you should use different repository chartmuseum.yaml.
+
+- If basic auth is enabled, apply `repository_chartmuseum_auth.yaml`
+
+```shell
+    kubectl apply -f examples/chartmuseum/repository_chartmuseum_auth.yaml
+```
+
+- If basic auth is disabled, apply `repository_chartmuseum.yaml`
 
 ```shell
     kubectl apply -f examples/chartmuseum/repository_chartmuseum.yaml
