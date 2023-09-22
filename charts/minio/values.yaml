@@ -29,7 +29,7 @@ mcImage:
   pullPolicy: IfNotPresent
 
 ## minio mode, i.e. standalone or distributed
-mode: distributed
+mode: standalone
 
 ## Additional labels to include with deployment or statefulset
 additionalLabels: {}
