@@ -25,6 +25,9 @@ spec:
         # seccompProfile:
         #   type: RuntimeDefault
       volumes:
+      - name: host-time
+        hostPath:
+          path: /etc/localtime
 {{- if .Values.storage.enable }}
       - name: helm
         persistentVolumeClaim:
@@ -66,6 +69,9 @@ spec:
 {{- end }}
         name: manager
         volumeMounts:
+        - name: host-time
+          mountPath: /etc/localtime
+          readOnly: true
 {{- if .Values.storage.enable }}
         - mountPath: /opt/helm
           name: helm
@@ -97,4 +103,3 @@ spec:
         resources: {{ toYaml .Values.deployment.resources | nindent 10 }} 
       serviceAccountName: {{ .Release.Name }}
       terminationGracePeriodSeconds: 10
-
