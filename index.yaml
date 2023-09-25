@@ -520,6 +520,36 @@ entries:
       core.kubebb.k8s.com.cn/restricted-namespaces: kubebb-system
     apiVersion: v2
     appVersion: v0.1.5
+    created: "2023-09-25T08:35:22.312937Z"
+    description: Kubebb Core provides core implementations on Component Lifecycle
+      Management.Our design and development follows operator pattern which extends
+      kubernetes APIs.
+    digest: dfcbba54f87d196529dd946d1dfa624adf5c3a13b235ef0f1101de9414bc67df
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - repository
+    - helm
+    - lifecycle-management
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: kubebb-core
+    sources:
+    - https://github.com/kubebb/core
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/kubebb-core-0.1.18/kubebb-core-0.1.18.tgz
+    version: 0.1.18
+  - annotations:
+      core.kubebb.k8s.com.cn/displayname: 内核
+      core.kubebb.k8s.com.cn/restrict-tenants: system-tenant
+      core.kubebb.k8s.com.cn/restricted-namespaces: kubebb-system
+    apiVersion: v2
+    appVersion: v0.1.5
     created: "2023-09-20T08:52:30.032249251Z"
     description: Kubebb Core provides core implementations on Component Lifecycle
       Management.Our design and development follows operator pattern which extends
@@ -993,6 +1023,28 @@ entries:
   minio:
   - apiVersion: v1
     appVersion: RELEASE.2023-02-10T18-48-39Z
+    created: "2023-09-25T08:35:22.520931831Z"
+    description: Multi-Cloud Object Storage
+    digest: f7bccd88e3e334bfbffa7dfe447b9c15ca2285a4e17fa5387e4abe404e3aede2
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - minio
+    - storage
+    - object-storage
+    - s3
+    - cluster
+    maintainers:
+    - email: dev@minio.io
+      name: MinIO, Inc
+    name: minio
+    sources:
+    - https://github.com/minio/minio
+    urls:
+    - https://github.com/kubebb/components/releases/download/minio-5.0.10/minio-5.0.10.tgz
+    version: 5.0.10
+  - apiVersion: v1
+    appVersion: RELEASE.2023-02-10T18-48-39Z
     created: "2023-09-20T08:52:30.369518845Z"
     description: Multi-Cloud Object Storage
     digest: 4d7ed9e65a98a06e5a9e8c300a6440c5525f8529dc35fb8f92d27ee5e9e6773d
@@ -1306,4 +1358,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-09-20T08:52:30.369721446Z"
+generated: "2023-09-25T08:35:22.521109933Z"
