@@ -1,10 +1,10 @@
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Repository
 metadata:
-  name: chartmuseum_auth
+  name: chartmuseum-auth
   namespace: kubebb-system
 spec:
-  url: http://chartmuseum_auth.kubebb-addons.svc.cluster.local:8080
+  url: http://chartmuseum-auth.kubebb-addons.svc.cluster.local:8080
   authSecret: mysecret
   pullStategy:
     intervalSeconds: 120
