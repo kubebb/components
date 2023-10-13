@@ -1,0 +1,94 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: hello-world
+  name: yunti-page-9cefp
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: yunti-hello-world-index
+    uid: ""
+  pathname: /hello-world/test
+  rankingInColumn: 100
+  text: Test
+  textEn: Test
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: hello-world
+  name: yunti-hello-world-index
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: yunti-hello-world
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: Hello World For KubeBB
+  textEn: hello-world
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: hello-world
+  name: yunti-hello-world
+spec:
+  column: 1000
+  getTitleForReplaceSider: {}
+  icon: '{"name":"component-management","data":"<defs><style></style></defs><path
+    d=\"M849.92 896H215.872a30.848 30.848 0 01-31.168-31.296V674.752a89.216 89.216
+    0 01-24.896 11.264h-1.216A123.904 123.904 0 010 567.36c0-68.672 56.192-123.776
+    123.584-123.776 12.48 0 24.896 2.496 37.44 6.272 1.216 0 2.496 1.216 3.712 1.216
+    6.272 2.496 12.48 5.056 17.472 7.488l2.496 1.216v-229.76c0-17.472 13.696-31.296
+    31.168-31.296h203.392l-3.776-7.488A99.84 99.84 0 01401.792 160v-1.28a114.432 114.432
+    0 01-4.928-35.072C396.864 54.976 453.056 0 520.448 0c68.608 0 123.584 56.256 123.584
+    123.776 0 12.48-2.496 25.024-6.272 37.504 0 1.216-1.216 2.496-1.216 3.712-2.56
+    6.272-4.928 12.544-7.488 17.472l-6.272 15.04h227.2c17.472 0 31.168 13.696 31.168
+    31.296v279.936a32.512 32.512 0 01-13.696 26.24 31.68 31.68 0 01-29.952 2.496l-53.696-23.68c-1.216
+    0-1.216-1.216-2.496-1.216-2.496-1.216-6.272-3.712-9.984-5.056h-1.28c-6.272-2.56-12.544-2.56-18.816-2.56a61.312
+    61.312 0 000 122.496c6.272 0 12.48-1.216 17.472-2.496 6.272-1.216 11.2-5.056 16.256-7.488
+    1.216-1.216 2.496-1.216 3.712-2.496l47.424-22.464a31.744 31.744 0 0129.952 1.216
+    31.872 31.872 0 0114.912 26.24v244.928A30.72 30.72 0 01849.92 896zm-602.88-62.464h571.584V671.04h-1.216a144.32
+    144.32 0 01-31.168 15.04h-1.28c-11.2 3.712-23.68 5.056-34.88 5.056A123.968 123.968
+    0 01626.496 567.36c0-68.672 56.192-123.776 123.584-123.776 12.48 0 24.896 2.496
+    37.44 6.272 1.216 0 2.496 1.216 3.712 1.216 6.272 2.496 12.48 5.056 17.472 7.488l8.768
+    3.712V262.464H574.08a32.896 32.896 0 01-26.24-13.696 32.192 32.192 0 01-2.496-30.016l26.24-60.032c0-1.216
+    1.216-1.216 1.216-2.496 1.216-2.496 3.712-6.272 4.928-9.984v-1.216c2.496-6.272
+    2.496-12.48 2.496-18.752a61.248 61.248 0 00-61.12-61.248 61.312 61.312 0 00-58.624
+    78.72c1.216 6.272 4.992 11.264 7.488 16.256 1.216 1.216 1.216 2.496 2.496 3.712l24.896
+    53.76a31.936 31.936 0 01-1.152 29.952 32 32 0 01-26.24 15.04H247.04v244.928a32.512
+    32.512 0 01-13.696 26.24 32 32 0 01-29.952 2.496l-47.424-21.312c-1.216 0-1.216-1.216-2.496-1.216-2.56-1.216-6.272-3.712-10.048-5.056h-1.216c-6.208-2.496-12.48-2.496-18.752-2.496a61.312
+    61.312 0 000 122.496c6.272 0 12.48-1.216 17.472-2.496 6.272-1.28 11.2-5.12 16.256-7.552
+    1.216-1.216 2.496-1.216 3.712-2.496l41.152-19.968A31.744 31.744 0 01232 597.248a33.856
+    33.856 0 0114.912 26.24V833.6l.128-.064z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: ""
+    kind: ""
+    name: ""
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: Hello World For KubeBB
+  textEn: hello-world
+status: {}
+
+---
