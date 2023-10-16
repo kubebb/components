@@ -1,0 +1,16 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: hello-world
+  namespace: default
+spec:
+  approved: true
+  name: hello-world # similar to helm release name
+  version: 0.1.0
+  component:
+    name: kubebb.hello-world
+    namespace: kubebb-system
+  override:
+    set:
+      - ingress.enable=true
+      - ingress.ingressDomain=172.18.0.2.nip.io

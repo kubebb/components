@@ -1,0 +1,7 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Portal
+metadata:
+  name: hello-world
+spec:
+  entry: /hello-world-public/index.html
+  path: /hello-world
