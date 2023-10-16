@@ -1,0 +1,26 @@
+apiVersion: v2
+name: hello-world
+version: 0.1.0
+appVersion: 0.1.0
+icon: https://avatars.githubusercontent.com/u/85277200?s=200&v=4
+description: demo portal init by @yunti/lowcode-code-generator with umijs template
+type: application
+annotations:
+  core.kubebb.k8s.com.cn/displayname: 示例组件
+  # used to set classification for component
+  core.kubebb.k8s.com.cn/classification: ""
+  # used to set restricted tenants for component installation positions. Multiple tenants need to be separated
+  # no restricted-tenants by default
+  core.kubebb.k8s.com.cn/restricted-tenants: "system-tenant"
+  # used to set restricted namespaces for component installation positions. Multiple namespaces need to be separated
+  # no restricted-tenants by default
+  core.kubebb.k8s.com.cn/restricted-namespaces: ""
+keywords:
+  - kubebb
+  - lowcode
+  - sample
+sources:
+  - https://gitlab.dev.21vianet.com/sbg2-tenxcloud/contrib/tenx-ui/demos/umi-demo-portal.git
+maintainers:
+  - name: bjwswang
+    url: https://github.com/bjwswang
