@@ -407,6 +407,29 @@ entries:
     version: 0.1.0
   component-store:
   - apiVersion: v2
+    created: "2023-10-16T05:55:26.552217818Z"
+    description: Component store to list, view and deploy various components.
+    digest: fd4876467e83fb0a129b75034a2332af66ba0b75bfd82ff00f67a273fa6f0334
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - kubebb
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Carrotzpc
+      url: https://github.com/Carrotzpc
+    - name: dayuy
+      url: https://github.com/dayuy
+    - name: Jandiasnow
+      url: https://github.com/Jandiasnow
+    name: component-store
+    sources:
+    - https://github.com/kubebb/component-store
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/component-store-0.0.2/component-store-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2023-09-18T07:36:58.570866833Z"
     description: Component store to list, view and deploy various components.
     digest: 5afed2d178f378b496bfdf6f7b486e5ccab7f695d364dd6caffcc1e7f64d26cd
@@ -1414,4 +1437,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-10-16T05:29:15.620992868Z"
+generated: "2023-10-16T05:55:26.55230892Z"
