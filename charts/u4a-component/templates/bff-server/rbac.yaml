@@ -59,6 +59,7 @@ rules:
   resources:
   - menus
   - portals
+  - components
   verbs:
   - list
 - apiGroups:
