@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: v5.7.0
+description: remote-role-component for mesh-operator
+name: remote-role-component
+type: application
+version: 5.7.0

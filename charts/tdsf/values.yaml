@@ -1,0 +1,61 @@
+global:
+  host: true
+  clusterReaderNameSpaceOverride: "u4a-system"
+  clusterReaderNameOverride: "host-cluster-reader"
+  registry: docker.io
+  ingress:
+    className: "portal-ingress"
+    hostName: "portal.172.22.96.136.nip.io"
+mesh-operator:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: kubebb/mesh-operator
+    tag: v5.7.0
+  env:
+    - name: LEADER_ELECTION_NAMESPACE
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.namespace
+    - name: CA_ISSUER
+      value: "istio-ca-issuer"
+    - name: ENABLE_PSP
+      value: "true"
+    - name: ISTIO_HUB_REPO
+      value: "kubebb"
+mesh-api:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: kubebb/mesh-api
+    tag: v5.7.0
+  env:
+    - name: app.license.namespaceOfLicense
+      value: "u4a-system"
+    - name: MESH_AGENT_IMAGE_SUFFIX
+      value: "/kubebb/istio-vm-init"
+    - name: NS_MESH
+      value: "mesh-system"
+    - name: NS_ISTIO
+      value: "istio-system"
+    - name: NS_MONITORING
+      value: "monitoring-system"
+    - name: ISTIO_DEFAULT_VERSION
+      value: "1.16.7"
+    - name: app.license.enabled
+      value: "false"
+  ingress:
+    className: "portal-ingress"
+    hostName: "portal.172.22.96.136.nip.io"
+tdsf-portal:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: kubebb/tdsf-portal
+    tag: v5.7.0
+  ingress:
+    className: "portal-ingress"
+    hostName: "portal.172.22.96.136.nip.io"
+remote-role-component:
+  enabled: false
+

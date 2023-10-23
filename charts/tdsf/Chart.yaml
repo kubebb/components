@@ -1,0 +1,32 @@
+annotations:
+  core.kubebb.k8s.com.cn/classification: "服务治理"
+  core.kubebb.k8s.com.cn/displayname: 服务网格
+  core.kubebb.k8s.com.cn/restricted-namespaces: "mesh-system"
+  core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
+apiVersion: v2
+appVersion: v5.7.0
+dependencies:
+- condition: mesh-api.enabled
+  name: mesh-api
+  version: 5.7.0
+- condition: tdsf-portal.enabled
+  name: tdsf-portal
+  version: 5.7.0
+- condition: mesh-operator.enabled
+  name: mesh-operator
+  version: 5.7.0
+- condition: remote-role-component.enabled
+  name: remote-role-component
+  version: 5.7.0
+description: 一个统一管理微服务应用流量、兼容Istio&envoy的托管式平台
+icon: https://raw.githubusercontent.com/kubebb/website/master/static/img/market/tdsf.svg
+home: https://docs.tenxcloud.com/docs/TDSF/产品介绍
+sources:
+  - https://github.com/kubebb/components
+keywords:
+- 无侵入性
+- 多语言多协议
+- 统一流量管理
+name: tdsf
+type: application
+version: 5.7.0

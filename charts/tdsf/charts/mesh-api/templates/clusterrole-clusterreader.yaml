@@ -1,0 +1,79 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "mesh-api.fullname" . }}-manager-{{ include "global.clusterReaderName" . }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+      - secrets
+      - namespaces
+      - pods
+      - configmaps
+      - nodes
+      - services/proxy
+      - nodes
+    verbs:
+      - get
+      - create
+      - update
+      - patch
+      - use
+      - list
+  - apiGroups:
+      - apps
+      - extensions
+    resources:
+      - daemonsets
+      - deployments
+      - replicasets
+      - statefulsets
+    verbs:
+      - get
+      - create
+      - update
+      - patch
+      - use
+      - list
+  - apiGroups:
+      - mesh.t7d.io
+    resources:
+      - "*"
+    verbs:
+      - "*"
+  - apiGroups:
+      - common.tenxcloud.com
+    resources:
+      - licenses
+      - licenseusings
+      - licenseusings/status
+    verbs:
+      - get
+      - use
+      - list
+      - watch
+      - patch
+      - update
+  - apiGroups:
+      - capsule.clastix.io
+    resources:
+      - "*"
+    verbs:
+      - "*"
+  - apiGroups:
+      - networking.istio.io
+    resources:
+      - "*"
+    verbs:
+      - "*"
+  - apiGroups:
+      - metrics.k8s.io
+    resources:
+      - nodes
+      - pods
+    verbs:
+      - get
+      - list
+      - use
+      - list

@@ -1,0 +1,803 @@
+apiVersion: iam.tenxcloud.com/v1alpha1
+kind: RoleTemplate
+metadata:
+  annotations:
+    displayName: "服务网格"
+    description: "角色模板描述"
+  name: service-mesh
+spec:
+  kindType: Role
+  resources:
+    - category: "网格服务管控"
+      displayName: "网格服务"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshservices
+            - meshservices/status
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务管控"
+      displayName: "租约"
+      rules:
+        - apiGroups:
+            - coordination.k8s.io
+          resources:
+            - leases
+          verbs:
+            - get
+            - list
+            - patch
+            - update
+            - delete
+    - category: "网格服务管控"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "网格服务管控"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+    - category: "网格服务管控"
+      displayName: "副本"
+      rules:
+        - apiGroups:
+            - apps
+          resources:
+            - replicasets
+          verbs:
+            - get
+            - list
+    - category: "网格服务管控"
+      displayName: "有状态副本集"
+      rules:
+        - apiGroups:
+            - apps
+          resources:
+            - statefulsets
+          verbs:
+            - get
+            - list
+    - category: "网格服务管控"
+      displayName: "服务账号"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - serviceaccounts
+          verbs:
+            - get
+            - list
+    - category: "网格服务管控"
+      displayName: "传统主机控制"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshagents
+          verbs:
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务管控"
+      displayName: "任务"
+      rules:
+        - apiGroups:
+            - batch
+          resources:
+            - jobs
+          verbs:
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务治理"
+      displayName: "网格服务"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshservices
+            - meshservices/status
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "路由、负载均衡、灰度发布、故障模拟、超时重试"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - virtualservices
+            - destinationrules
+            - gateways
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务治理"
+      displayName: "连接池"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - destinationrules
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务治理"
+      displayName: "手动降级"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - envoyfilters
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务治理"
+      displayName: "限流、熔断"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - envoyfilters
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务治理"
+      displayName: "访问控制"
+      rules:
+        - apiGroups:
+            - security.istio.io
+          resources:
+            - authorizationpolicies
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务治理"
+      displayName: "mTLS认证"
+      rules:
+        - apiGroups:
+            - security.istio.io
+          resources:
+            - peerauthentications
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "网格服务治理"
+      displayName: "租约"
+      rules:
+        - apiGroups:
+            - coordination.k8s.io
+          resources:
+            - leases
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "加密配置"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - secrets
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "网关管理"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - gateways
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "网格网关"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - ingressgateways
+            - ingressgatewayinstalls
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "注册中心"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - registries
+            - registryservices
+            - registryservices/status
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+    - category: "网格服务治理"
+      displayName: "工作负载"
+      rules:
+        - apiGroups:
+            - apps
+          resources:
+            - statefulsets
+            - deployments
+          verbs:
+            - get
+            - list
+    - category: "注册中心管理"
+      displayName: "注册中心"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - registries
+            - registries/status
+            - registryservices
+          verbs:
+            - create
+            - get
+            - list
+            - update
+            - delete
+            - patch
+    - category: "注册中心管理"
+      displayName: "网格服务"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshservices
+            - meshservices/status
+          verbs:
+            - get
+            - list
+    - category: "Sidecar管理"
+      displayName: "网格服务"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshservices
+            - meshservices/status
+          verbs:
+            - get
+            - list
+    - category: "Sidecar管理"
+      displayName: "virtualservices"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - virtualservices
+          verbs:
+            - get
+            - list
+    - category: "Sidecar管理"
+      displayName: "传统主机控制"
+      rules:
+      - apiGroups:
+          - mesh.t7d.io
+        resources:
+          - meshagents
+        verbs:
+          - get
+          - list
+    - category: "Sidecar管理"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "网格服务管控"
+      displayName: "部署"
+      rules:
+        - apiGroups:
+            - apps
+          resources:
+            - deployments
+          verbs:
+            - get
+            - list
+    - category: "Sidecar管理"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+    - category: "Sidecar管理"
+      displayName: "分组下发规则"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - sidecars
+          verbs:
+            - create
+            - get
+            - list
+            - update
+            - delete
+            - patch
+    - category: "Sidecar管理"
+      displayName: "校验下发规则"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods/exec
+            - pods/portforward
+          verbs:
+            - create
+            - get
+            - list
+            - update
+            - delete
+            - patch
+    - category: "Sidecar接入链路"
+      displayName: "Sidecar接入链路"
+      rules:
+        - apiGroups:
+            - "networking.istio.io"
+          resources:
+            - envoyfilters
+          verbs:
+            - create
+            - get
+            - list
+            - update
+            - delete
+            - patch
+    - category: "证书管理"
+      displayName: "加密配置"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - secrets
+          verbs:
+            - create
+            - get
+            - list
+            - update
+            - delete
+            - patch
+    - category: "证书管理"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "证书管理"
+      displayName: "网关管理"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - gateways
+          verbs:
+            - get
+            - list
+    - category: "证书管理"
+      displayName: "virtualservices"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - virtualservices
+          verbs:
+            - get
+            - list
+    - category: "项目驾驶舱"
+      displayName: "普通配置"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - configmaps
+          verbs:
+            - get
+            - list
+    - category: "项目驾驶舱"
+      displayName: ""
+      rules:
+        - apiGroups:
+            - metrics.k8s.io
+          resources:
+            - podmetrics
+          verbs:
+            - get
+    - category: "项目驾驶舱"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "项目驾驶舱"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+    - category: "项目驾驶舱"
+      displayName: "部署"
+      rules:
+        - apiGroups:
+            - "apps"
+          resources:
+            - deployments
+          verbs:
+            - get
+            - list
+    - category: "项目驾驶舱"
+      displayName: "守护进程集"
+      rules:
+      - apiGroups:
+          - "apps"
+        resources:
+          - daemonsets
+        verbs:
+          - get
+          - list
+    - category: "项目驾驶舱"
+      displayName: "网格网关"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - ingressgateways
+          verbs:
+            - get
+            - list
+    - category: "项目驾驶舱"
+      displayName: "分组下发规则"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - sidecars
+          verbs:
+            - get
+            - list
+    - category: "流量监控"
+      displayName: "网格服务"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshservices
+            - meshservices/status
+          verbs:
+            - get
+            - list
+    - category: "流量监控"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "流量监控"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "路由、负载均衡、灰度发布、故障模拟、超时重试"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - virtualservices
+            - destinationrules
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "限流、熔断"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - envoyfilters
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "访问控制"
+      rules:
+        - apiGroups:
+            - security.istio.io
+          resources:
+            - authorizationpolicies
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "mTLS认证"
+      rules:
+        - apiGroups:
+            - security.istio.io
+          resources:
+            - peerauthentications
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "网格服务"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshservices
+            - meshservices/status
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "有状态副本集"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - statefulSets
+          verbs:
+            - get
+            - list
+    - category: "网格策略统计"
+      displayName: "副本"
+      rules:
+      - apiGroups:
+          - ""
+        resources:
+          - replicaSets
+        verbs:
+          - get
+          - list
+    - category: "网格策略统计"
+      displayName: "容器组"
+      rules:
+      - apiGroups:
+          - ""
+        resources:
+          - pods
+        verbs:
+          - get
+          - list
+    - category: "运营报表"
+      displayName: "网格服务"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - meshservices
+            - meshservices/status
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "网格信息"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - isitos
+            - meshes
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "网格网关"
+      rules:
+        - apiGroups:
+            - mesh.t7d.io
+          resources:
+            - ingressgateways
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "网关管理"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - gateways
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "部署"
+      rules:
+        - apiGroups:
+            - "apps"
+          resources:
+            - deployments
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "副本"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - replicaSets
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "有状态副本集"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - statefulSets
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "路由、负载均衡、灰度发布、故障模拟、超时重试"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - virtualservices
+            - destinationrules
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "限流、熔断"
+      rules:
+        - apiGroups:
+            - networking.istio.io
+          resources:
+            - envoyfilters
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "mTLS认证"
+      rules:
+        - apiGroups:
+            - security.istio.io
+          resources:
+            - peerauthentications
+          verbs:
+            - get
+            - list
+    - category: "运营报表"
+      displayName: "访问控制"
+      rules:
+        - apiGroups:
+            - security.istio.io
+          resources:
+            - authorizationpolicies
+          verbs:
+            - get
+            - list

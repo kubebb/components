@@ -1,0 +1,79 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "mesh-operator.fullname" . }}
+  labels:
+    {{- include "mesh-operator.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - mesh.t7d.io
+    resources:
+      - meshes
+      - meshes/status
+      - istios
+      - istios/status
+      - istioinstalls
+      - istioinstalls/status
+      - ingressgateways
+      - ingressgateways/status
+      - ingressgatewayinstalls
+      - ingressgatewayinstalls/status
+    verbs:
+      - create
+      - get
+      - watch
+      - list
+      - update
+      - delete
+  - apiGroups:
+      - cluster.karmada.io
+    resources:
+      - clusters
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - cert-manager.io
+    resources:
+      - certificates
+      - clusterissuers
+      - issuers
+    verbs:
+      - create
+      - get
+      - watch
+      - list
+      - delete
+      - update
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - create
+      - get
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - create
+      - get
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - list
+      - watch
+      - delete
