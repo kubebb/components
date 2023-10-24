@@ -1,9 +1,9 @@
 apiVersion: v2
 name: tmf-component
 icon: https://raw.githubusercontent.com/kubebb/website/82120a67fd52b20c1ba62f389023fa67d2a62ac1/static/img/market/msa.svg
-description: 一个支持 SpringCloud、Dubbo 等主流框架的微服务治理平台
+description: "一个支持 SpringCloud、Dubbo 等主流框架的微服务治理平台"
 annotations:
-  core.kubebb.k8s.com.cn/displayname: 微服务组件
+  core.kubebb.k8s.com.cn/displayname: "微服务组件"
   # used to set classification for component
   core.kubebb.k8s.com.cn/classification: "服务治理"
   # used to set restricted tenants for component installation positions. Multiple tenants need to be separated
