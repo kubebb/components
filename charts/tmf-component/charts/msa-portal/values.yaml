@@ -1,0 +1,87 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  registry: 192.168.90.214
+  repository: system_containers/msa-portal
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v5.6.0"
+
+imagePullSecrets: []
+nameOverride: "msa-portal"
+appName: "springcloud"
+fullnameOverride: "msa-portal"
+namespaceOverride: "msa-system"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations:
+  sidecar.istio.io/inject: "false"
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8989
+
+ingress:
+  enabled: true
+  legacy: false
+  className: "portal-ingress"
+  hostName: "*"
+  path: /msa-public
+  pathType: ImplementationSpecific
+  annotations: {}
+
+resources:
+  limits:
+    cpu: 2
+    memory: 2Gi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - spring-cloud-api
+        topologyKey: kubernetes.io/hostname
+
+psp:
+  create: true
+
+env: {}

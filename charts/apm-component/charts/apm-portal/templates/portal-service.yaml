@@ -1,0 +1,22 @@
+{{- if .Values.global.host -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: {{ include "apm.portal.fullname" . }}
+    system/appName: {{ include "apm.portal.fullname" . }}
+    system/svcName: {{ include "apm.portal.fullname" . }}
+    {{- include "apm.portal.labels" . | nindent 4 }}
+  name: {{ include "apm.portal.fullname" . }}
+  namespace: {{ include "apm.portal.namespace" . }}
+spec:
+  ports:
+    - name: tcp-msa-1
+      port: {{ .Values.service.port }}
+      protocol: TCP
+      targetPort: 8989
+  selector:
+    {{- include "apm.portal.selectorLabels" . | nindent 4 }}
+  sessionAffinity: None
+  type: ClusterIP
+{{- end -}}

@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    {{- include "apm.operator.labels" . | nindent 4 }}
+    system/svcName: {{ include "apm.operator.fullname" . }}
+  name: {{ include "apm.operator.fullname" . }}
+  namespace: {{ include "apm.operator.namespace" . }}
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: {{ include "apm.operator.fullname" . }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+      labels:
+        {{- include "apm.operator.labels" . | nindent 8 }}
+        system/svcName: {{ include "apm.operator.fullname" . }}
+    spec:
+      containers:
+        - image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: Always
+          name: apm-operator
+          ports:
+            - containerPort: 8765
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          terminationMessagePath: /dev/termination-log
+          readinessProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /info
+              port: 8080
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /info
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 10
+            periodSeconds: 30
+          terminationMessagePolicy: File
+          env:
+            - name: SSL_ENABLED
+              value: "true"
+            - name: STORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pkcs12-password-secret              
+          volumeMounts:
+            - mountPath: /etc/localtime
+              name: localtime
+              readOnly: true
+            - mountPath: /opt/secret
+              name: {{ include "apm.operator.fullname" . }}-cert
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: { }
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: FileOrCreate
+          name: localtime
+        - name: {{ include "apm.operator.fullname" . }}-cert
+          secret:
+            defaultMode: 420
+            secretName: {{ include "apm.operator.fullname" . }}-cert
+      serviceAccountName: {{ include "apm.operator.fullname" . }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

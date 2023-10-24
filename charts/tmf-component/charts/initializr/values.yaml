@@ -1,0 +1,77 @@
+# Default values for initializr-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  registry: 192.168.90.214
+  repository: system_containers/initializr-api
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v5.3.0"
+
+imagePullSecrets: []
+nameOverride: "initializr-api"
+appName: "springcloud"
+fullnameOverride: "initializr-api"
+namespaceOverride: "msa-system"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations:
+  sidecar.istio.io/inject: "false"
+  prometheus.io/path: /stats/prometheus
+  prometheus.io/port: "15020"
+  prometheus.io/scrape: "true"
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  legacy: false
+  className: "portal-ingress"
+  hostName: "*"
+  path: /msa-api/initializr
+  pathType: ImplementationSpecific
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: "rewrite ^/msa-api(/|$)(.*)$ /$2 break;"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 1Gi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+nodeSelector: {}
+
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    operator: Exists
+
+affinity: {}
+
+psp:
+  create: true

@@ -1,0 +1,23 @@
+{{- if .Values.psp.create -}}
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: {{ include "tmf.framework.fullname" . }}
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+  - ALL
+  fsGroup:
+    rule: RunAsAny
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  readOnlyRootFilesystem: false
+  volumes:
+  - secret
+{{- end }}

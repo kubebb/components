@@ -1,0 +1,41 @@
+replicaCount: 1
+
+image:
+  registry: 192.168.90.214
+  repository: system_containers/spring-cloud-api
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v5.7.1"
+
+nameOverride: "spring-cloud-api"
+namespaceOverride: "msa-system"
+appName: "springcloud"
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  legacy: false
+  className: "portal-ingress"
+  hostName: "*"
+  path: /msa-api/api/v1/springcloud
+  pathType: ImplementationSpecific
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: "rewrite ^/msa-api(/|$)(.*)$ /$2 break;"
+
+resources:
+  limits:
+    cpu: 4
+    memory: 2Gi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+env:
+  - name: PROJECT_IMPL
+    value: capkama
+
+psp:
+  create: true

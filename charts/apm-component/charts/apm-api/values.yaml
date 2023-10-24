@@ -1,0 +1,81 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  registry: 192.168.90.214
+  repository: system_containers/apm-api
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v5.6.0"
+
+imagePullSecrets: []
+nameOverride: "apm-api"
+fullnameOverride: "apm-api"
+namespaceOverride: "apm-system"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations:
+  sidecar.istio.io/inject: "false"
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  legacy: false
+  className: "portal-ingress"
+  hostName: "*"
+  path: /apm-api/api/v1/apm
+  pathType: ImplementationSpecific
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: "rewrite ^/apm-api(/|$)(.*)$ /$2 break;"
+
+resources:
+  limits:
+    cpu: 1
+    memory: 2Gi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+psp:
+  create: true
+
+env:
+  - name: PROJECT_IMPL
+    value: capkama

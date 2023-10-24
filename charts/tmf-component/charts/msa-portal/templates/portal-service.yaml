@@ -1,0 +1,22 @@
+{{- if .Values.global.host -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: {{ include "tmf.portal.fullname" . }}
+    system/appName: {{ include "tmf.portal.fullname" . }}
+    system/svcName: {{ include "tmf.portal.fullname" . }}
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: {{ include "tmf.portal.fullname" . }}
+  namespace: {{ include "tmf.portal.namespace" . }}
+spec:
+  ports:
+    - name: tcp-msa-1
+      port: {{ .Values.service.port }}
+      protocol: TCP
+      targetPort: 8989
+  selector:
+    {{- include "tmf.portal.selectorLabels" . | nindent 4 }}
+  sessionAffinity: None
+  type: ClusterIP
+{{- end -}}

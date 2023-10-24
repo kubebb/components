@@ -1,0 +1,198 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: skywalkings.tapm.t7d.io
+  labels:
+    {{- include "apm.operator.labels" . | nindent 4 }}
+spec:
+  group: tapm.t7d.io
+  names:
+    kind: Skywalking
+    plural: skywalkings
+    shortNames:
+      - sw
+    singular: skywalking
+  scope: Namespaced
+  versions:
+    - additionalPrinterColumns:
+        - jsonPath: .spec.config.alarmWebhookUrl
+          name: ALARMWEBHOOKURL
+          type: string
+        - jsonPath: .spec.config.indexPrefix
+          name: INDEXPREFIX
+          type: string
+        - jsonPath: .spec.config.remoteAddr
+          name: REMOTEADDR
+          type: string
+      name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                k8sConfig:
+                  properties:
+                    replicas:
+                      type: integer
+                    defaultResources:
+                      type: boolean
+                    defaultImage:
+                      type: boolean
+                    image:
+                      type: string
+                    envs:
+                      additionalProperties:
+                        type: string
+                      type: object
+                    cpuLimits:
+                      type: string
+                    cpuRequests:
+                      type: string
+                    memoryLimits:
+                      type: string
+                    memoryRequests:
+                      type: string
+                  type: object
+                config:
+                  properties:
+                    remoteAddr:
+                      type: string
+                    traceDataTtl:
+                      type: integer
+                    metricDataTtl:
+                      type: integer
+                    traceBlackSwitcher:
+                      type: boolean
+                    traceBlackSampleRate:
+                      type: integer
+                    traceBlackList:
+                      type: string
+                    sampleRate:
+                      type: integer
+                    indexPrefix:
+                      type: string
+                    apdex:
+                      type: integer
+                    alarmWebhookUrl:
+                      type: string
+                  type: object
+                es:
+                  properties:
+                    username:
+                      type: string
+                    password:
+                      type: string
+                    host:
+                      type: string
+                    port:
+                      type: integer
+                    protocol:
+                      type: string
+                    authType:
+                      type: string
+                    accessToken:
+                      type: string
+                    headers:
+                      type: string
+                  type: object
+              type: object
+            status:
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: skywalkingauthorizations.tapm.t7d.io
+  labels:
+    {{- include "apm.operator.labels" . | nindent 4 }}
+spec:
+  group: tapm.t7d.io
+  names:
+    kind: SkywalkingAuthorization
+    plural: skywalkingauthorizations
+    shortNames:
+      - swa
+    singular: skywalkingauthorization
+  scope: Namespaced
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                remoteAddr:
+                  type: string
+                serverAddr:
+                  type: string
+              type: object
+            status:
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: arthas.tapm.t7d.io
+  labels:
+    {{- include "apm.operator.labels" . | nindent 4 }}
+spec:
+  group: tapm.t7d.io
+  names:
+    kind: Arthas
+    plural: arthas
+    shortNames:
+      - ars
+    singular: arthas
+  scope: Namespaced
+  versions:
+    - name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                config:
+                  type: object
+                k8sConfig:
+                  properties:
+                    replicas:
+                      type: integer
+                    defaultResources:
+                      type: boolean
+                    defaultImage:
+                      type: boolean
+                    image:
+                      type: string
+                    envs:
+                      additionalProperties:
+                        type: string
+                      type: object
+                    cpuLimits:
+                      type: string
+                    cpuRequests:
+                      type: string
+                    memoryLimits:
+                      type: string
+                    memoryRequests:
+                      type: string
+                  type: object
+              type: object
+            status:
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}

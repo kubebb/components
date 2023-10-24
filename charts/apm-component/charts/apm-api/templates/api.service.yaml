@@ -1,0 +1,19 @@
+{{- if .Values.global.host -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    {{- include "apm.api.labels" . | nindent 4 }}
+  name: {{ include "apm.api.fullname" . }}
+  namespace: {{ include "apm.api.namespace" . }}
+spec:
+  ports:
+    - name: tcp-port-0
+      port: {{ .Values.service.port }}
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    {{- include "apm.api.selectorLabels" . | nindent 4 }}
+  sessionAffinity: None
+  type: ClusterIP
+{{- end -}}

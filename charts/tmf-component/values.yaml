@@ -1,0 +1,66 @@
+global:
+  # true as host cluster, which to have spring-cloud-api and msa-portal installed.
+  host: true
+
+  registry: &registry
+    192.168.90.214/system_containers
+  # Ingress host name
+  ingressHostName: &ingressHostName
+    'portal.192.168.90.217.nip.io'
+  ingressClassName: &ingressClassName
+    'portal-ingress'
+  # Specifies cluster reader serviceaccount name.
+  clusterReaderNameOverride: ""
+  # Specifies cluster reader serviceaccount namespace.
+  # Default `addon-system`.
+  clusterReaderNameSpaceOverride: "u4a-system"
+
+msa-portal:
+  enabled: true
+  image:
+    registry: *registry
+    repository: msa-portal
+    tag: "v5.7.1"
+  ingress:
+    hostName: *ingressHostName
+    className: *ingressClassName
+spring-cloud-api:
+  enabled: true
+  image:
+    registry: *registry
+    repository: spring-cloud-api
+    tag: "v5.7.1"
+  ingress:
+    hostName: *ingressHostName
+    className: *ingressClassName
+initializr:
+  enabled: true
+  image:
+    registry: *registry
+    repository: initializr-api
+    tag: "v5.3.0"
+  ingress:
+    hostName: *ingressHostName
+    className: *ingressClassName
+
+framework-operator:
+  enabled: true
+  clusterId: default-cluster
+  image:
+    registry: *registry
+    repository: framework-operator-server
+    tag: "v5.7.1"
+  certImage:
+    registry: *registry
+    repository: operator-cert-tmf
+    tag: "v5.7.1"
+  envInjectorImage:
+    registry: *registry
+    repository: tmf-env-injector
+    tag: "latest"
+  contract:
+    enable: "true"
+    elasticsearchHost: "http://192.168.90.201:9200"
+    elasticsearchUser: "admin"
+    elasticsearchPassword: "admin"
+    clusterId: "default-cluster"

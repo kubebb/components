@@ -1,0 +1,52 @@
+apiVersion: v2
+name: tmf-component
+icon: https://raw.githubusercontent.com/kubebb/website/82120a67fd52b20c1ba62f389023fa67d2a62ac1/static/img/market/msa.svg
+description: 一个支持 SpringCloud、Dubbo 等主流框架的微服务治理平台
+annotations:
+  core.kubebb.k8s.com.cn/displayname: 微服务组件
+  # used to set classification for component
+  core.kubebb.k8s.com.cn/classification: "服务治理"
+  # used to set restricted tenants for component installation positions. Multiple tenants need to be separated
+  # no restricted-tenants by default
+  core.kubebb.k8s.com.cn/restricted-tenants: "system-tenant"
+  # used to set restricted namespaces for component installation positions. Multiple namespaces need to be separated
+  # no restricted-tenants by default
+  core.kubebb.k8s.com.cn/restricted-namespaces: "msa-system"
+keywords:
+  - 统一注册发现
+  - 动态配置管理
+  - 统一流量管理
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.0.5
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "5.7.1"
+
+dependencies:
+  - name: framework-operator
+    condition: framework-operator.enabled
+    version: 5.7.1
+  - name: initializr
+    condition: initializr.enabled
+    version: 5.7.1
+  - name: msa-portal
+    condition: msa-portal.enabled
+    version: 5.7.1
+  - name: spring-cloud-api
+    condition: spring-cloud-api.enabled
+    version: 5.7.1

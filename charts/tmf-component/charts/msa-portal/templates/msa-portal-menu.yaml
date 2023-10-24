@@ -1,0 +1,475 @@
+{{- if .Values.global.host -}}
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-config-center
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa-config
+    uid: ""
+  pathname: /msa/msa-manage/config-center
+  project: true
+  rankingInColumn: 100
+  tenant: true
+  text: 配置管理
+  textEn: Config Center
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-config-query
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa-config
+    uid: ""
+  pathname: /msa/msa-manage/config-query
+  project: true
+  rankingInColumn: 200
+  tenant: true
+  text: 监听查询
+  textEn: Listener query
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-overview
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"nav-overview","data":"<defs><style></style></defs><path d=\"M135.616
+    569.024h109.568v64.64H135.616v-64.64zm642.112 0h109.568v64.64H777.728v-64.64zM479.36
+    216.768H544v109.504h-64.64V216.768zm221.888 168.064l77.44-77.376 45.696 45.76-77.44
+    77.376-45.696-45.76zm-412.032 48.96l-77.376-77.44 45.76-45.76 77.376 77.44-45.76
+    45.76zm393.536 14.72l-220.8 138.752a61.632 61.632 0 00-26.56 51.456 61.952 61.952
+    0 00106.496 42.368l.512-.64a57.152 57.152 0 007.552-9.92l135.232-222.08-2.432.064z\"></path><path
+    d=\"M1024 592v-.256l-.064-1.024a515.072 515.072 0 00-5.184-67.84 521.088 521.088
+    0 00-18.176-83.84c-1.536-4.864-3.584-9.536-5.248-14.336a511.104 511.104 0 00-20.672-50.432c-3.008-6.4-5.888-12.8-9.216-19.072a512.64
+    512.64 0 00-33.28-54.848c-1.408-1.984-2.304-4.16-3.712-6.144l-.576.384a514.496
+    514.496 0 00-101.824-106.048l.384-.512c-2.688-2.112-5.696-3.456-8.384-5.504a504.448
+    504.448 0 00-59.072-38.72c-3.264-1.792-6.528-3.392-9.856-5.12a510.208 510.208
+    0 00-60.16-26.496c-5.824-2.176-11.584-4.48-17.472-6.4a482.112 482.112 0 00-67.456-17.216c-5.632-1.024-11.328-1.792-17.024-2.624a516.224
+    516.224 0 00-74.944-6.08h-.128a508.16 508.16 0 00-74.944 6.144c-5.696.768-11.392
+    1.536-17.024 2.56a500.288 500.288 0 00-67.456 17.088c-5.888 1.92-11.648 4.288-17.472
+    6.4a515.84 515.84 0 00-60.224 26.496c-3.264 1.728-6.528 3.328-9.728 5.12-20.736
+    11.456-40.32 24.64-59.136 38.784-2.688 2.048-5.696 3.392-8.384 5.504l.384.512A514.496
+    514.496 0 0096.128 294.528l-.576-.384c-1.408 1.92-2.368 4.16-3.712 6.08-12.224
+    17.536-23.296 35.84-33.28 54.912-3.328 6.272-6.208 12.672-9.216 19.072a495.616
+    495.616 0 00-20.608 50.432c-1.664 4.8-3.776 9.472-5.248 14.336a500.672 500.672
+    0 00-18.24 83.84c-3.008 22.272-5.12 44.8-5.184 67.84L0 591.68v.576a513.344 513.344
+    0 00118.464 328.128 62.592 62.592 0 0048 23.744h691.008a62.784 62.784 0 0048-23.744
+    508.608 508.608 0 0087.936-153.792 512.192 512.192 0 0030.592-174.4V592zM244.288
+    233.472a447.296 447.296 0 0160.8-38.656c16.832-8.768 34.176-16.256 51.904-22.784
+    5.184-1.92 10.24-3.968 15.488-5.696 19.2-6.336 38.848-11.264 58.816-14.912 5.248-.96
+    10.56-1.664 15.872-2.432a445.696 445.696 0 0164.768-5.248h.128c21.824-.064 43.392
+    2.176 64.768 5.248 5.312.768 10.624 1.472 15.872 2.432 19.968 3.648 39.616 8.576
+    58.816 14.912 5.248 1.728 10.304 3.776 15.488 5.696 17.728 6.528 35.072 14.016
+    51.904 22.848 3.648 1.92 7.36 3.84 10.944 5.824 17.344 9.728 33.92 20.8 49.92
+    32.832a445.76 445.76 0 01129.088 151.232c2.944 5.632 5.568 11.392 8.256 17.152
+    6.592 14.016 12.48 28.224 17.536 42.816 1.6 4.608 3.52 9.024 4.992 13.632a451.968
+    451.968 0 0115.808 73.088c2.56 19.136 4.352 38.464 4.48 58.048l.128 2.624c-.064
+    18.944-2.56 37.504-4.864 56.128-.896 7.104-.64 14.4-1.856 21.44-.96 5.696-3.2
+    11.072-4.416 16.704a448.384 448.384 0 01-92.544 193.024L512 879.808l-344.32-.384A448.384
+    448.384 0 0175.136 686.4c-1.216-5.632-3.392-11.008-4.416-16.704-1.216-7.04-.96-14.336-1.856-21.44-2.368-18.624-4.864-37.184-4.928-56.128l.128-2.624a459.904
+    459.904 0 017.232-75.84c3.264-18.752 7.424-37.248 13.12-55.36 1.472-4.672 3.392-9.088
+    4.992-13.632 5.056-14.528 10.944-28.8 17.536-42.816 2.688-5.76 5.312-11.52 8.256-17.152
+    8.64-16.384 18.24-32.384 28.928-47.808a451.84 451.84 0 01100.16-103.424z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa
+    uid: ""
+  pathname: /msa/
+  rankingInColumn: 100
+  tenant: true
+  text: 微服务概览
+  textEn: Overview
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-list
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"msa-config-center","data":"<defs><style></style></defs><path d=\"M512
+    74.4l368 218.08v439.072L512 949.6 144 731.536V292.464L512 74.4M512 0L80 256v512l432
+    256 432-256V256L512 0z\"></path><path d=\"M512 704c-105.872 0-192-86.128-192-192s86.128-192
+    192-192 192 86.128 192 192-86.128 192-192 192zm0-320c-70.576 0-128 57.424-128
+    128s57.424 128 128 128 128-57.424 128-128-57.424-128-128-128z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa
+    uid: ""
+  pathname: /msa/msa-manage
+  project: true
+  rankingInColumn: 200
+  tenant: true
+  text: 服务管控
+  textEn: MSA List
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-config
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"tmf-set-center","data":"<defs><style>@font-face{font-family:feedback-iconfont;src:url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff2?t=1630033759944)
+    format(&quot;woff2&quot;),url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff?t=1630033759944)
+    format(&quot;woff&quot;),url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.ttf?t=1630033759944)
+    format(&quot;truetype&quot;)}</style></defs><path d=\"M834.28 100.53L192.41 98h-.36a88.56
+    88.56 0 00-61.72 24.67 84.33 84.33 0 00-26.27 61l-2 658.33A84.45 84.45 0 00127
+    902.13a88.37 88.37 0 0063 26l642.88.84h.12c48.46 0 87.92-38.45 88-85.78l1-656.66c0-47.22-39.32-85.81-87.72-86zm38.66
+    742.62c0 20.89-18 37.85-40 37.85h-.05L190 880.16a40.68 40.68 0 01-29-11.9 36.71
+    36.71 0 01-10.91-26.11l2-658.34a36.74 36.74 0 0111.52-26.51 40.84 40.84 0 0128.44-11.3h.17l641.87
+    2.51c22 .08 39.87 17.11 39.84 38z\"></path><path d=\"M769.67 320.11H506.6c-10.92-40.73-49-70.87-94.1-70.87s-83.18
+    30.14-94.1 70.87h-64.07a24 24 0 000 48h64.07c10.92 40.72 49 70.86 94.1 70.86s83.18-30.14
+    94.1-70.86h263.07a24 24 0 000-48zM412.5 391c-27.16 0-49.26-21-49.26-46.86s22.1-46.87
+    49.26-46.87 49.26 21 49.26 46.87S439.66 391 412.5 391zm357.17 267.91H506.6c-10.92-40.72-49-70.86-94.1-70.86s-83.18
+    30.14-94.1 70.86h-64.07a24 24 0 000 48h64.07c10.92 40.73 49 70.87 94.1 70.87s83.18-30.14
+    94.1-70.87h263.07a24 24 0 000-48zM412.5 729.78c-27.16 0-49.26-21-49.26-46.87s22.1-46.86
+    49.26-46.86 49.26 21 49.26 46.86-22.1 46.87-49.26 46.87zm357.17-240.27H705.6c-10.92-40.72-49-70.86-94.1-70.86s-83.18
+    30.14-94.1 70.86H254.33a24 24 0 000 48H517.4c10.92 40.73 49 70.86 94.1 70.86s83.18-30.13
+    94.1-70.86h64.07a24 24 0 000-48zM611.5 560.37c-27.16 0-49.26-21-49.26-46.86s22.1-46.86
+    49.26-46.86 49.26 21 49.26 46.86-22.1 46.86-49.26 46.86z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa
+    uid: ""
+  rankingInColumn: 300
+  tenant: true
+  text: 配置中心
+  textEn: Config Center
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"msa","data":"<path d=\"M548.312 827.915v-36.312c0-14.525-14.525-36.312-36.312-36.312-14.525
+    0-36.312 14.525-36.312 36.312v36.312c-36.312 14.525-65.362 50.837-65.362 94.411C410.326
+    973.163 453.901 1024 512 1024c50.837 0 101.674-43.574 101.674-101.674 0-43.574-29.05-79.886-65.362-94.411zM512
+    951.375c-14.525 0-36.312-14.524-36.312-36.311 0-14.525 14.525-36.312 36.312-36.312
+    14.525 0 36.312 14.525 36.312 36.312S526.525 951.376 512 951.376zm326.809-326.808c-29.05
+    0-58.1 7.263-79.887 29.05L693.56 602.78c7.263-21.787 14.525-50.837 14.525-72.624
+    0-94.411-72.624-181.56-167.035-196.085v-72.624c58.099-14.525 101.673-65.362 101.673-123.461C642.723
+    65.362 584.624 7.262 512 7.262s-130.723 58.1-130.723 130.724c0 58.1 43.574 108.936
+    101.673 123.46v72.625c-94.411 14.525-167.035 94.411-167.035 196.085 0 29.05 7.262
+    50.837 14.525 72.624l-65.362 50.837c-21.787-14.525-50.837-29.05-79.887-29.05-72.624
+    0-130.723 58.1-130.723 130.724s58.1 130.723 130.723 130.723 130.724-58.1 130.724-130.723c0-21.787-7.263-36.312-7.263-50.837l58.1-50.837C403.064
+    697.191 453.9 718.979 512 718.979s108.936-21.788 145.248-65.362l58.1 43.574c-7.263
+    14.525-7.263 36.313-7.263 50.837 0 72.624 58.1 130.724 130.724 130.724s130.723-58.1
+    130.723-130.724-58.1-123.46-130.723-123.46zM185.19 820.652c-36.312 0-65.361-29.05-65.361-65.361s29.05-65.362
+    65.361-65.362 65.362 29.05 65.362 65.362-29.05 65.361-65.362 65.361zm261.447-689.929c0-36.312
+    29.05-65.361 65.362-65.361s65.362 29.05 65.362 65.361-29.05 65.362-65.362 65.362-65.362-29.05-65.362-65.362zM512
+    653.617c-72.624 0-130.723-58.1-130.723-130.723S439.376 392.17 512 392.17s130.723
+    58.1 130.723 130.724S584.624 653.617 512 653.617zm326.809 167.035c-36.313 0-65.362-29.05-65.362-65.361s29.05-65.362
+    65.362-65.362 65.361 29.05 65.361 65.362-29.05 65.361-65.361 65.361zm-689.93-363.12c29.05
+    0 50.837-14.525 72.625-29.05l29.05 14.525h14.524c14.525 0 21.787-7.262 29.05-21.787
+    7.262-14.525 0-36.312-14.525-43.575l-29.05-14.524v-7.263c0-50.837-43.574-101.674-101.674-101.674-50.836
+    0-101.673 43.575-101.673 101.674s50.837 101.674 101.673 101.674zm0-130.723c14.525
+    0 36.312 14.524 36.312 36.312 0 14.524-14.524 36.312-36.312 36.312s-36.312-14.525-36.312-36.312c7.263-21.788
+    21.788-36.312 36.312-36.312zm610.043 116.198h14.525l29.05-14.525c14.524 21.788
+    43.574 29.05 72.624 29.05 50.836 0 101.673-43.575 101.673-101.674S933.22 254.184
+    875.121 254.184 773.447 297.76 773.447 355.858v7.263l-29.05 14.524c-14.525 7.263-21.787
+    29.05-14.525 43.575 7.263 14.525 14.525 21.787 29.05 21.787zM875.121 326.81c14.524
+    0 36.312 14.524 36.312 36.312 0 14.524-14.525 36.312-36.312 36.312s-36.312-14.525-36.312-36.312
+    14.524-36.312 36.312-36.312z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: microservice-framework
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: 微服务框架
+  textEn: MSA
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: microservice-framework
+spec:
+  column: 10
+  getTitleForReplaceSider: {}
+  icon: '{"name":"msa-color","data":"<path d=\"M512.051 660.787l-65.126-37.58-189.901-108.903v245.248l255.027
+    147.2z\" opacity=\"0.8\"></path><path d=\"M767.078 508.774l-73.318 42.394-181.709
+    109.26v241.716l255.027-147.2v-246.17z\"></path><path d=\"M256.768 271.667l-65.075-37.632L1.792
+    125.184v245.248l254.976 147.2z\" opacity=\"0.8\"></path><path d=\"M511.795 119.654l-73.318
+    42.343-181.658 109.26v241.716l254.976-147.2V119.654z\"></path><path d=\"M767.18
+    266.854l-65.074-37.632-189.901-108.85v245.247l254.976 147.2z\" opacity=\"0.8\"></path><path
+    d=\"M1022.208 117.248L948.89 159.59 767.232 268.851v241.715l254.976-147.2V117.248z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: ""
+    kind: ""
+    name: ""
+    uid: ""
+  rankingInColumn: 10
+  tenant: true
+  text: 服务治理
+  textEn: Microservice Framework
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-global-setting
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-msa-config
+    uid: ""
+  pathname: /msa/setting/global-setting
+  rankingInColumn: 100
+  requiredRoles:
+    - PlatformAdmin
+    - SystemAdmin
+  tenant: true
+  text: 微服务环境配置
+  textEn: System Settings
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-framework-topology
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-msa-config
+    uid: ""
+  pathname: /msa/setting/framework-topology
+  rankingInColumn: 200
+  requiredRoles:
+    - PlatformAdmin
+    - SystemAdmin
+    - TenantAdmin
+  tenant: true
+  text: 微服务框架拓扑
+  textEn: MSA Framework Topology
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-ops-config
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-msa-config
+    uid: ""
+  pathname: /msa/setting/msa-config
+  rankingInColumn: 300
+  requiredRoles:
+    - PlatformAdmin
+    - SystemAdmin
+    - TenantAdmin
+  tenant: true
+  text: 微服务框架管理
+  textEn: MSA Config
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-setting-system-config
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-msa-config
+    uid: ""
+  pathname: /msa/setting/system-config
+  rankingInColumn: 400
+  requiredRoles:
+    - PlatformAdmin
+    - SystemAdmin
+    - TenantAdmin
+  tenant: true
+  text: 微服务系统配置
+  textEn: MSA Setting System Config
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: msa-framework-authorization
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-msa-config
+    uid: ""
+  pathname: /msa/setting/framework-authorization
+  rankingInColumn: 500
+  requiredRoles:
+    - PlatformAdmin
+    - SystemAdmin
+    - TenantAdmin
+  tenant: true
+  text: 微服务框架授权
+  textEn: MSA Framework Authorization
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: msa
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+  name: platform-management-msa-config
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"nav-wrench","data":"<defs><style></style></defs><path d=\"M836.032
+    795.904a21.888 21.888 0 01-.256 31.36 22.272 22.272 0 01-30.912-.512l-135.68-135.296a22.08
+    22.08 0 01.512-31.168c8.32-8.32 22.592-8.32 31.36 0l134.976 135.616zm-59.968-763.84c14.144
+    0 28.48 1.088 42.752 4.48 14.976 2.624 28.48 7.104 41.664 12.544a36.8 36.8 0 0111.456
+    59.84c-28.032 28.032-56 55.744-83.776 83.776l4.736 16.768 4.224 17.024 17.28 4.736
+    16.768 4.48c27.776-28.032 55.744-55.552 83.776-83.776a37.312 37.312 0 0152.416
+    0c4.224 4.48 7.36 9.92 8.96 15.68 4.928 11.968 8.704 24.384 11.072 37.184v.512h.256a216.512
+    216.512 0 01-59.136 195.264 214.912 214.912 0 01-152.32 63.104c-4.224 0-8.32-.256-12.544-.256l-40.832
+    40.32 224.64 224.64 1.792 2.048a151.68 151.68 0 01-1.792 212.8l-.512.512c-29.824
+    29.312-68.096 43.968-106.816 43.968S761.92 973.12 732.8 943.168L507.456 718.4
+    277.888 948.608c-47.936 47.936-105.728 52.16-153.216 31.744a149.312 149.312 0
+    01-48.384-32.704h-.256a153.408 153.408 0 01-32.448-48.192c-20.416-47.424-16.192-105.472
+    32-153.216v-.512l256.064-256.064-93.888-93.76-83.264-24.896a36.48 36.48 0 01-23.552-20.672l-79.808-187.2a36.8
+    36.8 0 016.528-42.944L91.2 86.976l32.96-32.96a36.352 36.352 0 0140.32-7.872l189.504
+    80.896a36.48 36.48 0 0120.992 23.552l24.64 83.264 93.696 93.696 67.264-66.752c-.256-4.672-.512-9.152-.512-12.544h.256c0-59.968
+    24.128-114.176 63.104-152.96v-.256a216.768 216.768 0 01152.64-62.976zM670.272
+    556.16L559.808 666.624l224.64 224.64a78.4 78.4 0 00110.592.256l.512-.256c15.232-14.592
+    22.208-35.392 22.208-55.296a77.44 77.44 0 00-21.248-53.696L670.272 556.16zM383.36
+    437.76l57.792-57.6-100.288-100.544a37.312 37.312 0 01-9.92-18.304l-21.76-73.536-150.72-63.616-15.424
+    15.232-15.488 15.68 64.128 150.784 75.904 22.208a32.256 32.256 0 0115.68 9.664L383.36
+    437.76zm387.52-331.968a141.184 141.184 0 00-95.232 41.856 140.8 140.8 0 00-41.92
+    100.608h.512v10.24l1.088 8.704a36.8 36.8 0 01-9.92 33.216L127.616 797.76h-.256c-23.04
+    23.808-25.728 50.816-16.192 73.024 3.968 8.576 9.92 17.28 17.024 24.64 7.616 7.36
+    15.936 13.056 25.088 17.024 22.208 9.664 49.024 7.104 72.576-15.936l254.976-254.976
+    1.088-1.088 162.24-162.624 1.088-1.344 77.952-77.44h.256a35.328 35.328 0 0131.168-10.752c3.648.512
+    7.104 1.088 11.008 1.088a144 144 0 00111.04-40.512v-.512c24.384-24 39.808-57.792
+    41.152-95.36-15.936 16.192-32 32-47.936 48.384a37.952 37.952 0 01-37.184 11.2l-37.184-10.24-37.632-10.24a35.84
+    35.84 0 01-26.176-26.176l-9.92-37.632-10.24-37.632a35.84 35.84 0 019.664-34.752c16.32-16.768
+    32.832-33.344 49.664-50.112z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-approval
+    uid: ""
+  rankingInColumn: 200
+  requiredRoles:
+    - PlatformAdmin
+    - SystemAdmin
+    - TenantAdmin
+  tenant: true
+  text: 微服务配置
+  textEn: MSA Config & Ops
+status: {}
+
+---
