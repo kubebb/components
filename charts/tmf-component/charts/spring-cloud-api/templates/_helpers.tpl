@@ -30,7 +30,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Api Selector labels
 */}}
 {{- define "api.selectorLabels" -}}
-name: {{ include "api.fullname" . }}
+app: {{ include "api.fullname" . }}
 {{- end }}
 
 {{/*

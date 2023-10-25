@@ -25,7 +25,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Api Selector labels
 */}}
 {{- define "tmf.initializr.selectorLabels" -}}
-name: {{ include "tmf.initializr.fullname" . }}
+app: {{ include "tmf.initializr.fullname" . }}
 {{- end }}
 
 {{/*

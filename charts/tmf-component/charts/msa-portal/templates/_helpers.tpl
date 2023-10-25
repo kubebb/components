@@ -28,7 +28,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Api Selector labels
 */}}
 {{- define "tmf.portal.selectorLabels" -}}
-name: {{ include "tmf.portal.fullname" . }}
+app: {{ include "tmf.portal.fullname" . }}
 {{- end }}
 
 {{/*

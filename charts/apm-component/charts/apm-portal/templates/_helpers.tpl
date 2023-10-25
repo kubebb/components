@@ -37,7 +37,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Api Selector labels
 */}}
 {{- define "apm.portal.selectorLabels" -}}
-name: {{ include "apm.portal.fullname" . }}
+app: {{ include "apm.portal.fullname" . }}
 {{- end }}
 
 {{/*
