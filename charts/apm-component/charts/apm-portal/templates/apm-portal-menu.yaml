@@ -237,7 +237,6 @@ spec:
   text: 应用诊断
   textEn: Application diagnosis
 status: {}
-
 ---
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
@@ -273,6 +272,7 @@ spec:
   textEn: Performance monitoring
 status: {}
 
+{{- if not (lookup "core.kubebb.k8s.com.cn/v1alpha1" "Menu" "" "monitoring-and-ops") }}
 ---
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
@@ -280,7 +280,6 @@ metadata:
   creationTimestamp: null
   labels:
     portal: apm
-    {{- include "apm.portal.menu.labels" . | nindent 4 }}
   name: monitoring-and-ops
 spec:
   column: 30
@@ -314,7 +313,7 @@ spec:
   text: 监控与运维
   textEn: Monitoring and O&M
 status: {}
-
+{{- end }}
 ---
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu

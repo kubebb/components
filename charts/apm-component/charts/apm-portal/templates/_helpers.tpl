@@ -25,7 +25,6 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{- define "apm.portal.menu.labels" -}}
-portal: apm
 helm.sh/chart: {{ include "apm.portal.chart" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}

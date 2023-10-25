@@ -6,15 +6,6 @@ metadata:
   labels:
     {{- include "apm.portal.labels" . | nindent 4 }}
 spec:
-  application:
-    helmChart:
-      name: apm-helm-chart
-      valuesConfig: there is the value of helm values.yaml
-      version: v0.0.1
-    name: apm
-  menu:
-    name: apm-root-menu
-  portal:
-    entry: /apm-public/public/index.html
-    path: /apm
+  entry: /apm-public/public/index.html
+  path: /apm
 {{- end -}}
