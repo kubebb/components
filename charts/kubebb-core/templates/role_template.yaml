@@ -1,0 +1,154 @@
+{{ if .Capabilities.APIVersions.Has "iam.tenxcloud.com/v1alpha1/RoleTemplate" -}}
+apiVersion: iam.tenxcloud.com/v1alpha1
+kind: RoleTemplate
+metadata:
+  annotations:
+    description: "kubebb 内置默认项目角色模板"
+    displayName: KubeBB
+  labels:
+    buildin: "true"
+  name: kubebb
+spec:
+  kindType: Role
+  resources:
+  - category: 我安装的
+    displayName: 安装计划
+    rules:
+    - apiGroups:
+      - core.kubebb.k8s.com.cn/v1alpha1
+      resources:
+      - componentplans
+      verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+    - apiGroups:
+        - core.kubebb.k8s.com.cn/v1alpha1
+      resources:
+        - componentplans/status
+      verbs:
+        - get
+  - category: 我安装的
+    displayName: 组件
+    rules:
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - components
+        verbs:
+          - get
+          - list
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - components/status
+        verbs:
+          - get
+  - category: 我安装的
+    displayName: 订阅计划
+    rules:
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - subscriptions
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - subscriptions/status
+        verbs:
+          - get
+  - category: 我安装的
+    displayName: 普通配置
+    rules:
+      - apiGroups:
+          - v1
+        resources:
+          - configmaps
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+  - category: 我安装的
+    displayName: 仓库
+    rules:
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - repositories
+        verbs:
+          - get
+          - list
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - repositories/status
+        verbs:
+          - get
+  - category: 我订阅的
+    displayName: 安装计划
+    rules:
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - componentplans
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - componentplans/status
+        verbs:
+          - get
+  - category: 我订阅的
+    displayName: 订阅计划
+    rules:
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - subscriptions
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+      - apiGroups:
+          - core.kubebb.k8s.com.cn/v1alpha1
+        resources:
+          - subscriptions/status
+        verbs:
+          - get
+  - category: 我订阅的
+    displayName: 普通配置
+    rules:
+      - apiGroups:
+          - v1
+        resources:
+          - configmaps
+        verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+{{- end }}
