@@ -1,0 +1,24 @@
+{{- if .Values.psp.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: podsecuritypolicy
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups:
+      - policy
+    resourceNames:
+      - {{ .Values.name }}
+    resources:
+      - podsecuritypolicies
+    verbs:
+      - use
+  - apiGroups:
+      - extensions
+    resourceNames:
+      - {{ .Values.name }}
+    resources:
+      - podsecuritypolicies
+    verbs:
+      - use
+{{- end }}

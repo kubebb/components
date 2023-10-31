@@ -1,0 +1,443 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-open-api-column
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-open-api
+    uid: ""
+  pathname: /tamp/api-group
+  project: true
+  rankingInColumn: 100
+  tenant: true
+  text: API 分组
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-open-api-manage
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-open-api
+    uid: ""
+  pathname: /tamp/api-gateway
+  project: true
+  rankingInColumn: 200
+  tenant: true
+  text: API 管理
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-open-api-traffic-control
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-open-api
+    uid: ""
+  pathname: /tamp/api-gateway/traffic-control
+  project: true
+  rankingInColumn: 300
+  tenant: true
+  text: 流量控制
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-open-api-plugin
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-open-api
+    uid: ""
+  pathname: /tamp/api-gateway/plugin
+  project: true
+  rankingInColumn: 400
+  tenant: true
+  text: 插件管理
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-call-api-consumer
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-call-api
+    uid: ""
+  pathname: /tamp/api-call/consumer
+  project: true
+  rankingInColumn: 100
+  tenant: true
+  text: 应用管理
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-overview
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"nav-overview","data":"<defs><style></style></defs><path d=\"M135.616
+    569.024h109.568v64.64H135.616v-64.64zm642.112 0h109.568v64.64H777.728v-64.64zM479.36
+    216.768H544v109.504h-64.64V216.768zm221.888 168.064l77.44-77.376 45.696 45.76-77.44
+    77.376-45.696-45.76zm-412.032 48.96l-77.376-77.44 45.76-45.76 77.376 77.44-45.76
+    45.76zm393.536 14.72l-220.8 138.752a61.632 61.632 0 00-26.56 51.456 61.952 61.952
+    0 00106.496 42.368l.512-.64a57.152 57.152 0 007.552-9.92l135.232-222.08-2.432.064z\"></path><path
+    d=\"M1024 592v-.256l-.064-1.024a515.072 515.072 0 00-5.184-67.84 521.088 521.088
+    0 00-18.176-83.84c-1.536-4.864-3.584-9.536-5.248-14.336a511.104 511.104 0 00-20.672-50.432c-3.008-6.4-5.888-12.8-9.216-19.072a512.64
+    512.64 0 00-33.28-54.848c-1.408-1.984-2.304-4.16-3.712-6.144l-.576.384a514.496
+    514.496 0 00-101.824-106.048l.384-.512c-2.688-2.112-5.696-3.456-8.384-5.504a504.448
+    504.448 0 00-59.072-38.72c-3.264-1.792-6.528-3.392-9.856-5.12a510.208 510.208
+    0 00-60.16-26.496c-5.824-2.176-11.584-4.48-17.472-6.4a482.112 482.112 0 00-67.456-17.216c-5.632-1.024-11.328-1.792-17.024-2.624a516.224
+    516.224 0 00-74.944-6.08h-.128a508.16 508.16 0 00-74.944 6.144c-5.696.768-11.392
+    1.536-17.024 2.56a500.288 500.288 0 00-67.456 17.088c-5.888 1.92-11.648 4.288-17.472
+    6.4a515.84 515.84 0 00-60.224 26.496c-3.264 1.728-6.528 3.328-9.728 5.12-20.736
+    11.456-40.32 24.64-59.136 38.784-2.688 2.048-5.696 3.392-8.384 5.504l.384.512A514.496
+    514.496 0 0096.128 294.528l-.576-.384c-1.408 1.92-2.368 4.16-3.712 6.08-12.224
+    17.536-23.296 35.84-33.28 54.912-3.328 6.272-6.208 12.672-9.216 19.072a495.616
+    495.616 0 00-20.608 50.432c-1.664 4.8-3.776 9.472-5.248 14.336a500.672 500.672
+    0 00-18.24 83.84c-3.008 22.272-5.12 44.8-5.184 67.84L0 591.68v.576a513.344 513.344
+    0 00118.464 328.128 62.592 62.592 0 0048 23.744h691.008a62.784 62.784 0 0048-23.744
+    508.608 508.608 0 0087.936-153.792 512.192 512.192 0 0030.592-174.4V592zM244.288
+    233.472a447.296 447.296 0 0160.8-38.656c16.832-8.768 34.176-16.256 51.904-22.784
+    5.184-1.92 10.24-3.968 15.488-5.696 19.2-6.336 38.848-11.264 58.816-14.912 5.248-.96
+    10.56-1.664 15.872-2.432a445.696 445.696 0 0164.768-5.248h.128c21.824-.064 43.392
+    2.176 64.768 5.248 5.312.768 10.624 1.472 15.872 2.432 19.968 3.648 39.616 8.576
+    58.816 14.912 5.248 1.728 10.304 3.776 15.488 5.696 17.728 6.528 35.072 14.016
+    51.904 22.848 3.648 1.92 7.36 3.84 10.944 5.824 17.344 9.728 33.92 20.8 49.92
+    32.832a445.76 445.76 0 01129.088 151.232c2.944 5.632 5.568 11.392 8.256 17.152
+    6.592 14.016 12.48 28.224 17.536 42.816 1.6 4.608 3.52 9.024 4.992 13.632a451.968
+    451.968 0 0115.808 73.088c2.56 19.136 4.352 38.464 4.48 58.048l.128 2.624c-.064
+    18.944-2.56 37.504-4.864 56.128-.896 7.104-.64 14.4-1.856 21.44-.96 5.696-3.2
+    11.072-4.416 16.704a448.384 448.384 0 01-92.544 193.024L512 879.808l-344.32-.384A448.384
+    448.384 0 0175.136 686.4c-1.216-5.632-3.392-11.008-4.416-16.704-1.216-7.04-.96-14.336-1.856-21.44-2.368-18.624-4.864-37.184-4.928-56.128l.128-2.624a459.904
+    459.904 0 017.232-75.84c3.264-18.752 7.424-37.248 13.12-55.36 1.472-4.672 3.392-9.088
+    4.992-13.632 5.056-14.528 10.944-28.8 17.536-42.816 2.688-5.76 5.312-11.52 8.256-17.152
+    8.64-16.384 18.24-32.384 28.928-47.808a451.84 451.84 0 01100.16-103.424z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-index
+    uid: ""
+  pathname: /tamp/api-overview
+  rankingInColumn: 100
+  tenant: true
+  text: API 概览
+  textEn: API Overview
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-open-api
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"open-api","data":"<defs><style></style></defs><path d=\"M821.888
+    421.632l-72.832-8.896c10.112-78.784-30.528-126.4-66.432-152.448-71.232-51.648-180.16-62.272-264.96-25.792-50.88
+    21.888-113.728 69.76-124.416 173.504l-73.024-7.104c11.072-107.712 70.656-190.016
+    167.808-231.744 107.84-46.336 246.976-32.448 338.432 33.856 72.832 52.8 106.752
+    130.432 95.424 218.624z\"></path><path d=\"M262.72 865.216c-6.08 0-11.84-.256-17.152-.64-105.408-8-206.848-90.56-235.904-192-24.832-86.656
+    6.912-168.448 87.104-224.384 62.464-39.04 133.504-39.808 136.512-39.872l.32 71.552c-.384
+    0-53.184.896-95.68 27.52-68.224 47.616-69.12 105.792-57.6 146.048 20.864 72.768
+    95.936 134.208 170.88 139.904 73.472 5.504 134.976-40 177.856-131.776l1.216-2.368c157.952-282.432
+    316.16-297.024 396.48-280.512 117.888 24.192 189.888 135.104 197.824 227.136 7.36
+    86.144-35.84 155.776-115.584 186.368-33.92 12.992-74.24 18.816-119.552 17.536l2.24-71.424c35.392
+    1.088 65.856-3.2 90.432-12.608 66.624-25.472 72-82.24 69.312-113.856-5.76-67.328-59.648-146.752-139.776-163.2-102.464-20.992-217.664
+    67.776-316.288 243.648-68.928 146.496-169.28 172.928-232.64 172.928z\"></path><path
+    d=\"M950.848 777.408c0 57.792-48.128 104.704-107.456 104.704s-107.456-46.848-107.456-104.704c0-57.792
+    48.128-104.704 107.456-104.704s107.456 46.848 107.456 104.704zm-610.816-341.76c0
+    57.792-48.128 104.704-107.456 104.704S125.12 493.44 125.12 435.648c0-57.792 48.128-104.704
+    107.456-104.704s107.456 46.848 107.456 104.704z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-index
+    uid: ""
+  project: true
+  rankingInColumn: 200
+  tenant: true
+  text: 开放 API
+  textEn: Open API
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-call-api
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"call-api","data":"<defs><style></style></defs><path d=\"M863.488
+    434.304h-58.752V258.56h-234.88v-58.624h293.632v234.368zm-432.832 27.584H64V95.168h366.656v366.72zm-293.312-73.344h220.032V168.512H137.344v220.032zM960
+    931.52H593.344V564.864H960V931.52zm-293.312-73.344H886.72V638.144H666.688v220.032zm-184.32-51.712H188.736V572.16h58.752v175.744h234.88v58.56z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-index
+    uid: ""
+  project: true
+  rankingInColumn: 300
+  tenant: true
+  text: 调用 API
+  textEn: Call API
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-statistics
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"statistics","data":"<path d=\"M7.314 899.657H1024v58.514H7.314v-58.514zM0
+    636.343l124.343-80.457L358.4 672.914l270.629-380.343 263.314 197.486L1024 482.743v36.571l-146.286
+    7.315-241.371-175.543-256 373.028-248.686-124.343L0 687.543v-51.2zm899.657-197.486h58.514V241.371c0-14.628-14.628-29.257-29.257-29.257H833.83c-14.629-7.314-29.258
+    7.315-29.258 21.943v131.657l95.086 73.143zm-36.571 146.286l-58.515-43.886v307.2h153.6V585.143h-95.085zM614.4
+    226.743l95.086 73.143v-256c0-14.629-14.629-29.257-29.257-29.257h-95.086c-14.629
+    0-29.257 14.628-29.257 29.257v270.628l58.514-87.771zm29.257 197.486L555.886 548.57v299.886h153.6V475.43l-65.829-51.2zm-256
+    365.714L307.2 753.37v95.086h153.6V680.23l-73.143 109.714zM351.086 614.4L460.8
+    453.486v-21.943c0-14.629-14.629-29.257-29.257-29.257h-95.086c-14.628 0-29.257
+    14.628-29.257 29.257v160.914l43.886 21.943zM124.343 497.371l87.771 43.886V321.83c0-14.629-14.628-29.258-29.257-29.258H87.771c-14.628
+    0-29.257 14.629-29.257 29.258v219.428l65.829-43.886zm7.314 168.229l-73.143 43.886v138.971h153.6V702.171L131.657
+    665.6z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-index
+    uid: ""
+  pathname: /tamp/api-statistics
+  rankingInColumn: 400
+  tenant: true
+  text: API 统计
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-env
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"configmap","data":"<defs><style></style></defs><path d=\"M353.152
+    803.52V950.4c0 28.16 23.488 50.88 52.416 50.88h133.376a51.84 51.84 0 0052.416-50.88v-40.128h398.272c18.88
+    0 34.304-15.04 34.304-33.536s-15.424-33.536-34.304-33.536H591.36v-40.064a51.648
+    51.648 0 00-52.416-50.88H405.568c-28.864.384-52.416 25.856-52.416 51.264zM244.416
+    86.4v124.16c0 35.072 29.312 63.616 65.536 63.616h116.416c35.84 0 65.536-28.544
+    65.536-63.616v-27.392h497.728c18.88 0 34.368-15.04 34.368-33.536s-15.424-33.536-34.304-33.536H491.968V86.4c0-35.072-29.312-63.616-65.536-63.616h-116.48c-36.224
+    0-65.536 28.544-65.536 63.616zm182.016-9.6c5.376 0 10.048 4.608 10.048 9.664v124.16a10.176
+    10.176 0 01-10.048 9.664H310.016c-5.376 0-10.048-4.608-10.048-9.664V86.464c0-5.376
+    4.608-9.664 10.048-9.664h116.416zm133.376 374.336v124.16c0 35.072 29.312 63.616
+    65.536 63.616H741.76c35.84 0 65.536-28.544 65.536-63.616v-28.544h182.336c18.88
+    0 34.368-15.04 34.368-33.536s-15.424-33.536-34.304-33.536H807.36v-28.544c0-35.072-29.312-63.616-65.536-63.616h-116.48c-35.84
+    0-65.536 28.928-65.536 63.616zm181.952-9.6c5.376 0 10.048 4.608 10.048 9.664v124.16a10.176
+    10.176 0 01-10.048 9.664H625.344c-5.376 0-10.048-4.608-10.048-9.664V451.2c0-5.376
+    4.608-9.664 10.048-9.664H741.76zM34.304 116.48C15.488 116.48 0 131.52 0 150.016s15.424
+    33.536 34.304 33.536h144.192V116.48H34.304zm0 726.784C15.488 843.264 0 858.304
+    0 876.8s15.424 33.536 34.304 33.536h250.24v-67.072H34.304zm0-363.2C15.488 480.064
+    0 495.104 0 513.6s15.424 33.536 34.304 33.536h450.688v-67.072H34.304z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway-index
+    uid: ""
+  pathname: /tamp/api-gateway-env
+  rankingInColumn: 500
+  tenant: true
+  text: API 项目环境配置
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway-index
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"gateway-o","data":"<path d=\"M902.08 446.336l.129-.96V38.528A38.4
+    38.4 0 00863.937 0a38.4 38.4 0 00-38.272 38.592v407.104H198.209V38.656A38.4 38.4
+    0 00159.937 0a38.4 38.4 0 00-38.272 38.592v406.784l.128.96A131.072 131.072 0 000
+    577.216V892.16A131.456 131.456 0 00131.2 1024h761.6A131.52 131.52 0 001024 892.16V577.216a131.392
+    131.392 0 00-121.92-130.88zm45.185 445.952c0 30.208-24.32 54.656-54.4 54.656l.064-.064H132.353a54.464
+    54.464 0 01-54.4-54.656V577.216c0-30.208 24.32-54.656 54.4-54.656h760.512c30.08
+    0 54.4 24.448 54.4 54.656v315.072z\"></path><path d=\"M400.32 282.56a29.952 29.952
+    0 00-1.151 42.304l1.216 1.216c12.8 11.968 32.64 11.968 45.44 0a83.2 83.2 0 01113.92
+    0c12.672 12.096 32.64 12.096 45.312 0a30.016 30.016 0 001.216-42.304l-1.216-1.216a149.568
+    149.568 0 00-204.736 0z\"></path><path d=\"M634.625 250.752a30.4 30.4 0 0044.992
+    0 35.008 35.008 0 000-47.424 228.8 228.8 0 00-335.232 0 34.88 34.88 0 000 47.36
+    30.72 30.72 0 0043.392 1.536l1.536-1.536a167.36 167.36 0 01245.312.064z\"></path><path
+    d=\"M260.609 182.208a33.152 33.152 0 0045.952 0 284.544 284.544 0 01200.832-81.536c75.84
+    0 147.2 28.928 200.768 81.536a32.64 32.64 0 0045.696 0 31.36 31.36 0 00.512-44.352l-.512-.512A350.144
+    350.144 0 00507.265 37.248a349.76 349.76 0 00-246.656 100.096 31.424 31.424 0
+    00-.512 44.416l.512.448zM380.097 635.84h130.176v127.552H380.097V635.84zm-193.92
+    0h130.176v127.552H186.177V635.84z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: api-gateway
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: API 网关
+  textEn: API gateway
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: api-gateway
+spec:
+  column: 30
+  getTitleForReplaceSider: {}
+  icon: '{"name":"api-gateway-color","data":"<path d=\"M426.784 94.112L0 926.112h169.024l425.568-829.6-3.648-2.4z\"
+    opacity=\"0.6\"></path><path d=\"M597.184 94.112l426.816 832H854.976l-425.568-829.6
+    3.648-2.4z\"></path><path d=\"M511.52 434.24L259.168 926.112H511.52z\" opacity=\"0.6\"></path><path
+    d=\"M512.48 434.24L764.8 926.112H512.48z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: ""
+    kind: ""
+    name: ""
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: API 网关
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: platform-management-api-gateway-config-market-env
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-api-gateway-config
+    uid: ""
+  pathname: /tamp/api-market-env
+  rankingInColumn: 100
+  tenant: true
+  text: API 市场环境配置
+  textEn: ""
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  name: platform-management-api-gateway-config
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"global-setting","data":"<defs><style></style></defs><path d=\"M981.955
+    109.69h-129.4c3.072 11.774 5.183 23.87 5.183 36.54s-2.111 24.831-5.183 36.543h129.464c23.166.064
+    41.917-16.32 41.917-36.478 0-20.223-18.75-36.606-41.981-36.606zm-416.742 36.605c0-12.735
+    2.112-24.83 5.183-36.542H41.981C18.751 109.69 0 126.073 0 146.295c0 20.159 18.75
+    36.542 41.981 36.542h528.415a143.991 143.991 0 01-5.183-36.542z\"></path><path
+    d=\"M711.444 0a146.23 146.23 0 10.064 292.59A146.295 146.295 0 10711.444 0zm0
+    234.033a87.739 87.739 0 110-175.477 87.739 87.739 0 010 175.477zM565.213 877.641c0-12.735
+    2.112-24.83 5.183-36.542H41.981C18.751 841.1 0 857.482 0 877.641c0 20.159 18.75
+    36.542 41.981 36.542h528.351a145.975 145.975 0 01-5.12-36.542zM981.955 841.1h-129.4c3.072
+    11.776 5.183 23.87 5.183 36.542s-2.111 24.83-5.183 36.542h129.464c23.166 0 41.917-16.383
+    41.917-36.542 0-20.159-18.75-36.542-41.981-36.542z\"></path><path d=\"M711.444
+    731.41a146.295 146.295 0 100 292.59 146.295 146.295 0 000-292.59zm0 234.034a87.739
+    87.739 0 110-175.477 87.739 87.739 0 010 175.477zM166.198 511.968c0-12.735 2.111-24.83
+    5.183-36.542H41.917C18.751 475.426 0 491.81 0 511.968c0 20.159 18.75 36.542 41.981
+    36.542h129.4a143.16 143.16 0 01-5.183-36.542zm815.757-36.542H453.54c3.071 11.712
+    5.183 23.807 5.183 36.542s-2.112 24.83-5.183 36.542h528.415c23.23 0 41.981-16.383
+    41.981-36.542 0-20.159-18.75-36.542-41.981-36.542z\"></path><path d=\"M312.492
+    365.673a146.295 146.295 0 100 292.59 146.295 146.295 0 000-292.59zm0 234.034a87.739
+    87.739 0 11-.064-175.542 87.739 87.739 0 01.064 175.542z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-approval
+    uid: ""
+  rankingInColumn: 200
+  requiredRoles:
+    - PlatformAdmin
+    - SystemAdmin
+  tenant: true
+  text: API 网关配置
+  textEn: ""
+status: {}
+
+---

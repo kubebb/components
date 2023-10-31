@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.gateway.name }}
+  namespace: {{ .Values.global.namespace }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  rules:
+  - host: {{ .Values.ingress.hostName }}
+    http:
+      paths:
+        - backend:
+            service:
+              name: {{ .Values.gateway.name }}
+              port:
+                number: 8080
+          path: {{ .Values.ingress.path }}
+          pathType: {{ .Values.ingress.pathType }}
+

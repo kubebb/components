@@ -1,0 +1,40 @@
+global:
+  namespace: tamp-system
+  minio:
+    key: minioadmin # 长度至少为3
+    secret: minioadmin  # 长度至少为8
+    endpoint: http://10.101.88.19:9000 # minio访问地址，http://ip:port
+  # minio: false
+  # clusterReaderNameOverride: ""
+tamp-portal: 
+  enabled: true
+  psp:
+    create: true
+  # 如果想覆盖此子chart的values文件中的配置，可在此指定
+  image:
+    registry: docker.io
+    repository: kubebb/tamp-portal
+    tag: v5.6.0
+  ingress:
+    className: portal-ingress
+    hostName: portal.172.22.96.115.nip.io # portal访问地址
+gateway-management: 
+  enable: true
+  psp:
+    create: true
+  # 如果想覆盖此子chart的values文件中的配置，可在此指定
+  image:
+    registry: docker.io
+    repository: kubebb/gateway-api
+    tag: v5.6.0
+  ingress:
+    className: portal-ingress
+    hostName: portal.172.22.96.115.nip.io # portal访问地址
+minio:
+  enabled: false
+  psp:
+    create: false
+remote-role-component:
+  enabled: false
+  psp:
+    create: false

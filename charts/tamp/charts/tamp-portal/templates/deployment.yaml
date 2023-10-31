@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    sidecar.istio.io/inject: "false"
+  labels:
+    name: {{ .Values.portal.name }}
+    system/svcName: {{ .Values.portal.name }}
+  name: {{ .Values.portal.name }}
+  namespace: {{ .Values.global.namespace }}
+spec:
+  selector:
+    matchLabels:
+      name: {{ .Values.portal.name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+      labels:
+        name: {{ .Values.portal.name }}
+        system/svcName: {{ .Values.portal.name }}
+    spec:
+      containers:
+        - image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api-gateway
+              port: 8989
+              scheme: HTTP
+            initialDelaySeconds: 80
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+          name: {{ .Values.portal.name }}
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /
+              port: 8989
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 5
+          resources:
+            {{- toYaml .Values.portal.resources | nindent 12 }}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      serviceAccountName: {{ .Values.portal.name }}
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      {{- with .Values.portal.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.portal.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.portal.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

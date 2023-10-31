@@ -1,0 +1,22 @@
+global:
+  namespace: tamp-system
+minio:
+  enabled: true
+  # 如果想覆盖minio chart下的values配置，可在此指定
+  image:
+    registry: 172.22.96.19
+    repository: system_containers/minio
+    tag: latest
+gateway-management:
+  enabled: false
+  psp:
+    create: false
+tamp-portal:
+  enabled: false
+  psp:
+    create: false
+remote-role-component:
+  enabled: false
+  psp:
+    create: false
+    

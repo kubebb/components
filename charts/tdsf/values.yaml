@@ -2,10 +2,6 @@ global:
   host: true
   clusterReaderNameSpaceOverride: "u4a-system"
   clusterReaderNameOverride: "host-cluster-reader"
-  registry: docker.io
-  ingress:
-    className: "portal-ingress"
-    hostName: "portal.172.22.96.136.nip.io"
 mesh-operator:
   enabled: true
   image:
@@ -58,4 +54,3 @@ tdsf-portal:
     hostName: "portal.172.22.96.136.nip.io"
 remote-role-component:
   enabled: false
-

@@ -22,7 +22,7 @@ description: 一个统一管理微服务应用流量、兼容Istio&envoy的托�
 icon: https://raw.githubusercontent.com/kubebb/website/master/static/img/market/tdsf.svg
 home: https://docs.tenxcloud.com/docs/TDSF/产品介绍
 sources:
-  - https://github.com/kubebb/components
+  - https://github.com/kubebb/components/charts/tdsf
 keywords:
 - 无侵入性
 - 多语言多协议

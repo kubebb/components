@@ -1,0 +1,30 @@
+image:
+  registry: 172.22.96.19  # 镜像仓库地址
+  repository: system_containers/minio # 镜像在仓库中的项目路径
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: latest
+mountPath:
+  path: /mnt/minio/data
+nodeSelector:
+  tamp-app: minio
+name: minio
+resources:
+  limits:
+      cpu: 2
+      memory: 2Gi
+  requests:
+      cpu: 100m
+      memory: 128Mi
+
+psp:
+  create: true
+  volumes:
+    - secret
+    - emptyDir
+    - gitRepo
+    - hostPath
+    - configMap
+    - downwardAPI
+    - projected
+    - persistentVolumeClaim

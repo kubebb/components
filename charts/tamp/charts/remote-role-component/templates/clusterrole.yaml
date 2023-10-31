@@ -1,0 +1,139 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    meta.helm.sh/release-name: tamp
+    meta.helm.sh/release-namespace: tamp-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: gateway-api-{{ include "global.clusterReaderName" . }}
+rules:
+  - apiGroups:
+      - t7d.io
+    resources:
+      - tenantviews
+      - namespaceviews
+    verbs:
+      - get
+      - list
+  - nonResourceURLs:
+      - /select/0/prometheus/api/v1/query
+      - /select/0/prometheus/api/v1/series
+      - /select/0/prometheus/api/v1/query_range
+    verbs:
+      - get
+  - apiGroups:
+      - extensions
+    resources:
+      - ingresses
+    verbs:
+      - '*'
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - clusterroles
+      - roles
+      - clusterrolebindings
+      - rolebindings
+    verbs:
+      - '*'
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+    verbs:
+      - '*'
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - services
+      - endpoints
+      - persistentvolumeclaims
+      - events
+      - configmaps
+      - secrets
+      - serviceaccounts
+    verbs:
+      - '*'
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+      - daemonsets
+      - replicasets
+      - statefulsets
+    verbs:
+      - '*'
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+    verbs:
+      - get
+  - apiGroups:
+      - charts.helm.k8s.io
+    resources:
+      - '*'
+    verbs:
+      - '*'
+  - apiGroups:
+      - policy
+    resources:
+      - podsecuritypolicies
+    verbs:
+      - '*'
+  - apiGroups:
+      - charts.konghq.com
+    resources:
+      - '*'
+    verbs:
+      - '*'
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+      - ingressclasses
+    verbs:
+      - '*'
+  - apiGroups:
+      - extensions
+      - networking.k8s.io
+      - networking.internal.knative.dev
+    resources:
+      - ingresses
+      - ingresses/status
+    verbs:
+      - get
+      - list
+      - watch
+      - update
+  - apiGroups:
+      - configuration.konghq.com
+    resources:
+      - tcpingresses/status
+    verbs:
+      - update
+  - apiGroups:
+      - configuration.konghq.com
+    resources:
+      - kongplugins
+      - kongclusterplugins
+      - kongcredentials
+      - kongconsumers
+      - kongingresses
+      - tcpingresses
+    verbs:
+      - '*'
+  - apiGroups:
+      - gw.t7d.io
+    resources:
+      - '*'
+    verbs:
+      - '*'
+  - apiGroups:
+      - policy
+    resources:
+      - podsecuritypolicies
+    verbs:
+      - '*'

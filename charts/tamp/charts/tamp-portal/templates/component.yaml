@@ -1,0 +1,16 @@
+apiVersion: component.t7d.io/v1beta1
+kind: Component
+metadata:
+  name: tamp
+spec:
+  application:
+    helmChart:
+      name: tamp-helm-chart
+      valuesConfig: there is the value of helm values.yaml
+      version: v0.0.1
+    name: tamp
+  menu:
+    name: tamp-root-menu
+  portal:
+    entry: /tamp-public/public/index.html
+    path: /tamp

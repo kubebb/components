@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    tamp/system: "true"
+spec:
+  ports:
+    - name: tcp-9090
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+    - name: tcp-9000
+      port: 9000
+      protocol: TCP
+      targetPort: 9000
+  selector:
+    app: {{ .Values.name }}
+  sessionAffinity: None
+  type: ClusterIP

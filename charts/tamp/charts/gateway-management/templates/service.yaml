@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    desc:  {{ .Values.gateway.name }}
+  labels:
+    name: {{ .Values.gateway.name }}
+  name:  {{ .Values.gateway.name }}
+  namespace: {{ .Values.global.namespace }}
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: tcp-port
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    name:  {{ .Values.gateway.name }}
+  sessionAffinity: None
+  type: NodePort

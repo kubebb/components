@@ -1,0 +1,528 @@
+apiVersion: iam.tenxcloud.com/v1alpha1
+kind: RoleTemplate
+metadata:
+  annotations:
+    displayName: "API网关"
+    description: "角色模板描述"
+  name: api-gateway
+spec:
+  kindType: Role
+  resources:
+    - category: "API分组"
+      displayName: "api分组"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - apigroups
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API分组"
+      displayName: "普通配置"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - configmaps
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API分组"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API分组"
+      displayName: "证书"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - secrets
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API分组"
+      displayName: "API"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - snapshotapis
+          verbs:
+            - get
+            - list
+    - category: "API分组"
+      displayName: "端点"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - endpoints
+          verbs:
+            - patch
+            - update
+    - category: "API分组"
+      displayName: "工作负载"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - deployments
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API分组"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - get
+            - list
+    - category: "API管理"
+      displayName: "API"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - snapshotapis
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API管理"
+      displayName: "API分组"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - apigroups
+          verbs:
+            - get
+            - list
+    - category: "API管理"
+      displayName: "网关环境"
+      rules:
+        - apiGroups:
+            - charts.konghq.com
+          resources:
+            - kongs
+          verbs:
+            - get
+            - list
+    - category: "API管理"
+      displayName: "API版本"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - publishapis
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API管理"
+      displayName: "绑定插件"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - pluginrels
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API管理"
+      displayName: "插件"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - plugins
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API管理"
+      displayName: "证书"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - secrets
+          verbs:
+            - get
+            - list
+    - category: "流量控制"
+      displayName: "绑定插件"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - pluginrels
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "流量控制"
+      displayName: "插件"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - plugins
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "流量控制"
+      displayName: "API"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - snapshotapis
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "流量控制"
+      displayName: "API版本"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - publishapis
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "流量控制"
+      displayName: "API分组"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - apigroups
+          verbs:
+            - get
+            - list
+    - category: "流量控制"
+      displayName: "网关环境"
+      rules:
+        - apiGroups:
+            - charts.konghq.com
+          resources:
+            - kongs
+          verbs:
+            - get
+            - list
+    - category: "插件管理"
+      displayName: "绑定插件"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - pluginrels
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "插件管理"
+      displayName: "插件"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - plugins
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "插件管理"
+      displayName: "API"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - snapshotapis
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "插件管理"
+      displayName: "API版本"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - publishapis
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "插件管理"
+      displayName: "API分组"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - apigroups
+          verbs:
+            - get
+            - list
+    - category: "插件管理"
+      displayName: "网关环境"
+      rules:
+        - apiGroups:
+            - charts.konghq.com
+          resources:
+            - kongs
+          verbs:
+            - get
+            - list
+    - category: "应用管理"
+      displayName: "授权"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - authorizes
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "应用管理"
+      displayName: "证书  "
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - secrets
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "应用管理"
+      displayName: "应用"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - consumers
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "API统计"
+      displayName: "应用"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - consumers
+          verbs:
+            - get
+            - list
+    - category: "API统计"
+      displayName: "API"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - snapshotapis
+          verbs:
+            - get
+            - list
+    - category: "API统计"
+      displayName: "API分组"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - apigroups
+          verbs:
+            - get
+            - list
+    - category: "API统计"
+      displayName: "API版本"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - publishapis
+          verbs:
+            - get
+            - list
+    - category: "API统计"
+      displayName: "网关环境"
+      rules:
+        - apiGroups:
+            - charts.konghq.com
+          resources:
+            - kongs
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "项目环境"
+      displayName: "网关环境"
+      rules:
+        - apiGroups:
+            - charts.konghq.com
+          resources:
+            - kongs
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "项目环境"
+      displayName: "证书"
+      rules:
+        - apiGroups:
+            - gw.t7d.io
+          resources:
+            - secrets
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "项目环境"
+      displayName: "服务账号"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - serviceaccounts
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "项目环境"
+      displayName: "工作负载"
+      rules:
+        - apiGroups:
+            - apps
+          resources:
+            - deployment
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "项目环境"
+      displayName: "普通配置"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - configmaps
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update
+    - category: "项目环境"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - create
+            - delete
+            - get
+            - list
+            - patch
+            - update

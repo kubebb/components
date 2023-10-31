@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.portal.name }}
+  labels:
+    {{- include "tamp-portal.labels" . | nindent 4 }}
+  namespace: {{ .Values.global.namespace }}
+  {{- with.Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  rules:
+    - host: {{ .Values.ingress.hostName }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: {{ .Values.portal.name}}
+                port:
+                  number: 80
+            path: {{ .Values.ingress.path }}
+            pathType: {{ .Values.ingress.pathType }}

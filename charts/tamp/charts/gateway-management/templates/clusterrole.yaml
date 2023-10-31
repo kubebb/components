@@ -1,0 +1,147 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tamp-component
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+      - secrets
+      - namespaces
+      - pods
+      - secrets
+      - serviceaccounts
+      - configmaps
+    verbs:
+      - get
+      - list
+      - use
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+    verbs:
+      - '*'
+  - apiGroups:
+      - apps
+      - extensions
+    resources:
+      - daemonsets
+      - deployments
+      - replicasets
+      - statefulsets
+    verbs:
+      - get
+      - create
+      - update
+      - patch
+      - use
+      - list
+      - delete
+  - apiGroups:
+      - cluster.karmada.io
+    resources:
+      - clusters
+    verbs:
+      - get
+      - use
+      - list
+  - apiGroups:
+      - t7d.io
+    resources:
+      - namespaceviews
+      - tenantviews
+    verbs:
+      - '*'
+  - apiGroups:
+      - common.tenxcloud.com
+    resources:
+      - licenses
+      - licenseusings
+      - licenseusings/status
+    verbs:
+      - get
+      - use
+      - list
+      - watch
+      - patch
+      - update
+  - apiGroups:
+      - capsule.clastix.io
+    resources:
+      - tenants
+    verbs:
+      - '*'
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - clusterrolebindings
+      - clusterroles
+      - roles
+      - rolebindings
+    verbs:
+      - '*'
+  - apiGroups:
+      - autoscaling
+    resources:
+      - horizontalpodautoscalers
+    verbs:
+      - '*'
+{{- if .Values.psp.create }}
+  - apiGroups:
+      - policy
+    resources:
+      - podsecuritypolicies
+    resourceNames:
+      - {{ .Values.gateway.name }}
+    verbs:
+      - get
+      - create
+      - update
+      - patch
+      - use
+{{- end }}
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - '*'
+    verbs:
+      - '*'
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - '*'
+  - apiGroups:
+      - charts.helm.k8s.io
+    resources:
+      - kongs
+    verbs:
+      - '*'
+  - apiGroups:
+      - gw.t7d.io
+    resources:
+      - apigroups
+    verbs:
+      - '*'
+  - apiGroups:
+      - '*'
+    resources:
+      - '*'
+    verbs:
+      - '*'
+  - nonResourceURLs:
+      - /*
+    verbs:
+      - get
+      - post
+      - delete
+      - put
+      - update
+      - create
