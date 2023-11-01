@@ -1,6 +1,6 @@
 deployment:
   rating_enable: false
-  image: kubebb/core:v0.1.5
+  image: kubebb/core:v0.1.6
   imagePullPolcy: IfNotPresent
   resources:
     limits:
