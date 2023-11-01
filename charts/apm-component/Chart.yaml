@@ -6,6 +6,9 @@ keywords:
   - 全链路拓扑
   - 多维度监控告警
   - 在线诊断
+home: https://docs.tenxcloud.com/docs/TAPM/
+sources:
+  - https://github.com/kubebb/components/tree/main/charts/tapm-component
 annotations:
   core.kubebb.k8s.com.cn/displayname: 应用性能监控
   # used to set classification for component
@@ -29,7 +32,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.8
+version: 5.7.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
