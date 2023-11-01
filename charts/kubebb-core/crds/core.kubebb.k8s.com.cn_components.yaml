@@ -162,6 +162,10 @@ spec:
                     updatedAt:
                       format: date-time
                       type: string
+                    urls:
+                      items:
+                        type: string
+                      type: array
                     version:
                       type: string
                   required:
@@ -176,7 +180,6 @@ spec:
             required:
             - name
             - repository
-            - versions
             type: object
         type: object
     served: true
