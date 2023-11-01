@@ -92,7 +92,7 @@ oidcServer:
 # Optional but the default: BFF server for all API endpoints
 bffServer:
   enabled: true
-  image: kubebb/bff-server-ce:v0.1.4
+  image: kubebb/bff-server-ce:v0.1.6
   host: *bffHost
   connectorId: k8scrd
   clientId: *clientId
