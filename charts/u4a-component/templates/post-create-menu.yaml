@@ -1,3 +1,4 @@
+{{- if .Values.oidcServer.enabled -}}
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
@@ -25,7 +26,7 @@ spec:
   rankingInColumn: 100
   tenant: true
   text: 集群设置
-  textEn: Cluster Configs
+  textEn: Configurations
 status: {}
 
 ---
@@ -61,7 +62,7 @@ spec:
   rankingInColumn: 200
   tenant: true
   text: 集群节点
-  textEn: Cluster Nodes
+  textEn: Nodes
 status: {}
 
 ---
@@ -99,7 +100,7 @@ spec:
   rankingInColumn: 300
   tenant: true
   text: 节点标签
-  textEn: Cluster Labels
+  textEn: Node Labels
 status: {}
 
 ---
@@ -146,6 +147,52 @@ metadata:
   creationTimestamp: null
   labels:
     portal: oidc
+  name: platform-management-cluster-role-template
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"template","data":"<defs><style></style></defs><path d=\"M732.48
+    110.208H165.312a94.72 94.72 0 00-94.592 94.528v724.736A94.72 94.72 0 00165.312
+    1024H732.48a94.72 94.72 0 0094.592-94.528V204.736a94.72 94.72 0 00-94.592-94.528zM764.16
+    929.6a31.552 31.552 0 01-31.552 31.552H165.376a31.616 31.616 0 01-31.552-31.552V204.864c0-17.408
+    14.272-31.552 31.552-31.552h567.168c17.472 0 31.552 14.208 31.552 31.552l.064
+    724.736z\"></path><path d=\"M953.28 94.784v724.224a94.784 94.784 0 01-94.464 94.656v-62.976a31.488
+    31.488 0 0031.168-31.68V94.784a31.616 31.616 0 00-31.168-31.744h-567.68a31.552
+    31.552 0 00-31.168 31.744h-62.976A94.72 94.72 0 01291.264 0h567.68a94.72 94.72
+    0 0194.336 94.784zM370.048 342.4H221.504c-15.808 0-28.608 12.8-28.608 28.608v148.544c0
+    15.808 12.8 28.608 28.608 28.608h148.544c15.808 0 28.608-12.8 28.608-28.608V371.008c0-15.808-12.8-28.608-28.608-28.608zm-25.536
+    149.76h-95.36V396.8h95.36v95.36zm26.624 124.672H222.592c-15.808 0-28.608 12.8-28.608
+    28.608v148.544c0 15.808 12.8 28.608 28.608 28.608h148.544c15.808 0 28.608-12.8
+    28.608-28.608V645.44c0-15.808-12.8-28.608-28.608-28.608zM345.6 766.592h-95.36v-95.296h95.36v95.296z\"></path><path
+    d=\"M645.568 616.832H496.96c-15.808 0-28.608 12.8-28.608 28.608v148.544c0 15.808
+    12.8 28.608 28.608 28.608h148.544c15.808 0 28.608-12.8 28.608-28.608V645.44c0-15.808-12.8-28.608-28.544-28.608zm-25.536
+    149.76h-95.36v-95.296h95.36v95.296zM551.04 320L446.016 425.024a28.672 28.672 0
+    000 40.448L551.04 570.496a28.544 28.544 0 0040.448 0l105.088-105.088a28.672 28.672
+    0 000-40.448L591.488 320a28.672 28.672 0 00-40.448 0zm87.872 123.904l-67.456 67.456-67.392-67.392
+    67.456-67.456 67.392 67.392z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: management-cluster
+    uid: ""
+  pathname: /oidc/management/clusters/:clusterID/role-template
+  rankingInColumn: 500
+  tenant: true
+  text: 角色模板
+  textEn: Role Templates
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-6"
+  creationTimestamp: null
+  labels:
+    portal: oidc
   name: tenant-project-manage-management-projects-roles
 spec:
   getTitleForReplaceSider: {}
@@ -169,7 +216,7 @@ spec:
   - TenantAdmin
   tenant: true
   text: 项目角色
-  textEn: Project Roles
+  textEn: Roles
 status: {}
 
 ---
@@ -209,7 +256,7 @@ spec:
   - TenantAdmin
   tenant: true
   text: 项目成员
-  textEn: Project Members
+  textEn: Members
 status: {}
 
 ---
@@ -252,7 +299,7 @@ spec:
   - TenantAdmin
   tenant: true
   text: 项目授权集群
-  textEn: Project Clusters
+  textEn: Authorized Clusters
 status: {}
 
 ---
@@ -344,7 +391,7 @@ spec:
   replaceSiderBackNextPathnamePattern: management-projects
   tenant: true
   text: 项目管理
-  textEn: Cluster Nodes
+  textEn: Project Management
   useChildrenReplaceSider: true
 status: {}
 
@@ -383,7 +430,7 @@ spec:
   - PlatformAdmin
   tenant: true
   text: 租户授权集群
-  textEn: Cluster Labels
+  textEn: Authorized Clusters
 status: {}
 
 ---
@@ -417,7 +464,7 @@ spec:
   rankingInColumn: 100
   tenant: true
   text: 项目角色
-  textEn: Project Roles
+  textEn: Roles
 status: {}
 
 ---
@@ -455,7 +502,7 @@ spec:
   rankingInColumn: 200
   tenant: true
   text: 项目成员
-  textEn: Project Members
+  textEn: Members
 status: {}
 
 ---
@@ -500,7 +547,7 @@ spec:
   - TenantAdmin
   tenant: true
   text: 项目授权集群
-  textEn: Project Clusters
+  textEn: Authorized Clusters
 status: {}
 
 ---
@@ -594,7 +641,7 @@ spec:
   - PlatformAdmin
   tenant: true
   text: 集群管理
-  textEn: Clusters Management
+  textEn: Cluster Management
   useChildrenReplaceSider: true
 status: {}
 
@@ -648,7 +695,7 @@ spec:
   - TenantAdmin
   tenant: true
   text: 租户管理
-  textEn: Tenants Management
+  textEn: Tenant Management
   useChildrenReplaceSider: true
 status: {}
 
@@ -698,7 +745,7 @@ spec:
   - PlatformAdmin
   tenant: true
   text: 项目管理
-  textEn: Projects Management
+  textEn: Project Management
   useChildrenReplaceSider: true
 status: {}
 
@@ -733,7 +780,45 @@ spec:
   rankingInColumn: 100
   tenant: true
   text: 成员管理
-  textEn: Users Management
+  textEn: Member Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-6"
+  creationTimestamp: null
+  labels:
+    portal: oidc
+  name: management-groups
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"nav-team","data":"<defs><style></style></defs><path d=\"M548.544
+    537.6C614.4 490.048 658.24 413.248 658.24 329.152c0-142.656-113.344-256-256-256s-256
+    113.344-256 256A249.856 249.856 0 00256 537.6C106.048 596.096 0 742.4 0 914.304v36.544h73.152v-36.544c0-182.848
+    146.304-329.152 329.152-329.152s329.152 146.304 329.152 329.152c0 10.944 0 25.6-3.648
+    36.544h73.152v-36.544C804.544 742.4 698.496 596.096 548.544 537.6zM402.304 512c-102.4
+    0-182.848-80.448-182.848-182.848s80.448-182.848 182.848-182.848 182.848 80.448
+    182.848 182.848S504.704 512 402.304 512z\"></path><path d=\"M819.2 501.056c36.544-32.896
+    58.496-80.448 58.496-135.296 0-91.456-65.856-168.256-153.6-179.2l-10.944 73.152c51.2
+    7.296 91.456 54.848 91.456 109.696 0 62.144-47.552 109.696-109.696 109.696v73.152c142.656
+    0 256 113.344 256 256 0 10.944 0 25.6-3.648 36.544h73.152c0-10.944 3.648-25.6
+    3.648-36.544-.064-142.656-84.16-259.712-204.864-307.2z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-user-management
+    uid: ""
+  pathname: /oidc/management/groups
+  rankingInColumn: 200
+  tenant: true
+  text: 组管理
+  textEn: Group Management
 status: {}
 
 ---
@@ -762,7 +847,7 @@ spec:
   rankingInColumn: 100
   tenant: true
   text: 菜单管理
-  textEn: Menus Management
+  textEn: Menu Management
 status: {}
 
 ---
@@ -959,7 +1044,7 @@ spec:
   rankingInColumn: 400
   tenant: true
   text: 配置管理
-  textEn: ""
+  textEn: "Configurations"
 status: {}
 
 ---
@@ -1039,36 +1124,6 @@ metadata:
   creationTimestamp: null
   labels:
     portal: oidc
-  name: management-license
-spec:
-  getTitleForReplaceSider: {}
-  parentOwnerReferences:
-    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-    blockOwnerDeletion: false
-    controller: false
-    kind: Menu
-    name: user-panel-platform-setting
-    uid: ""
-  pathname: /oidc/management/license
-  rankingInColumn: 100
-  requiredRoles:
-  - SystemAdmin
-  - PlatformAdmin
-  tenant: true
-  text: 正版授权
-  textEn: Genuine Authorization
-status: {}
-
----
-apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-kind: Menu
-metadata:
-  annotations:
-    helm.sh/hook: post-install,post-upgrade
-    helm.sh/hook-weight: "-6"
-  creationTimestamp: null
-  labels:
-    portal: oidc
   name: user-panel-accounts
 spec:
   getTitleForReplaceSider: {}
@@ -1132,7 +1187,7 @@ spec:
   rankingInColumn: 200
   tenant: true
   text: 平台信息
-  textEn: Platform setting
+  textEn: Platform Info
 status: {}
 
 ---
@@ -1227,7 +1282,7 @@ spec:
   rankingInColumn: 200
   tenant: true
   text: 设置管理
-  textEn: System Setting
+  textEn: Settings
 status: {}
 
 ---
@@ -1266,7 +1321,7 @@ spec:
   pathname: /oidc/management/operation-audit
   rankingInColumn: 100
   text: 操作审计
-  textEn: Operation audit
+  textEn: Auditing
 status: {}
 
 ---
@@ -1325,7 +1380,7 @@ spec:
   rankingInColumn: 100
   tenant: true
   text: 平台运维
-  textEn: Manage/Monitor
+  textEn: Operation Management
 status: {}
 
 ---
@@ -1369,7 +1424,8 @@ spec:
   rankingInColumn: 10
   tenant: true
   text: 监控与运维
-  textEn: Monitoring and O&M
+  textEn: Monitoring & Operation
 status: {}
 
 ---
+{{- end }}

@@ -16,7 +16,7 @@ deploymentConfig:
   # Enable https for bff server
   bffHttpsEnabled: true
 
-registryServer: docker.io
+registryServer: &registryServer docker.io
 
 issuerConfig:
   # oidc certificate info
@@ -52,7 +52,7 @@ ingress:
 # Optional but the default: Use Kubernetes CRD for user provider - iam provider
 iamProvider:
   enabled: true
-  image: kubebb/iam-provider-ce:v0.1.0
+  image: kubebb/iam-provider:v0.1.6-20231102
 
 # Required: Use dex as the odic service
 oidcServer:
@@ -113,13 +113,17 @@ k8s:
 # Generate tenant/namespace/user view for query
 # Install if it's host cluster
 resourceView:
+  enabled: true
   image: kubebb/resource-viewer-ce:v0.1.0
 
 addon-component:
   enabled: true
+  clusterResPrefix: host
   tenantManagement:
+    registryServer: *registryServer
     image: kubebb/capsule-ce:v0.1.2-20221122
   kubeOidcProxy:
+    registryServer: *registryServer
     image: kubebb/kube-oidc-proxy-ce:v0.3.0-20221008
     issuerUrl: https://portal.<replaced-ingress-nginx-ip>.nip.io/oidc
     clientId: *clientId
@@ -153,6 +157,3 @@ ldapProvider:
 #  ldapDomain: test.com
 #  ldapAdminPwd: xxx
 #  ldapAdminImage: 172.22.96.19/u4a_system/phpldapadmin:stable
-
-cluster-component:
-  enabled: false

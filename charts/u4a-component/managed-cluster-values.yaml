@@ -1,0 +1,53 @@
+# Default values for u4a-system.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# You must check and update the value of each variable below
+registryServer: &registryServer 172.22.96.34
+
+addon-component:
+  enabled: true
+  clusterResPrefix: managed
+  tenantManagement:
+    registryServer: *registryServer
+    image: u4a_system/capsule:v0.1.2-20221122
+  kubeOidcProxy:
+    registryServer: *registryServer
+    image: u4a_system/kube-oidc-proxy:v0.3.0-v5.6.0-20221008
+    issuerUrl: https://portal.172.22.96.121.nip.io/oidc
+    clientId: bff-client
+    ingress:
+      enabled: true
+      name: portal-ingress
+      host: managed-k8s.<replaced-ingress-nginx-ip>.nip.io
+    certificate:
+      ipAddresses:
+        # MUST update this value to the host ip of kube-oidc-proxy
+        - <replaced-ingress-nginx-ip>
+      dnsNames:
+        - kube-oidc-proxy
+        - kube-oidc-proxy.u4a-system
+        - kube-oidc-proxy.u4a-system.svc
+    hostConfig:
+      enabled: false
+      hostAliases:
+        - hostnames:
+            # MUST update this value
+            - portal.172.22.96.121.nip.io
+          # MUST update this value
+          ip: 172.22.96.121
+
+iamProvider:
+  enabled: false
+
+oidcServer:
+  enabled: false
+
+bffServer:
+  enabled: false
+
+resourceView:
+  enabled: false
+
+ldapProvider:
+  enabled: false

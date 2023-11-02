@@ -26,7 +26,8 @@ kubeOidcProxy:
     - kube-oidc-proxy
     - kube-oidc-proxy.u4a-system
     - kube-oidc-proxy.u4a-system.svc
-  image: hub.tenxcloud.com/u4a-component/kube-oidc-proxy:v0.3.0-v5.6.0-20221008
+  registryServer: 172.22.96.34
+  image: u4a-component/kube-oidc-proxy:v0.3.0-v5.6.0-20221008
   # MUST update this value
   nodeName: 21v-tc-sunyy-team-2
   # MUST update this value
@@ -52,4 +53,5 @@ kubeOidcProxy:
 
 # Use capsule for tenant management
 tenantManagement:
-  image: hub.tenxcloud.com/u4a-component/capsule:v0.1.2-20221122
+  registryServer: 172.22.96.34
+  image: u4a-component/capsule:v0.1.2-20221122

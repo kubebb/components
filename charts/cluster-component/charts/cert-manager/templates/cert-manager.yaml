@@ -966,6 +966,7 @@ spec:
           args:
           - --v=2
           - --leader-election-namespace={{ .Release.Namespace }}
+          - --enable-certificate-owner-ref=true
           env:
           - name: POD_NAMESPACE
             valueFrom:

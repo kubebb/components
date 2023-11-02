@@ -34,7 +34,7 @@ spec:
       tolerations:
         - operator: Exists
       containers:
-      - image: {{ .Values.kubeOidcProxy.image }}
+      - image: {{ .Values.tenantManagement.registryServer }}/{{ .Values.kubeOidcProxy.image }}
         ports:
         - containerPort: 443
         - containerPort: 8088
