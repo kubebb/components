@@ -33,7 +33,6 @@ spec:
         ports:
         - name: http
           containerPort: 5556
-          hostPort: 5556
         volumeMounts:
         - name: config
           mountPath: /etc/oidc-server/cfg
@@ -75,6 +74,16 @@ spec:
             path: /healthz
             port: 443
             scheme: HTTPS
+      - image: {{ .Values.registryServer }}/{{ .Values.iamProvider.groupController.image }}
+        imagePullPolicy: Always
+        name: iam-controller
+        resources:
+          limits:
+            cpu: 1
+            memory: 512Mi
+          requests:
+            cpu: 10m
+            memory: 128Mi
       volumes:
       - name: config
         configMap:

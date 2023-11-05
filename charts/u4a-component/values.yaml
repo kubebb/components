@@ -53,6 +53,8 @@ ingress:
 iamProvider:
   enabled: true
   image: kubebb/iam-provider:v0.1.6-20231102
+  groupController:
+    image: kubebb/iam-controller:v0.1.0-20231024
 
 # Required: Use dex as the odic service
 oidcServer:
