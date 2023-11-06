@@ -1,0 +1,22 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: ComponentPlan
+metadata:
+  name: tdsf
+  namespace: mesh-system
+spec:
+  approved: true
+  name: tdsf
+  version: v5.7.0
+  wait: false
+  override:
+    valuesFrom:
+      - kind: ConfigMap
+        name: tdsf-helm-values
+        valuesKey: primary.yaml
+    set:
+      - global.host=true
+      - global.clusterReaderNameOverride=host-cluster-reader
+      - global.registry=172.22.50.227
+  component:
+    name: kubebb.tdsf
+    namespace: kubebb-system

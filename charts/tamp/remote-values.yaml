@@ -1,0 +1,20 @@
+global:
+  # 修改此处 值为集群的secret上的annotation 为kubernetes.io/service-account.name的值
+  clusterReaderNameOverride: "host-cluster-reader"
+remote-role-component:
+  enabled: true
+  psp:
+    create: true
+gateway-api:
+  enabled: false
+  psp:
+    create: false
+tamp-portal:
+  enabled: false
+  psp:
+    create: false
+minio:
+  enabled: false
+  psp:
+    create: false
+

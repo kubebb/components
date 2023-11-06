@@ -1,0 +1,40 @@
+image:
+  registry: 172.22.96.19  #镜像仓库地址
+  repository: system_containers/tamp-portal # 镜像仓库中对应项目路径
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v5.6.0"
+
+ingress:
+  className: "portal-ingress"
+  hostName: "portal.172.22.50.142.nip.io"
+  path: /tamp-public
+  pathType: ImplementationSpecific
+
+portal:
+  name: tamp-portal
+  resources:
+    limits:
+      cpu: 2
+      memory: 2Gi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+psp:
+  create: true
+  volumes:
+    - secret
+    - emptyDir
+    - gitRepo
+    - hostPath
+    - configMap
+    - downwardAPI
+    - projected
+    - persistentVolumeClaim

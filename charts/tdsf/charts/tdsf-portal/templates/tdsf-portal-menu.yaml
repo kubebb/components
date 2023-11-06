@@ -1,0 +1,378 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: tdsf-server-list
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"tdsf-server-manage","data":"<defs><style></style></defs><path d=\"M518.4
+    902.4L179.2 707.2v-86.4h-54.4v118.4l393.6 227.2L768 825.6l-28.8-48zM179.2 316.8l339.2-195.2
+    76.8 44.8 28.8-48-105.6-60.8-390.4 224-3.2 3.2v268.8h54.4z\"></path><path d=\"M844.8
+    675.2c0-22.4-19.2-41.6-41.6-41.6-9.6 0-19.2 3.2-28.8 9.6L736 620.8v-9.6c0-9.6-6.4-22.4-12.8-32l76.8-192c22.4
+    0 41.6-19.2 41.6-41.6 0-22.4-19.2-41.6-41.6-41.6-16 0-32 9.6-38.4 22.4l-208-25.6c-3.2-9.6-12.8-19.2-22.4-22.4V224c16-6.4
+    25.6-22.4 25.6-38.4 0-22.4-19.2-41.6-41.6-41.6-22.4 0-41.6 19.2-41.6 41.6 0 16
+    9.6 32 25.6 38.4v54.4c-9.6 3.2-19.2 12.8-25.6 22.4l-208 25.6c-9.6-12.8-22.4-22.4-38.4-22.4-22.4
+    0-41.6 19.2-41.6 44.8 0 22.4 19.2 41.6 41.6 41.6l76.8 192c-6.4 6.4-12.8 19.2-12.8
+    32v6.4l-32 19.2c-6.4-6.4-16-9.6-25.6-9.6-22.4 0-41.6 19.2-41.6 41.6 0 22.4 19.2
+    41.6 44.8 41.6 22.4 0 41.6-19.2 41.6-41.6v-6.4l38.4-22.4c12.8 6.4 22.4 9.6 35.2
+    6.4L480 816c-3.2 6.4-6.4 12.8-6.4 22.4 0 9.6 3.2 22.4 12.8 28.8 6.4 6.4 19.2 12.8
+    28.8 12.8 22.4 0 41.6-19.2 41.6-41.6 0-9.6-3.2-16-6.4-22.4l128-166.4h12.8c9.6
+    0 16-3.2 22.4-6.4l41.6 22.4v6.4c0 22.4 19.2 41.6 41.6 41.6 28.8 3.2 48-12.8 48-38.4zm-57.6
+    0c0-9.6 9.6-16 16-16s16 6.4 16 16-9.6 16-16 16c-9.6 0-16-6.4-16-16zM236.8 332.8c6.4
+    0 16 6.4 16 16s-9.6 16-16 16c-9.6 0-16-6.4-16-16s6.4-16 16-16zm457.6 236.8h-9.6L550.4
+    339.2c3.2-3.2 3.2-6.4 6.4-9.6l201.6 25.6c0 9.6 6.4 16 12.8 19.2l-76.8 195.2zM784
+    348.8c0-9.6 9.6-16 16-16s16 6.4 16 16-6.4 16-16 16-16-6.4-16-16zM518.4 304c6.4
+    0 12.8 6.4 16 16 0 9.6-6.4 16-16 16s-16-6.4-16-16 6.4-16 16-16zM380.8 598.4c0-3.2-3.2-9.6-6.4-12.8l134.4-227.2c6.4
+    0 12.8 3.2 19.2 0l134.4 227.2c-3.2 3.2-6.4 6.4-6.4 12.8H380.8zm275.2 32L528 796.8c-9.6-3.2-16-3.2-22.4
+    0L374.4 633.6s0-3.2 3.2-3.2H656zM502.4 841.6c0-9.6 6.4-16 16-16 6.4 0 12.8 6.4
+    16 16 0 9.6-6.4 16-16 16-6.4-3.2-12.8-9.6-16-16zm16-672c6.4 0 16 6.4 16 16s-6.4
+    16-16 16-16-6.4-16-16 9.6-16 16-16zM275.2 358.4L480 332.8s0 3.2 3.2 3.2c0 3.2
+    0 3.2 3.2 6.4L352 569.6h-9.6l-76.8-192c3.2-3.2 6.4-9.6 9.6-19.2zm67.2 240c6.4
+    0 16 6.4 16 16s-9.6 16-16 16c-9.6 0-16-6.4-16-16 0-12.8 6.4-16 16-16zm352 0c9.6
+    0 16 6.4 16 16s-6.4 12.8-16 12.8-16-6.4-16-16 9.6-12.8 16-12.8zm-476.8 76.8c0-9.6
+    9.6-16 16-16s16 6.4 16 16-6.4 16-16 16-16-6.4-16-16z\"></path><path d=\"M681.6
+    150.4l-32 48 204.8 118.4v390.4l-60.8 35.2 28.8 48 89.6-51.2V284.8z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: tdsf
+    uid: ""
+  pathname: /service-mesh-management/server-list
+  project: true
+  rankingInColumn: 100
+  tenant: true
+  text: 网格服务管控
+  textEn: Mesh Service Control
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: tdsf-sidecar
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"tdsf-sidecar-manage","data":"<defs><style></style></defs><path d=\"M512
+    137.6l320 185.6v374.4L512 886.4 192 700.8V323.2l320-185.6m0-73.6L128 288v448l384
+    224 384-224V288L512 64z\"></path><path d=\"M419.2 710.4l-124.8-73.6V489.6L419.2
+    416 544 489.6v147.2l-124.8 73.6zm-64-112l60.8 35.2 64-35.2v-73.6l-60.8-35.2-60.8
+    35.2v73.6z\"></path><path d=\"M512 544l-124.8-73.6V323.2L512 249.6l128 73.6v147.2L512
+    544zm-60.8-108.8l60.8 35.2 64-35.2v-73.6l-64-35.2-60.8 35.2v73.6z\"></path><path
+    d=\"M604.8 710.4L480 636.8V489.6L604.8 416l124.8 73.6v147.2l-124.8 73.6zm-60.8-112l60.8
+    35.2 60.8-35.2v-73.6l-60.8-35.2-60.8 35.2v73.6z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: tdsf
+    uid: ""
+  pathname: /service-mesh-management/sidecar
+  project: true
+  rankingInColumn: 200
+  tenant: true
+  text: SideCar 管理
+  textEn: SideCar Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: tdsf-registration-center
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"tdsf-register-center","data":"<defs><style></style></defs><path
+    d=\"M563.2 963.2l96-38.4h6.4l-64-64zm243.2-636.8c0-144-118.4-262.4-265.6-265.6h-3.2c-70.4
+    0-140.8 28.8-188.8 76.8-51.2 48-80 118.4-80 185.6 0 92.8 51.2 179.2 131.2 227.2-147.2
+    54.4-249.6 195.2-249.6 352v38.4c3.2 16 16 25.6 32 25.6s28.8-9.6 32-25.6h3.2V928c0-6.4-3.2-12.8-3.2-19.2
+    0-83.2 32-163.2 92.8-224C368 624 448 592 534.4 592l28.8-3.2c140.8-16 243.2-131.2
+    243.2-262.4zM537.6 124.8c112 0 204.8 89.6 204.8 201.6s-92.8 198.4-204.8 198.4c-112
+    0-204.8-89.6-204.8-198.4s92.8-201.6 204.8-201.6zM864 688l-22.4-22.4c-9.6-9.6-28.8-9.6-38.4
+    0l-32 28.8 57.6 57.6 3.2 3.2 32-28.8c6.4-6.4 9.6-12.8 9.6-19.2 0-6.4-3.2-12.8-9.6-19.2zm-96
+    16L611.2 854.4l-3.2 3.2 60.8 57.6 156.8-150.4 3.2-3.2-57.6-57.6z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: tdsf
+    uid: ""
+  pathname: /service-mesh-management/registration-center
+  project: true
+  rankingInColumn: 300
+  tenant: true
+  text: 注册中心管理
+  textEn: Registration Center Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: tdsf-certificate-list
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"certificate-management","data":"<path d=\"M992 128H32c-16 0-32 16-32
+    32v704c0 16 16 32 32 32h960c16 0 32-16 32-32V160c0-16-16-32-32-32zm-630.4 64v217.6l-35.2-19.2-28.8-12.8-28.8
+    12.8-35.2 19.2V192h128zM960 832H64V192h105.6v320l128-64 128 64V192H960v640z\"></path><path
+    d=\"M496 688h64c0-70.4 57.6-128 128-128s128 57.6 128 128h64c0-73.6-41.6-134.4-99.2-169.6C803.2
+    496 816 464 816 432c0-70.4-57.6-128-128-128s-128 57.6-128 128c0 35.2 12.8 64 35.2
+    86.4-57.6 35.2-99.2 96-99.2 169.6zm128-256c0-35.2 28.8-64 64-64s64 28.8 64 64-28.8
+    64-64 64-64-28.8-64-64z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: tdsf
+    uid: ""
+  pathname: /service-mesh-management/certificate-management
+  project: true
+  rankingInColumn: 400
+  tenant: true
+  text: 证书管理
+  textEn: Certificate Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: tdsf
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"sofa-mesh","data":"<defs><style></style></defs><path d=\"M895.488
+    644.992v-268.8a83.648 83.648 0 0066.624-80.384c0-45.952-36.736-80.384-80.384-80.384-22.976
+    0-45.952 11.456-59.712 27.584l-229.76-128.64c2.304-6.976 4.608-13.824 4.608-23.04
+    0-45.952-36.736-80.384-80.384-80.384s-80.384 36.736-80.384 80.384c0 6.912 2.304
+    13.76 2.304 20.672L208.64 242.944c-18.432-18.368-39.104-29.888-62.08-29.888-45.952
+    0-80.384 36.736-80.384 80.384 0 39.04 27.584 71.232 64.32 80.384v271.104c-36.736
+    9.216-64.32 41.344-64.32 80.384 0 45.952 36.736 80.384 80.384 80.384 22.976 0
+    45.952-11.456 59.712-27.584l232.064 128.64a73.28 73.28 0 00-6.912 32.192c0 45.952
+    36.736 80.384 80.384 80.384s80.384-36.736 80.384-80.384c0-11.456-2.304-22.976-6.912-34.432l232.064-126.336c16.064
+    16.064 36.736 27.584 62.016 27.584 45.952 0 80.384-36.736 80.384-80.384 2.368-41.344-25.152-73.472-64.256-80.384zm-333.12
+    229.76a75.84 75.84 0 00-27.584-13.76v-204.48h-39.04v204.48c-11.456 2.304-22.976
+    9.216-32.192 16.064L226.944 746.112c2.304-6.912 2.304-13.76 2.304-20.672 0-36.736-25.28-68.928-59.712-78.144V373.888c13.76-4.608
+    25.28-9.216 34.432-20.672L376.256 458.88l20.672-32.192-172.288-105.6c2.304-9.216
+    4.608-16.064 4.608-25.28 0-6.912-2.304-13.76-2.304-20.672l229.76-130.944c13.76
+    16.064 36.736 25.216 59.712 25.216 22.976 0 43.648-9.216 57.408-25.28l229.76 130.944c-2.304
+    6.912-2.304 13.76-2.304 20.672 0 9.216 2.304 16.064 4.608 25.28L633.6 426.752l20.672
+    32.192 169.984-103.36c9.216 9.216 20.672 16.064 34.432 20.672v273.408c-34.432
+    9.216-57.408 41.344-57.408 78.144 0 6.912 0 13.76 2.304 18.368L562.368 874.752z\"></path><path
+    d=\"M437.76 588.736a105.6 105.6 0 10149.44-149.44 105.6 105.6 0 10-149.44 149.44z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: tdsf-framework
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: 服务网格
+  textEn: Service Mesh Platform
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: tdsf-framework
+spec:
+  column: 10
+  getTitleForReplaceSider: {}
+  icon: '{"name":"tdsf-color","data":"<path d=\"M388.813 900.813L0 512l116.736-116.634L505.498
+    784.18z\" opacity=\"0.6\"></path><path d=\"M.768 512l388.864-388.813 116.634 116.634-388.762
+    388.813z\" opacity=\"0.8\"></path><path d=\"M518.554 784.128l388.812-388.762L1024
+    512 635.238 900.813z\" opacity=\"0.6\"></path><path d=\"M906.547 628.634L517.734
+    239.872l116.634-116.634L1023.181 512z\" opacity=\"0.8\"></path><path d=\"M387.123
+    504.78l135.783-135.782 135.782 135.783-135.782 135.731z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: ""
+    kind: ""
+    name: ""
+    uid: ""
+  rankingInColumn: 20
+  tenant: true
+  text: 服务网格
+  textEn: Service Mesh Platform
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: mesh-management
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-service-grid-config
+    uid: ""
+  pathname: /service-mesh-management/mesh-management
+  rankingInColumn: 100
+  requiredRoles:
+  - PlatformAdmin
+  - SystemAdmin
+  - TenantAdmin
+  tenant: true
+  text: 网格管理
+  textEn: Mesh Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: system-config
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-service-grid-config
+    uid: ""
+  pathname: /service-mesh-management/system-config
+  rankingInColumn: 200
+  requiredRoles:
+  - PlatformAdmin
+  - SystemAdmin
+  - TenantAdmin
+  tenant: true
+  text: 网格系统配置
+  textEn: Mesh System Configuration
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: grid-gateway-management
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-service-grid-config
+    uid: ""
+  pathname: /service-mesh-management/grid-gateway-management
+  rankingInColumn: 300
+  requiredRoles:
+  - PlatformAdmin
+  - SystemAdmin
+  - TenantAdmin
+  tenant: true
+  text: 网格网关管理
+  textEn: Mesh Gateway Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: service-mesh-management
+  name: platform-management-service-grid-config
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"service-grid-config","data":"<defs><style>@font-face{font-family:feedback-iconfont;src:url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff2?t=1630033759944)
+    format(&quot;woff2&quot;),url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff?t=1630033759944)
+    format(&quot;woff&quot;),url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.ttf?t=1630033759944)
+    format(&quot;truetype&quot;)}</style></defs><path d=\"M145.484 638.217v89.81l373.798
+    216.025 235.444-135.926 24.273 41.263-259.717 148.063L99.366 754.726V638.217h46.118zm373.798-519.433c21.845
+    0 38.836 16.99 38.836 38.836 0 16.991-12.136 31.555-29.127 36.409v70.39c12.136
+    2.428 21.845 14.564 26.7 26.7l233.017 29.128c4.854-14.564 19.418-24.273 36.408-24.273
+    21.846 0 38.837 16.99 38.837 38.836 0 21.845-16.991 38.836-38.837 38.836h-4.854L732.88
+    589.672c9.709 7.282 16.99 19.418 16.99 31.555 0 4.854 0 9.709-2.427 12.136l50.973
+    29.127c7.281-7.282 16.99-12.136 29.127-12.136 21.845 0 38.836 16.99 38.836 38.836
+    0 21.845-16.991 38.836-38.836 38.836-21.846 0-38.836-16.99-38.836-38.836v-9.71l-53.4-29.126c-4.855
+    4.854-14.564 7.282-24.273 7.282-4.854 0-12.136 0-16.99-2.428l-145.636 186.9c4.854
+    7.281 7.282 14.563 7.282 24.272 0 21.845-16.991 38.836-38.836 38.836s-38.837-16.99-38.837-38.836c0-9.71
+    2.428-16.991 7.282-24.273L342.092 655.208c-4.855 2.428-9.71 2.428-14.564 2.428-9.709
+    0-19.418-4.855-26.7-9.71l-50.972 29.128c0 2.427 2.427 7.281 2.427 9.709 0 21.845-16.99
+    38.836-38.836 38.836s-41.263-16.991-41.263-38.836 16.99-38.836 38.836-38.836c9.709
+    0 21.845 4.854 26.7 12.136l50.972-29.127c0-4.855-2.427-7.282-2.427-12.137 0-12.136
+    4.854-24.272 14.563-31.554l-87.38-216.026h-2.428c-21.845 0-38.836-16.99-38.836-38.836s16.99-38.836
+    38.836-38.836c16.99 0 29.127 9.709 36.409 24.272l233.017-29.127c4.854-12.136 14.563-24.272
+    29.127-26.7v-70.39c-16.991-4.855-29.127-19.418-29.127-36.41 0-19.417 16.99-36.408
+    38.836-36.408zm0 723.323c-12.137 0-24.273 9.71-24.273 24.273 0 12.136 9.71 24.272
+    24.273 24.272s24.272-9.709 24.272-24.272c-2.427-14.564-12.136-24.273-24.272-24.273zm155.344-208.744H361.51c-2.427
+    4.854-2.427 7.282-7.282 9.709l148.063 184.472c4.854-2.428 9.709-2.428 14.564-2.428s9.709
+    0 14.563 2.428l145.636-186.9c2.427 0 0-4.854-2.428-7.281zM698.9 130.92l240.299
+    138.354v485.452l-87.382 50.972-24.272-41.263 63.108-36.409V295.974L672.2 169.756l26.7-38.836zM211.02
+    664.917c-12.135 0-24.272 9.71-24.272 24.273s9.71 24.273 24.273 24.273 24.272-9.71
+    24.272-24.273-12.136-24.273-24.272-24.273zm616.525 0c-12.137 0-24.273 9.71-24.273
+    24.273s9.71 24.273 24.273 24.273c12.136 0 24.272-9.71 24.272-24.273s-12.136-24.273-24.272-24.273zm-116.509-67.963c-12.136
+    0-24.272 9.71-24.272 24.273s9.709 24.272 24.272 24.272c12.137 0 24.273-9.709 24.273-24.272s-9.71-24.273-24.273-24.273zm-383.507
+    0c-12.136 0-24.272 9.71-24.272 24.273s9.709 24.272 24.272 24.272c12.137 0 24.273-9.709
+    24.273-24.272s-12.136-24.273-24.273-24.273zm191.754-257.29c-4.855 0-9.71 0-12.137-2.427L356.655
+    592.1c4.855 4.854 7.282 12.136 9.71 19.418h308.261c0-7.282 4.855-14.564 9.71-19.418l-150.49-257.29c-4.855
+    4.855-9.71 4.855-14.564 4.855zm-38.836-29.127l-230.59 29.128c-2.427 12.136-7.282
+    21.845-16.99 26.7l87.38 216.026h4.855c4.855 0 9.71 0 12.136 2.427l150.49-254.862c-2.427-7.282-4.854-12.137-7.281-19.419zm67.963
+    16.991l150.49 257.29c4.854-2.427 7.282-2.427 12.136-2.427h4.855l87.381-216.027c-7.282-7.281-14.563-14.563-14.563-26.7l-230.59-29.127c-2.427
+    4.855-4.855 12.137-9.71 16.991zm-29.127-300.98L623.654 87.23l-24.273 41.263-80.1-46.118-373.797
+    213.599v254.862H99.366V269.274L519.282 26.548zm305.834 283.99c-12.136 0-24.272
+    9.709-24.272 24.272s9.709 24.273 24.272 24.273 24.273-9.71 24.273-24.273-12.136-24.273-24.273-24.273zm-611.669
+    0c-12.136 0-24.272 9.709-24.272 24.272s9.709 24.273 24.272 24.273c12.136 0 24.273-9.71
+    24.273-24.273s-12.137-24.273-24.273-24.273zm305.835-31.555c-12.137 0-24.273 9.71-24.273
+    24.273 0 12.136 9.71 24.272 24.273 24.272s24.272-9.709 24.272-24.272c-2.427-14.564-12.136-24.273-24.272-24.273zm0-145.635c-12.137
+    0-24.273 9.709-24.273 24.272s9.71 24.273 24.273 24.273 24.272-9.71 24.272-24.273-12.136-24.272-24.272-24.272z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-approval
+    uid: ""
+  rankingInColumn: 200
+  requiredRoles:
+  - PlatformAdmin
+  - SystemAdmin
+  - TenantAdmin
+  tenant: true
+  text: 服务网格配置
+  textEn: Service Mesh Configuration
+status: {}
+
+---

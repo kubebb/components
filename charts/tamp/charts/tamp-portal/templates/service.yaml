@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: {{ .Values.portal.name }}
+    system/appName: {{ .Values.portal.name }}
+    system/svcName: {{ .Values.portal.name }}
+  name: {{ .Values.portal.name }}
+  namespace: {{ .Values.global.namespace }}
+spec:
+  ports:
+    - name: tcp-ops-1
+      port: 80
+      protocol: TCP
+      targetPort: 8989
+  selector:
+    name: {{ .Values.portal.name }}
+  sessionAffinity: None
+  type: ClusterIP

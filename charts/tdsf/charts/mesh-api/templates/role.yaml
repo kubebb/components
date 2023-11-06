@@ -1,0 +1,18 @@
+{{- if .Values.psp.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "mesh-api.fullname" . }}-psp-role
+  namespace: {{ include "mesh-api.namespace" . }}
+  labels:
+    {{- include "mesh-api.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - policy
+  resources:
+  - podsecuritypolicies
+  resourceNames:
+  - {{ include "mesh-api.fullname" . }}
+  verbs:
+  - use
+{{- end }}

@@ -1,0 +1,7 @@
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Portal
+metadata:
+  name: tamp
+spec:
+  entry: /tamp-public/public/index.html
+  path: /tamp

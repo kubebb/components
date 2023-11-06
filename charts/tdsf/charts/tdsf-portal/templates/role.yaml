@@ -1,0 +1,18 @@
+{{- if .Values.psp.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "tdsf-portal.fullname" . }}-psp-role
+  namespace: {{ include "tdsf-portal.namespace" . }}
+  labels:
+    {{- include "tdsf-portal.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - policy
+  resources:
+  - podsecuritypolicies
+  resourceNames:
+  - {{ include "tdsf-portal.fullname" . }}
+  verbs:
+  - use
+{{- end }}

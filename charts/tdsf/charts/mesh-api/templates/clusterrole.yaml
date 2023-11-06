@@ -1,0 +1,116 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "mesh-api.fullname" . }}
+  labels:
+    {{- include "mesh-api.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    - secrets
+    - namespaces
+    - pods
+    - nodes
+    verbs:
+    - get
+    - list
+  - apiGroups:
+    - apps
+    - extensions
+    resources:
+    - daemonsets
+    - deployments
+    - replicasets
+    - statefulsets
+    verbs:
+    - get
+    - create
+    - update
+    - patch
+    - use
+    - list
+  - apiGroups:
+    - cluster.karmada.io
+    resources:
+    - clusters
+    verbs:
+    - get
+    - use
+    - list
+  - apiGroups:
+    - t7d.io
+    resources:
+    - namespaceviews
+    - tenantviews
+    - userviews
+    verbs:
+    - "*"
+  - apiGroups:
+    - mesh.t7d.io
+    resources:
+    - meshes
+    - istios
+    - meshservices
+    - ingressgateways
+    - registries
+    - istioinstalls
+    - ingressgatewayinstalls
+    verbs:
+    - "*"
+  - apiGroups:
+    - common.tenxcloud.com
+    resources:
+    - licenses
+    verbs:
+    - get
+    - use
+    - list
+    - watch
+    - patch
+    - update
+  - apiGroups:
+    - common.tenxcloud.com
+    resources:
+    - licenseusings
+    - licenseusings/status
+    verbs:
+    - get
+    - use
+    - create
+    - list
+    - watch
+    - patch
+    - update
+  - apiGroups:
+    - capsule.clastix.io
+    resources:
+    - tenants
+    verbs:
+    - "*"
+  - apiGroups:
+    - rbac.authorization.k8s.io
+    resources:
+    - clusterrolebindings
+    - clusterroles
+    - roles
+    - rolebindings
+    verbs:
+    - "*"
+  - apiGroups:
+    - autoscaling
+    resources:
+    - horizontalpodautoscalers
+    verbs:
+    - "*"
+  - apiGroups:
+    - policy
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - get
+    - create
+    - update
+    - patch
+    - use

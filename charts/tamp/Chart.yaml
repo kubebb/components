@@ -1,0 +1,52 @@
+annotations:
+  core.kubebb.k8s.com.cn/classification: "API 网关"
+  core.kubebb.k8s.com.cn/displayname: API网关
+  core.kubebb.k8s.com.cn/restricted-namespaces: tamp-system
+  core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
+apiVersion: v2
+name: tamp
+description: 提供 API 的完整生命周期管理，以及丰富的插件能力
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 5.6.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "v5.6.0"
+
+dependencies:
+  - name: gateway-management
+    condition: gateway-management.enabled
+    version: 5.6.0
+  - name: tamp-portal
+    condition: tamp-portal.enabled
+    version: 5.6.0
+  - name: minio
+    condition: minio.enabled
+    version: 5.6.0
+  - name: remote-role-component
+    condition: remote-role-component.enabled
+    version: 5.6.0
+icon: https://github.com/kubebb/website/blob/master/static/img/market/api.svg
+keywords:
+  - 安全认证
+  - 降本增效
+  - 高性能高可靠
+home: https://docs.tenxcloud.com/docs/TAMP/产品介绍
+sources:
+  - https://github.com/kubebb/components/charts/tamp
+

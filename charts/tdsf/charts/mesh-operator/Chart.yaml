@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: v5.7.0
+description: Helm chart for deploying mesh-operator resources and CRDs
+name: mesh-operator
+type: application
+version: 5.7.0

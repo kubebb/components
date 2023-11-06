@@ -1,0 +1,13 @@
+name: "remote-role-component"
+
+psp:
+  create: false
+  volumes:
+    - secret
+    - emptyDir
+    - gitRepo
+    - hostPath
+    - configMap
+    - downwardAPI
+    - projected
+    - persistentVolumeClaim

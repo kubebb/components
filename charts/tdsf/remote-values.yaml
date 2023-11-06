@@ -1,0 +1,12 @@
+global:
+  host: false
+  clusterReaderNameOverride: ""
+remote-role-component:
+  enabled: true
+mesh-operator:
+  enabled: false
+tdsf-portal:
+  enabled: false
+mesh-api:
+  enabled: false
+

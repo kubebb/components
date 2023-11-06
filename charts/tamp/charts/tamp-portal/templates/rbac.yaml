@@ -1,0 +1,36 @@
+{{- if .Values.psp.create -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.portal.name }}
+  namespace: {{ .Values.global.namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ .Values.portal.name }}
+  namespace: {{ .Values.global.namespace }}
+rules:
+  - apiGroups:
+      - policy
+    resourceNames:
+      - {{ .Values.portal.name }}
+    resources:
+      - podsecuritypolicies
+    verbs:
+      - use
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Values.portal.name }}
+  namespace: {{ .Values.global.namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Values.portal.name }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.portal.name }}
+    namespace: {{ .Values.global.namespace }}
+{{- end }}

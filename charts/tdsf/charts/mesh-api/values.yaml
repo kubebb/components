@@ -1,0 +1,77 @@
+# Default values for mesh-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  registry: docker.io
+  repository: kubebb/mesh-api
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v5.7.0"
+
+imagePullSecrets: []
+nameOverride: "mesh-api"
+fullnameOverride: "mesh-api"
+namespaceOverride: "mesh-system"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations:
+  sidecar.istio.io/inject: "false"
+  prometheus.io/path: /stats/prometheus
+  prometheus.io/port: "15020"
+  prometheus.io/scrape: "true"
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 28080
+
+ingress:
+  enabled: true
+  legacy: false
+  tls:
+    enabled: false
+  className: "portal-ingress"
+  hostName: "*"
+  path: /tdsf-api
+  pathType: ImplementationSpecific
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: "rewrite ^/tdsf-api(/|$)(.*)$ /$2 break;"
+
+resources:
+  limits:
+    cpu: "1"
+    memory: 1Gi
+  requests:
+    cpu: 400m
+    memory: 1Gi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+psp:
+  create: true
+
+env: {}
