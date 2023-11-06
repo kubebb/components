@@ -1314,6 +1314,88 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/minio-5.0.7/minio-5.0.7.tgz
     version: 5.0.7
+  tamp:
+  - annotations:
+      core.kubebb.k8s.com.cn/classification: API 网关
+      core.kubebb.k8s.com.cn/displayname: API网关
+      core.kubebb.k8s.com.cn/restricted-namespaces: tamp-system
+      core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
+    apiVersion: v2
+    appVersion: v5.6.0
+    created: "2023-11-06T06:29:00.439372919Z"
+    dependencies:
+    - condition: gateway-management.enabled
+      name: gateway-management
+      repository: ""
+      version: 5.6.0
+    - condition: tamp-portal.enabled
+      name: tamp-portal
+      repository: ""
+      version: 5.6.0
+    - condition: minio.enabled
+      name: minio
+      repository: ""
+      version: 5.6.0
+    - condition: remote-role-component.enabled
+      name: remote-role-component
+      repository: ""
+      version: 5.6.0
+    description: 提供 API 的完整生命周期管理，以及丰富的插件能力
+    digest: d80b3b652a3e51e28d23e1042abc31e9b488265633e926032ceac4208ace9451
+    home: https://docs.tenxcloud.com/docs/TAMP/产品介绍
+    icon: https://github.com/kubebb/website/blob/master/static/img/market/api.svg
+    keywords:
+    - 安全认证
+    - 降本增效
+    - 高性能高可靠
+    name: tamp
+    sources:
+    - https://github.com/kubebb/components/charts/tamp
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/tamp-5.6.0/tamp-5.6.0.tgz
+    version: 5.6.0
+  tdsf:
+  - annotations:
+      core.kubebb.k8s.com.cn/classification: 服务治理
+      core.kubebb.k8s.com.cn/displayname: 服务网格
+      core.kubebb.k8s.com.cn/restricted-namespaces: mesh-system
+      core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
+    apiVersion: v2
+    appVersion: v5.7.0
+    created: "2023-11-06T06:29:00.598974451Z"
+    dependencies:
+    - condition: mesh-api.enabled
+      name: mesh-api
+      repository: ""
+      version: 5.7.0
+    - condition: tdsf-portal.enabled
+      name: tdsf-portal
+      repository: ""
+      version: 5.7.0
+    - condition: mesh-operator.enabled
+      name: mesh-operator
+      repository: ""
+      version: 5.7.0
+    - condition: remote-role-component.enabled
+      name: remote-role-component
+      repository: ""
+      version: 5.7.0
+    description: 一个统一管理微服务应用流量、兼容Istio&envoy的托管式平台
+    digest: b3f246c5599390eff32eb481ed93e8be47081a37bb95838ce4ac65816ce121b6
+    home: https://docs.tenxcloud.com/docs/TDSF/产品介绍
+    icon: https://raw.githubusercontent.com/kubebb/website/master/static/img/market/tdsf.svg
+    keywords:
+    - 无侵入性
+    - 多语言多协议
+    - 统一流量管理
+    name: tdsf
+    sources:
+    - https://github.com/kubebb/components/charts/tdsf
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/tdsf-5.7.0/tdsf-5.7.0.tgz
+    version: 5.7.0
   tekton-operator:
   - apiVersion: v2
     appVersion: v0.64.0
@@ -1617,4 +1699,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-11-03T09:58:59.427381999Z"
+generated: "2023-11-06T06:29:00.787494938Z"
