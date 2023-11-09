@@ -1355,6 +1355,43 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/tamp-5.6.0/tamp-5.6.0.tgz
     version: 5.6.0
+  tapm-component:
+  - annotations:
+      core.kubebb.k8s.com.cn/classification: 云原生可观测
+      core.kubebb.k8s.com.cn/displayname: 应用性能监控
+      core.kubebb.k8s.com.cn/restricted-namespaces: ""
+      core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
+    apiVersion: v2
+    appVersion: v5.7.1
+    created: "2023-11-09T06:50:44.574545914Z"
+    dependencies:
+    - condition: apm-api.enabled
+      name: apm-api
+      repository: ""
+      version: 5.7.1
+    - condition: apm-operator.enabled
+      name: apm-operator
+      repository: ""
+      version: 5.7.1
+    - condition: apm-portal.enabled
+      name: apm-portal
+      repository: ""
+      version: 5.7.1
+    description: 帮助用户理解系统行为。通过对系统运行数据的分析，当系统发生故障时，快速定位故障
+    digest: f0faf280de0c17dd19aecbaa7d3e1489ea50f543b84a2a2b3efdfb6763661547
+    home: https://docs.tenxcloud.com/docs/TAPM/
+    icon: https://raw.githubusercontent.com/kubebb/website/82120a67fd52b20c1ba62f389023fa67d2a62ac1/static/img/market/tapm.svg
+    keywords:
+    - 全链路拓扑
+    - 多维度监控告警
+    - 在线诊断
+    name: tapm-component
+    sources:
+    - https://github.com/kubebb/components/tree/main/charts/tapm-component
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/tapm-component-5.7.1/tapm-component-5.7.1.tgz
+    version: 5.7.1
   tdsf:
   - annotations:
       core.kubebb.k8s.com.cn/classification: 服务治理
@@ -1412,6 +1449,47 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/tekton-operator-0.64.0/tekton-operator-0.64.0.tgz
     version: 0.64.0
+  tmf-component:
+  - annotations:
+      core.kubebb.k8s.com.cn/classification: 服务治理
+      core.kubebb.k8s.com.cn/displayname: 微服务组件
+      core.kubebb.k8s.com.cn/restricted-namespaces: msa-system
+      core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
+    apiVersion: v2
+    appVersion: 5.7.1
+    created: "2023-11-09T06:50:44.749647702Z"
+    dependencies:
+    - condition: framework-operator.enabled
+      name: framework-operator
+      repository: ""
+      version: 5.7.1
+    - condition: initializr.enabled
+      name: initializr
+      repository: ""
+      version: 5.7.1
+    - condition: msa-portal.enabled
+      name: msa-portal
+      repository: ""
+      version: 5.7.1
+    - condition: spring-cloud-api.enabled
+      name: spring-cloud-api
+      repository: ""
+      version: 5.7.1
+    description: 一个支持 SpringCloud、Dubbo 等主流框架的微服务治理平台
+    digest: 5fc515077c44c0cc8b43cefe7e9ba605b203da9ed85645bf3076e2757ea36091
+    home: https://docs.tenxcloud.com/docs/TMF/
+    icon: https://raw.githubusercontent.com/kubebb/website/82120a67fd52b20c1ba62f389023fa67d2a62ac1/static/img/market/msa.svg
+    keywords:
+    - 统一注册发现
+    - 动态配置管理
+    - 统一流量管理
+    name: tmf-component
+    sources:
+    - https://github.com/kubebb/components/tree/main/charts/tmf-component
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/tmf-component-5.7.1/tmf-component-5.7.1.tgz
+    version: 5.7.1
   u4a-component:
   - apiVersion: v2
     appVersion: 0.1.0
@@ -1726,4 +1804,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-11-09T06:49:16.562748906Z"
+generated: "2023-11-09T06:50:44.749782703Z"
