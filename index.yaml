@@ -525,6 +525,31 @@ entries:
       core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
     apiVersion: v2
     appVersion: 0.1.0
+    created: "2023-11-09T10:15:59.962680364Z"
+    description: demo portal init by @yunti/lowcode-code-generator with umijs template
+    digest: e788e5f525cb050254a271f252a4adc8b7c26a19c95aec04a3844c495f7d3030
+    icon: https://avatars.githubusercontent.com/u/85277200?s=200&v=4
+    keywords:
+    - kubebb
+    - lowcode
+    - sample
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    name: hello-world
+    sources:
+    - https://gitlab.dev.21vianet.com/sbg2-tenxcloud/contrib/tenx-ui/demos/umi-demo-portal.git
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/hello-world-0.1.1/hello-world-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      core.kubebb.k8s.com.cn/classification: ""
+      core.kubebb.k8s.com.cn/displayname: 示例组件
+      core.kubebb.k8s.com.cn/restricted-namespaces: ""
+      core.kubebb.k8s.com.cn/restricted-tenants: system-tenant
+    apiVersion: v2
+    appVersion: 0.1.0
     created: "2023-10-16T05:29:15.620725365Z"
     description: demo portal init by @yunti/lowcode-code-generator with umijs template
     digest: 6286ff3b5e92041574c3866202a69d8b4adce6bb235cf1e33fa2f18958b22656
@@ -1804,4 +1829,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-11-09T06:50:44.749782703Z"
+generated: "2023-11-09T10:15:59.962905968Z"
