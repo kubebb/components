@@ -1,0 +1,11 @@
+{{- if .Values.global.host -}}
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Portal
+metadata:
+  name: tmf
+  labels:
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+spec:
+  entry: /msa-public/public/index.html
+  path: /msa
+{{- end -}}

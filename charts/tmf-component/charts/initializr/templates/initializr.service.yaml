@@ -1,0 +1,19 @@
+{{- if .Values.global.host -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    {{- include "tmf.initializr.labels" . | nindent 4 }}
+  name: {{ include "tmf.initializr.fullname" . }}
+  namespace: {{ include "tmf.initializr.namespace" . }}
+spec:
+  ports:
+    - name: tcp-initializr-api-0
+      port: {{ .Values.service.port }}
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    {{- include "tmf.initializr.selectorLabels" . | nindent 4 }}
+  sessionAffinity: None
+  type: ClusterIP
+{{- end -}}

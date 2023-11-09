@@ -1,0 +1,71 @@
+# Default values for initializr-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  registry: 192.168.90.214
+  repository: system_containers/framework-operator-server
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v5.6.0"
+envInjectorImage:
+  registry: 192.168.90.214
+  repository: system_containers/tmf-env-injector
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+imagePullSecrets: []
+nameOverride: "framework-operator"
+fullnameOverride: "framework-operator"
+namespaceOverride: "msa-system"
+appName: "springcloud"
+envInjectorName: "tmf-env-injector"
+contract:
+  enable: "false"
+  elasticsearchHost: "http://192.168.90.201:9200"
+  elasticsearchUser: "admin"
+  elasticsearchPassword: "admin"
+  clusterId: "default-cluster"
+
+
+podAnnotations:
+  sidecar.istio.io/inject: "false"
+  prometheus.io/path: /stats/prometheus
+  prometheus.io/port: "15020"
+  prometheus.io/scrape: "true"
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+  limits:
+    cpu: "2"
+    memory: 2Gi
+  requests:
+    cpu: 200m
+    memory: 512Mi
+
+nodeSelector: {}
+
+tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    operator: Exists
+
+affinity: {}
+
+psp:
+  create: true

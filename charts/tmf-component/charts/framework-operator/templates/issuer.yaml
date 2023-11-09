@@ -1,0 +1,9 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ include "tmf.framework.namespace" . }}-issuer
+  namespace: {{ include "tmf.framework.namespace" . }}
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  selfSigned: {}

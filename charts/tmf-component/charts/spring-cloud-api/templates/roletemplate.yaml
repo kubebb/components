@@ -1,0 +1,198 @@
+{{- if .Values.global.host -}}
+apiVersion: iam.tenxcloud.com/v1alpha1
+kind: RoleTemplate
+metadata:
+  annotations:
+    displayName: "微服务框架"
+    description: "微服务治理平台项目级权限模板"
+  name: tmf-role-template
+  labels:
+    {{- include "api.labels" . | nindent 4 }}
+spec:
+  kindType: Role
+  resources:
+    - category: "服务管控"
+      displayName: "微服务"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - microservices
+          verbs:
+            - list
+            - create
+            - update
+            - delete
+    - category: "服务管控"
+      displayName: "实例"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - microinstances
+          verbs:
+            - delete
+            - create
+            - update
+            - list
+    - category: "服务管控"
+      displayName: "日志"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - micrologs
+          verbs:
+            - list
+    - category: "服务管控"
+      displayName: "容器服务"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - services
+          verbs:
+            - get
+    - category: "服务管控"
+      displayName: "容器组"
+      rules:
+        - apiGroups:
+            - ""
+          resources:
+            - pods
+          verbs:
+            - list
+    - category: "服务治理"
+      displayName: "网关路由"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - gatewayroutes
+          verbs:
+            - create
+            - list
+            - delete
+            - update
+    - category: "服务治理"
+      displayName: "网关负载均衡"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - gatewayloadbalances
+          verbs:
+            - update
+            - get
+    - category: "服务治理"
+      displayName: "熔断"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - circuitbreakers
+          verbs:
+            - list
+            - update
+            - delete
+    - category: "服务治理"
+      displayName: "降级"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - degrades
+          verbs:
+            - update
+            - get
+    - category: "服务治理"
+      displayName: "限流"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - ratelimits
+          verbs:
+            - create
+            - update
+            - delete
+            - list
+    - category: "服务治理"
+      displayName: "访问控制"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - microauthorities
+          verbs:
+            - delete
+            - update
+            - list
+    - category: "服务治理"
+      displayName: "主备切换"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - servicestrategies
+          verbs:
+            - get
+            - list
+            - update
+            - delete
+    - category: "服务治理"
+      displayName: "流量无损"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - flowlossless
+          verbs:
+            - update
+            - get
+    - category: "配置中心"
+      displayName: "配置"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - microconfigs
+          verbs:
+            - update
+            - list
+            - delete
+            - get
+    - category: "服务契约"
+      displayName: "服务契约"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - contracts
+          verbs:
+            - list
+            - get
+    - category: "服务治理"
+      displayName: "推空保护"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - microprotections
+          verbs:
+            - update
+            - get
+    - category: "服务治理"
+      displayName: "异常实例移除"
+      rules:
+        - apiGroups:
+            - tmf.t7d.io
+          resources:
+            - outlierejections
+          verbs:
+            - create
+            - patch
+            - get
+            - list
+            - delete
+{{- end }}

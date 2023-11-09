@@ -1,0 +1,40 @@
+global:
+  # true as host cluster, which to have apm-api and apm-portal installed.
+  host: true
+
+  registry: &registry
+     docker.io
+  # Ingress host name
+  ingressHostName: &ingressHostName
+    'portal.192.168.90.217.nip.io'
+  ingressClassName: &ingressClassName
+    'portal-ingress'
+  # Specifies cluster reader serviceaccount name.
+  # Default `host-cluster-reader` on the host cluster, and `managed-cluster-reader` on the other clusters.
+  clusterReaderNameOverride: ""
+  # Specifies cluster reader serviceaccount namespace.
+  # Default `addon-system`.
+  clusterReaderNameSpaceOverride: "u4a-system"
+
+
+apm-portal:
+  image:
+    registry: *registry
+    repository: refar/apm-portal
+    tag: "v5.7.1"
+  ingress:
+    hostName: *ingressHostName
+    className: *ingressClassName
+apm-api:
+  image:
+    registry: *registry
+    repository: refar/apm-api
+    tag: "v5.7.1"
+  ingress:
+    hostName: *ingressHostName
+    className: *ingressClassName
+apm-operator:
+  image:
+    registry: *registry
+    repository: refar/apm-operator-server
+    tag: "v5.7.1"

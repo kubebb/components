@@ -1,0 +1,11 @@
+{{- if .Values.global.host -}}
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Portal
+metadata:
+  name: apm
+  labels:
+    {{- include "apm.portal.labels" . | nindent 4 }}
+spec:
+  entry: /apm-public/public/index.html
+  path: /apm
+{{- end -}}

@@ -1,0 +1,20 @@
+{{- if .Values.global.host -}}
+apiVersion: component.t7d.io/v1beta1
+kind: Component
+metadata:
+  name: tmf
+  labels:
+    {{- include "tmf.portal.labels" . | nindent 4 }}
+spec:
+  application:
+    helmChart:
+      name: tmf-helm-chart
+      valuesConfig: there is the value of helm values.yaml
+      version: v0.0.1
+    name: tmf
+  menu:
+    name: tmf-root-menu
+  portal:
+    entry: /msa-public/public/index.html
+    path: /msa
+{{- end -}}

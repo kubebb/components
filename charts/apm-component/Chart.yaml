@@ -1,0 +1,52 @@
+apiVersion: v2
+name: tapm-component
+icon: https://raw.githubusercontent.com/kubebb/website/82120a67fd52b20c1ba62f389023fa67d2a62ac1/static/img/market/tapm.svg
+description: 帮助用户理解系统行为。通过对系统运行数据的分析，当系统发生故障时，快速定位故障
+keywords:
+  - 全链路拓扑
+  - 多维度监控告警
+  - 在线诊断
+home: https://docs.tenxcloud.com/docs/TAPM/
+sources:
+  - https://github.com/kubebb/components/tree/main/charts/tapm-component
+annotations:
+  core.kubebb.k8s.com.cn/displayname: 应用性能监控
+  # used to set classification for component
+  core.kubebb.k8s.com.cn/classification: "云原生可观测"
+  # used to set restricted tenants for component installation positions. Multiple tenants need to be separated
+  # no restricted-tenants by default
+  core.kubebb.k8s.com.cn/restricted-tenants: "system-tenant"
+  # used to set restricted namespaces for component installation positions. Multiple namespaces need to be separated
+  # no restricted-tenants by default
+  core.kubebb.k8s.com.cn/restricted-namespaces: ""
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 5.7.1
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "v5.7.1"
+
+dependencies:
+  - name: apm-api
+    condition: apm-api.enabled
+    version: 5.7.1
+  - name: apm-operator
+    condition: apm-operator.enabled
+    version: 5.7.1
+  - name: apm-portal
+    condition: apm-portal.enabled
+    version: 5.7.1

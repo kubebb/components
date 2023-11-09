@@ -1,0 +1,160 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+    system/msa-service: {{ include "tmf.framework.fullname" . }}
+    system/svcName: {{ include "tmf.framework.fullname" . }}
+  name: {{ include "tmf.framework.fullname" . }}
+  namespace: {{ include "tmf.framework.namespace" . }}
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: {{ include "tmf.framework.fullname" . }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+      labels:
+        {{- include "tmf.framework.labels" . | nindent 8 }}
+        system/msa-service: {{ include "tmf.framework.fullname" . }}
+        system/svcName: {{ include "tmf.framework.fullname" . }}
+    spec:
+      containers:
+        - image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: framework-operator
+          ports:
+            - containerPort: 8765
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          terminationMessagePath: /dev/termination-log
+          readinessProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /info
+              port: 8080
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /info
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 10
+            periodSeconds: 30
+          terminationMessagePolicy: File
+          env:
+            - name: CONTRACT_ENABLE
+              value: {{ .Values.contract.enable | quote }}
+            - name: CONTRACT_CLUSTER_ID
+              value: {{ .Values.contract.clusterId }}
+            - name: SSL_ENABLED
+              value: "true"
+            - name: STORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pkcs12-password-secret              
+          volumeMounts:
+            - mountPath: /etc/localtime
+              name: localtime
+              readOnly: true
+            - mountPath: /opt/secret
+              name: {{ include "tmf.framework.fullname" . }}-cert
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: { }
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: FileOrCreate
+          name: localtime
+        - name: {{ include "tmf.framework.fullname" . }}-cert
+          secret:
+            defaultMode: 420
+            secretName: {{ include "tmf.framework.fullname" . }}-cert
+      serviceAccountName: {{ include "tmf.framework.fullname" . }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ include "tmf.env.fullname" . }}
+  name: {{ include "tmf.env.fullname" . }}
+  namespace: {{ include "tmf.framework.namespace" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "tmf.env.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "tmf.env.fullname" . }}
+    spec:
+      containers:
+        - args:
+            - -tlsCertFile=/etc/webhook/certs/ca.crt
+            - -tlsKeyFile=/etc/webhook/certs/tls.key
+            - -ignoreAnnotation='tmf-env-injection'
+            - -envCmName=tmf-env-cm
+            - -alsologtostderr
+          image: "{{ .Values.envInjectorImage.registry }}/{{ .Values.envInjectorImage.repository }}:{{ .Values.envInjectorImage.tag }}"
+          imagePullPolicy: Always
+          name: {{ include "tmf.env.fullname" . }}
+          ports:
+            - containerPort: 8443
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /etc/webhook/certs
+              name: webhook-certs
+              readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: { }
+      terminationGracePeriodSeconds: 30
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+      volumes:
+        - name: webhook-certs
+          secret:
+            defaultMode: 420
+            secretName: {{ include "tmf.env.fullname" . }}-cert
+      serviceAccountName: {{ include "tmf.env.fullname" . }}

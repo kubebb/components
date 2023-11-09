@@ -1,0 +1,19 @@
+{{- if .Values.global.host -}}
+{{- if .Values.psp.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "apm.api.fullname" . }}-psp-rolebinding
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "apm.api.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "apm.api.fullname" . }}-psp-role
+subjects:
+- kind: ServiceAccount
+  name: {{ include "apm.api.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+{{- end }}
+{{- end }}

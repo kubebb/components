@@ -1,0 +1,63 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "tmf.framework.fullname" . }}
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - cluster.karmada.io
+    resources:
+      - '*'
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - t7d.io
+    resources:
+      - tenantviews
+      - namespaceviews
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - iam.tenxcloud.com
+    resources:
+      - users
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - create
+      - update
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: event-role
+rules:
+  - verbs:
+      - create
+    apiGroups:
+      - ""
+    resources:
+      - events

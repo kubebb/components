@@ -1,0 +1,429 @@
+{{- if .Values.global.host -}}
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: msa-topology
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa-call-link-tracking
+    uid: ""
+  pathname: /apm/link/call-link-tracking-relation
+  rankingInColumn: 100
+  tenant: true
+  text: 全链路拓扑
+  textEn: Topology
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: msa-call-link-tracking-query
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa-call-link-tracking
+    uid: ""
+  pathname: /apm/link/call-link-tracking
+  rankingInColumn: 200
+  tenant: true
+  text: 调用链查询
+  textEn: Call Chain
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: link-alarm
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  icon: '{"name":"link-alarm","data":"<defs><style></style></defs><path d=\"M950.72
+    802.08c-82.144 0-87.296-164.192-87.328-165.248V450.624c0-1.632-.096-3.264-.32-4.832v-50.88c0-144.128-102.624-266.464-243.968-308.416A109.824
+    109.824 0 00512 0a109.76 109.76 0 00-107.072 86.4C263.424 128.224 160.64 250.656
+    160.64 394.912v241.312c-.032 1.632-5.184 165.824-87.36 165.824a36.544 36.544 0
+    100 73.088h231.2C333.952 961.6 415.744 1024 512 1024s178.048-62.4 207.488-148.8h231.2a36.544
+    36.544 0 00.032-73.12zM512 950.88c-54.912 0-102.304-30.784-127.296-75.68h254.592c-24.992
+    44.896-72.352 75.68-127.296 75.68zm-319.456-148.8c29.696-50.432 40.48-116.864
+    41.184-165.248V394.944c0-138.336 124.736-250.88 278.08-250.88S789.92 256.608 789.92
+    394.944v55.68c0 1.632.096 3.264.32 4.832v181.92c.704 48.128 11.488 114.368 41.152
+    164.736H192.544z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa-call-link-tracking
+    uid: ""
+  pathname: /apm/link/link-alarm
+  project: true
+  rankingInColumn: 300
+  tenant: true
+  text: 链路告警
+  textEn: link alarm
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: msa-call-link-tracking-management
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: msa-call-link-tracking
+    uid: ""
+  pathname: /apm/link/call-link-management
+  project: true
+  rankingInColumn: 400
+  tenant: true
+  text: 链路配置
+  textEn: LinkManagement
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: diagnosis-analysis
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: app-diagnosis
+    uid: ""
+  pathname: /apm/app-diagnosis/analysis
+  project: true
+  rankingInColumn: 100
+  tenant: true
+  text: 诊断分析
+  textEn: Diagnostic panel
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: diagnosis-management
+spec:
+  cluster: true
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: app-diagnosis
+    uid: ""
+  pathname: /apm/app-diagnosis/management
+  project: true
+  rankingInColumn: 200
+  tenant: true
+  text: 诊断管理
+  textEn: Diagnostic installation
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: msa-call-link-tracking
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"msa-call-link","data":"<defs><style></style></defs><path d=\"M361.552
+    400H118.448A38.496 38.496 0 0180 361.552V118.448A38.496 38.496 0 01118.448 80h243.088A38.496
+    38.496 0 01400 118.448v243.088A38.496 38.496 0 01361.552 400zM144 336h192V144H144v192zm761.552
+    64H662.448A38.496 38.496 0 01624 361.552V118.448A38.496 38.496 0 01662.448 80h243.088A38.496
+    38.496 0 01944 118.448v243.088A38.496 38.496 0 01905.552 400zM688 336h192V144H688v192zm217.552
+    608H662.448A38.496 38.496 0 01624 905.552V662.448A38.496 38.496 0 01662.448 624h243.088A38.496
+    38.496 0 01944 662.448v243.088A38.496 38.496 0 01905.552 944zM688 880h192V688H688v192zm-326.448
+    64H118.448A38.496 38.496 0 0180 905.552V662.448A38.496 38.496 0 01118.448 624h243.088A38.496
+    38.496 0 01400 662.448v243.088A38.496 38.496 0 01361.552 944zM144 880h192V688H144v192z\"></path><path
+    d=\"M208 368h64v288h-64zm122.976 8.24l45.248-45.264 316.8 316.8-45.28 45.248zM368
+    208h288v64H368z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: performance-monitoring
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: 链路追踪
+  textEn: Trace Tracking
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: app-diagnosis
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"federated-deployment","data":"<path d=\"M248.832 698.816l227.072-408.768a145.664
+    145.664 0 01-63.872-35.648L184.96 663.168c24.32 6.464 46.272 18.688 63.872 35.648zM736.96
+    842.432a144.32 144.32 0 01-4.352-33.856c0-13.696 2.496-26.688 6.016-39.296H289.216c2.752
+    11.2 4.608 22.656 4.608 34.688 0 13.376-2.368 26.112-5.76 38.464H736.96zM614.4
+    254.4a145.664 145.664 0 01-63.872 35.648l228.864 411.904c17.856-16.704 39.808-28.8
+    64.32-34.88L614.4 254.4zM513.216 75.968c40.32 0 73.152 32.832 73.152 73.152s-32.832
+    73.152-73.152 73.152-73.152-32.832-73.152-73.152 32.832-73.152 73.152-73.152m0-73.088a146.304
+    146.304 0 100 292.608 146.304 146.304 0 000-292.608zm-365.696 728c40.32 0 73.152
+    32.832 73.152 73.152s-32.832 73.152-73.152 73.152-73.152-32.832-73.152-73.152
+    32.768-73.152 73.152-73.152m0-73.152a146.304 146.304 0 100 292.608 146.304 146.304
+    0 000-292.608zm731.392 77.696c40.32 0 73.152 32.832 73.152 73.152s-32.832 73.152-73.152
+    73.152-73.152-32.832-73.152-73.152 32.832-73.152 73.152-73.152m0-73.152a146.304
+    146.304 0 100 292.608 146.304 146.304 0 000-292.608z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: performance-monitoring
+    uid: ""
+  rankingInColumn: 200
+  tenant: true
+  text: 应用诊断
+  textEn: Application diagnosis
+status: {}
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: performance-monitoring
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"msa-call-link","data":"<defs><style></style></defs><path d=\"M361.552
+    400H118.448A38.496 38.496 0 0180 361.552V118.448A38.496 38.496 0 01118.448 80h243.088A38.496
+    38.496 0 01400 118.448v243.088A38.496 38.496 0 01361.552 400zM144 336h192V144H144v192zm761.552
+    64H662.448A38.496 38.496 0 01624 361.552V118.448A38.496 38.496 0 01662.448 80h243.088A38.496
+    38.496 0 01944 118.448v243.088A38.496 38.496 0 01905.552 400zM688 336h192V144H688v192zm217.552
+    608H662.448A38.496 38.496 0 01624 905.552V662.448A38.496 38.496 0 01662.448 624h243.088A38.496
+    38.496 0 01944 662.448v243.088A38.496 38.496 0 01905.552 944zM688 880h192V688H688v192zm-326.448
+    64H118.448A38.496 38.496 0 0180 905.552V662.448A38.496 38.496 0 01118.448 624h243.088A38.496
+    38.496 0 01400 662.448v243.088A38.496 38.496 0 01361.552 944zM144 880h192V688H144v192z\"></path><path
+    d=\"M208 368h64v288h-64zm122.976 8.24l45.248-45.264 316.8 316.8-45.28 45.248zM368
+    208h288v64H368z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: monitoring-and-ops
+    uid: ""
+  rankingInColumn: 100
+  tenant: true
+  text: 性能监控
+  textEn: Performance monitoring
+status: {}
+
+{{- if not (lookup "core.kubebb.k8s.com.cn/v1alpha1" "Menu" "" "monitoring-and-ops") }}
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+  name: monitoring-and-ops
+spec:
+  column: 30
+  getTitleForReplaceSider: {}
+  icon: '{"name":"security-ops-color","data":"<path d=\"M644.832 438.272l-50.976-7.264A28.832
+    28.832 0 01572 415.232l-23.392-45.984a28.896 28.896 0 00-51.904 0l-22.688 46.272a29.216
+    29.216 0 01-21.76 15.936l-50.976 7.52a28.96 28.96 0 00-15.936 49.344l37.024 35.84a28.992
+    28.992 0 018.448 25.6l-8.544 50.784a28.96 28.96 0 0042.08 30.368l45.344-24.096a29.088
+    29.088 0 0127.232 0l6.816 3.52h.576l-.224.416 38.304 20a28.96 28.96 0 0041.92-30.656l-9.056-50.72a30.336
+    30.336 0 010-6.816l.096-.16a29.024 29.024 0 018.608-18.848l36.768-36.288a28.992
+    28.992 0 00-15.904-48.992z\"></path><path d=\"M512.896.16C230.176.16.96 229.344.96
+    512.064.96 794.816 230.176 1024 512.896 1024c282.72 0 511.936-229.184 511.936-511.936C1024.832
+    229.344 795.616.16 512.896.16zM832.64 407.232a605.856 605.856 0 01-13.504 131.36l-.096.192C769.536
+    762.336 597.6 822.432 541.792 835.808l.064.096a127.52 127.52 0 01-16.32 3.392
+    61.824 61.824 0 01-17.184 0c-12.448-1.888-305.408-50.944-305.408-431.904V304.448a38.183
+    38.183 0 0115.36-30.112 53.44 53.44 0 0132.544-11.072h3.232c.704.448 8.544.448
+    20.672.448a506.688 506.688 0 0097.536-9.056c56.864-11.616 115.072-64.864 117.088-66.048a55.744
+    55.744 0 0153.952 0c16.224 9.152 71.712 55.808 119.904 65.92 31.904 6.144 64.32
+    9.152 96.8 9.056 12.128 0 19.968-.448 20.576-.448h3.264a53.19 53.19 0 0133.024
+    11.168 38.628 38.628 0 0115.776 29.984v102.944z\"></path><path d=\"M615.232 545.216a30.336
+    30.336 0 000 6.816l9.056 50.72a28.896 28.896 0 01-41.92 30.656l-38.912-20.32a210.656
+    210.656 0 00-2.464 225.6c55.072-13.056 228.32-72.736 278.016-297.216a210.24 210.24
+    0 00-203.776 3.744z\" opacity=\"0.15\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: ""
+    kind: ""
+    name: ""
+    uid: ""
+  rankingInColumn: 10
+  tenant: true
+  text: 监控与运维
+  textEn: Monitoring and O&M
+status: {}
+{{- end }}
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: msa-component-deployment-management
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-performance-monitoring-config
+    uid: ""
+  pathname: /apm/performance-monitoring/component-deployment-management
+  rankingInColumn: 100
+  tenant: true
+  text: 组件部署管理
+  textEn: Component Deployment Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: msa-link-deployment-topology
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-performance-monitoring-config
+    uid: ""
+  pathname: /apm/performance-monitoring/link-deployment-topology
+  rankingInColumn: 200
+  tenant: true
+  text: 链路部署拓扑
+  textEn: Link Deployment Topology
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: msa-link-authorization-management
+spec:
+  getTitleForReplaceSider: {}
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-performance-monitoring-config
+    uid: ""
+  pathname: /apm/performance-monitoring/link-authorization-management
+  rankingInColumn: 300
+  tenant: true
+  text: 链路授权管理
+  textEn: Link Authorization Management
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
+  creationTimestamp: null
+  labels:
+    portal: apm
+    {{- include "apm.portal.menu.labels" . | nindent 4 }}
+  name: platform-management-performance-monitoring-config
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"performance-monitoring-config","data":"<defs><style>@font-face{font-family:feedback-iconfont;src:url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff2?t=1630033759944)
+    format(&quot;woff2&quot;),url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff?t=1630033759944)
+    format(&quot;woff&quot;),url(//at.alicdn.com/t/font_1031158_u69w8yhxdu.ttf?t=1630033759944)
+    format(&quot;truetype&quot;)}</style></defs><path d=\"M944 57.6H80c-9.6 0-16 9.6-16
+    16v864c0 9.6 6.4 16 16 16h864c9.6 0 16-6.4 16-16v-864c0-6.4-6.4-16-16-16zm-48
+    832H128v-192h768v192zm-768-256v-512h768v512H128z\"></path><path d=\"M252.8 761.6h128v64h-128zm192
+    0h128v64h-128zm192 0h128v64h-128zm144-412.8h-83.2L662.4 256c0-3.2-3.2-3.2-6.4-3.2h-44.8s-3.2
+    3.2-3.2 6.4l-44.8 192L502.4 192c0-3.2-3.2-3.2-6.4-3.2h-44.8c0-3.2-3.2 0-3.2 3.2l-51.2
+    217.6-22.4-60.8H243.2c-3.2 0-6.4 3.2-6.4 6.4v35.2c0 3.2 3.2 6.4 6.4 6.4H336l38.4
+    99.2c0 3.2 3.2 3.2 6.4 3.2h44.8c3.2 0 6.4-3.2 6.4-3.2l44.8-188.8 57.6 256c0 3.2
+    3.2 3.2 6.4 3.2h44.8c3.2 0 6.4-3.2 6.4-3.2l51.2-220.8 19.2 51.2h118.4c3.2 0 6.4-3.2
+    6.4-6.4V352s-3.2-3.2-6.4-3.2z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: platform-management-approval
+    uid: ""
+  rankingInColumn: 200
+  tenant: true
+  text: 性能监控配置
+  textEn: Performance Monitoring Config
+status: {}
+
+---
+{{- end -}}

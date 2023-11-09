@@ -1,0 +1,12 @@
+{{- if .Values.global.host -}}
+apiVersion: v1
+data:
+  config.yaml: |
+    k8s:
+      cluster:
+        server: {{ .Values.cluster.server }}
+kind: ConfigMap
+metadata:
+  name: msa-portal-bff-server-config
+  namespace: {{ include "tmf.portal.namespace" . }}
+{{- end -}}

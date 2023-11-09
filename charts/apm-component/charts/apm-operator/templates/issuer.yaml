@@ -1,0 +1,9 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ include "apm.operator.namespace" . }}-issuer
+  namespace: {{ include "apm.operator.namespace" . }}
+  labels:
+    {{- include "apm.operator.labels" . | nindent 4 }}
+spec:
+  selfSigned: {}

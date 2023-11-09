@@ -1,0 +1,53 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "tmf.framework.fullname" . }}-ca
+  namespace: {{ include "tmf.framework.namespace" . }}
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS8
+    size: 2048
+  keystores:
+    pkcs12:
+      create: true
+      passwordSecretRef:
+        name: pkcs12-password-secret
+        key: password
+  commonName: {{ include "tmf.framework.fullname" . }}.{{ include "tmf.framework.namespace" . }}.svc
+  dnsNames:
+    - {{ include "tmf.framework.fullname" . }}.{{ include "tmf.framework.namespace" . }}
+    - {{ include "tmf.framework.fullname" . }}.{{ include "tmf.framework.namespace" . }}.svc
+    - {{ include "tmf.framework.fullname" . }}.{{ include "tmf.framework.namespace" . }}.svc.cluster.local
+  issuerRef:
+    name: {{ include "tmf.framework.namespace" . }}-issuer
+  duration: 87600h
+  renewBefore: 1h
+  secretName: {{ include "tmf.framework.fullname" . }}-cert
+  usages:
+    - server auth
+    - client auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "tmf.env.fullname" . }}-ca
+  namespace: {{ include "tmf.framework.namespace" . }}
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  dnsNames:
+    - {{ include "tmf.env.fullname" . }}.{{ include "tmf.framework.namespace" . }}.svc
+    - {{ include "tmf.env.fullname" . }}.{{ include "tmf.framework.namespace" . }}.svc.cluster.local
+  issuerRef:
+    name: {{ include "tmf.framework.namespace" . }}-issuer
+  duration: 87600h
+  renewBefore: 1h
+  secretName: {{ include "tmf.env.fullname" . }}-cert
+  usages:
+    - server auth
+    - client auth

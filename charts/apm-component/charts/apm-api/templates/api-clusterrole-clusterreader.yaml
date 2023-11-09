@@ -1,0 +1,127 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "apm.api.fullname" . }}-manager-{{ include "global.clusterReaderName" . }}
+rules:
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - rolebindings
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - clusterrolebindings
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods/exec
+      - pods
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - apps
+      - extensions
+    resources:
+      - deployments
+      - statefulsets
+    verbs:
+      - list
+      - get
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - create
+      - get
+      - list
+      - update
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - get
+      - list
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - services/proxy
+    verbs:
+      - create
+      - get
+      - update
+      - delete
+  - apiGroups:
+      - tapm.t7d.io
+    resources:
+      - skywalkings
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+      - deletecollection
+  - apiGroups:
+      - tapm.t7d.io
+    resources:
+      - skywalkingauthorizations
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - deletecollection
+  - apiGroups:
+      - tapm.t7d.io
+    resources:
+      - arthas
+    verbs:
+      - create
+      - get
+      - list
+      - update
+      - delete
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+    verbs:
+      - create
+      - get
+      - patch
+      - update
+      - list
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create

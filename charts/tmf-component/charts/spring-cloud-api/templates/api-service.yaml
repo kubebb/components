@@ -1,0 +1,19 @@
+{{- if .Values.global.host -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    {{- include "api.labels" . | nindent 4 }}
+  name: {{ include "api.fullname" . }}
+  namespace: {{ include "api.namespace" . }}
+spec:
+  ports:
+    - name: tcp-spring-cloud-api-0
+      port: {{ .Values.service.port }}
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    {{- include "api.selectorLabels" . | nindent 4 }}
+  sessionAffinity: None
+  type: ClusterIP
+{{- end -}}

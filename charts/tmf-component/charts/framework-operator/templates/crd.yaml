@@ -1,0 +1,547 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: frameworks.tmf.tenxcloud.com
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  conversion:
+    strategy: None
+  group: tmf.tenxcloud.com
+  names:
+    kind: Framework
+    listKind: FrameworkList
+    plural: frameworks
+    singular: framework
+    shortNames:
+      - tmf
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - jsonPath: .status.installStatus
+          name: installStatus
+          type: string
+        - jsonPath: .status.nacosComponentStatus
+          name: nacosComponentStatus
+          type: string
+        - jsonPath: .status.gatewayComponentStatus
+          name: gatewayComponentStatus
+          type: string
+        - jsonPath: .metadata.creationTimestamp
+          name: age
+          type: date
+      schema:
+        openAPIV3Schema:
+          description: Framework is the Schema for the frameworks API
+          properties:
+            apiVersion:
+              description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+              type: string
+            kind:
+              description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+              type: string
+            metadata:
+              type: object
+            spec:
+              description: FrameworkSpec defines the desired state of Framework
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+              properties:
+                updateTime:
+                  type: string
+                  format: date-time
+                updateUser:
+                  type: string
+                shared:
+                  type: boolean
+                scope:
+                  type: string
+                dependencies:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                components:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+            status:
+              description: FrameworkStatus defines the observed state of Framework
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+          type: object
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: approvals.tmf.tenxcloud.com
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  conversion:
+    strategy: None
+  group: tmf.tenxcloud.com
+  names:
+    kind: Approval
+    listKind: ApprovalList
+    plural: approvals
+    singular: approval
+  preserveUnknownFields: false
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - jsonPath: .metadata.creationTimestamp
+          name: age
+          type: date
+      schema:
+        openAPIV3Schema:
+          description: Approval is the Schema for the Approvals API
+          properties:
+            apiVersion:
+              description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+              type: string
+            kind:
+              description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+              type: string
+            metadata:
+              type: object
+            spec:
+              description: ApprovalSpec defines the desired state of Approval
+              type: object
+              properties:
+                status:
+                  type: string
+                cleaned:
+                  type: boolean
+                nns:
+                  type: string
+                nacosNamespacedUsername:
+                  type: string
+                nacosNamespacedPassword:
+                  type: string
+          type: object
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: switchinfoes.tmf.tenxcloud.com
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  conversion:
+    strategy: None
+  group: tmf.tenxcloud.com
+  names:
+    kind: SwitchInfo
+    listKind: SwitchInfoList
+    plural: switchinfoes
+    singular: switchinfo
+    shortNames:
+      - si
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - jsonPath: .spec.callerProject
+          name: callerProject
+          type: string
+        - jsonPath: .spec.callerService
+          name: callerService
+          type: string
+        - jsonPath: .spec.masterService
+          name: masterService
+          type: string
+        - jsonPath: .spec.backupService
+          name: backupService
+          type: string
+      schema:
+        openAPIV3Schema:
+          description: SwitchInfo is the Schema for the SwitchInfoes API
+          properties:
+            apiVersion:
+              description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+              type: string
+            kind:
+              description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+              type: string
+            metadata:
+              type: object
+            spec:
+              description: SwitchInfoSpec defines the desired state of SwitchInfo
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+              properties:
+                tenantId:
+                  type: string
+                callerProject:
+                  type: string
+                group:
+                  type: string
+                callerService:
+                  type: string
+                callerInstance:
+                  type: string
+                masterService:
+                  type: string
+                backupService:
+                  type: string
+                calledInstance:
+                  type: string
+                calledClusterId:
+                  type: string
+                calledProject:
+                  type: string
+                backupServiceType:
+                  type: string
+                switchStrategyType:
+                  type: string
+                strategyName:
+                  type: string
+                strategyValue:
+                  type: string
+                switchValue:
+                  type: string
+                switchReason:
+                  type: string
+                switchTime:
+                  type: string
+                windowTime:
+                  type: string
+                eventType:
+                  type: string
+          type: object
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: gatewayroutes.tmf.tenxcloud.com
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  group: tmf.tenxcloud.com
+  names:
+    kind: GatewayRoute
+    plural: gatewayroutes
+    singular: gatewayroute
+    shortNames:
+      - route
+      - gr
+  scope: Namespaced
+  versions:
+    - additionalPrinterColumns:
+        - jsonPath: .spec.routeId
+          name: routeId
+          type: string
+        - jsonPath: .spec.path
+          name: routePath
+          type: string
+        - jsonPath: .spec.serviceId
+          name: serviceId
+          type: string
+        - jsonPath: .spec.nacosGroup
+          name: nacosGroup
+          type: string
+        - jsonPath: .spec.status
+          name: status
+          type: boolean
+        - jsonPath: .metadata.creationTimestamp
+          name: age
+          type: date
+      name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                id:
+                  type: string
+                routeId:
+                  type: string
+                path:
+                  type: string
+                serviceId:
+                  type: string
+                url:
+                  type: string
+                stripPrefix:
+                  type: boolean
+                retryAble:
+                  type: boolean
+                retryNumber:
+                  type: integer
+                sensitiveHeaders:
+                  type: string
+                status:
+                  type: boolean
+                description:
+                  type: string
+                headerFlag:
+                  type: string
+                nacosNamespace:
+                  type: string
+                namespace:
+                  type: string
+                nacosGroup:
+                  type: string
+                predicates:
+                  type: string
+                filters:
+                  type: string
+                metadata:
+                  type: string
+                weightAble:
+                  type: boolean
+                weightServices:
+                  type: string
+                updateTime:
+                  type: string
+                  format: date-time
+              type: object
+            status:
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: loadbalancerules.tmf.tenxcloud.com
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  group: tmf.tenxcloud.com
+  names:
+    kind: LoadBalanceRule
+    plural: loadbalancerules
+    singular: loadbalancerule
+    shortNames:
+      - lbr
+      - rule
+  scope: Namespaced
+  versions:
+    - additionalPrinterColumns:
+        - jsonPath: .spec.serviceId
+          name: serviceId
+          type: string
+        - jsonPath: .spec.nacosGroup
+          name: nacosGroup
+          type: string
+        - jsonPath: .spec.ruleName
+          name: ruleName
+          type: string
+        - jsonPath: .metadata.creationTimestamp
+          name: age
+          type: date
+      name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                id:
+                  type: string
+                serviceId:
+                  type: string
+                nacosNamespace:
+                  type: string
+                nacosGroup:
+                  type: string
+                namespace:
+                  type: string
+                ruleName:
+                  type: string
+                globalRule:
+                  type: boolean
+                updateTime:
+                  type: string
+                  format: date-time
+              type: object
+            status:
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: ratelimitpolicies.tmf.tenxcloud.com
+  labels:
+    {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  group: tmf.tenxcloud.com
+  names:
+    kind: RateLimitPolicy
+    plural: ratelimitpolicies
+    singular: ratelimitpolicy
+    shortNames:
+      - limit
+      - rlp
+  scope: Namespaced
+  versions:
+    - additionalPrinterColumns:
+        - jsonPath: .spec.serviceId
+          name: serviceId
+          type: string
+        - jsonPath: .spec.type
+          name: type
+          type: string
+        - jsonPath: .spec.refreshInterval
+          name: refreshInterval
+          type: integer
+          format: int64
+        - jsonPath: .spec.limits
+          name: limits
+          type: integer
+          format: int64
+        - jsonPath: .spec.status
+          name: status
+          type: boolean
+        - jsonPath: .metadata.creationTimestamp
+          name: age
+          type: date
+      name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                id:
+                  type: string
+                serviceId:
+                  type: string
+                nacosGroup:
+                  type: string
+                limits:
+                  type: integer
+                  format: int64
+                refreshInterval:
+                  type: integer
+                  format: int64
+                type:
+                  type: string
+                status:
+                  type: boolean
+                namespace:
+                  type: string
+                updateTime:
+                  type: string
+                  format: date-time
+              type: object
+            status:
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: { }
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: outlierejections.tmf.t7d.io
+  labels:
+  {{- include "tmf.framework.labels" . | nindent 4 }}
+spec:
+  group: tmf.t7d.io
+  names:
+    kind: OutlierEjection
+    plural: outlierejections
+    singular: outlierejection
+    shortNames:
+      - ole
+      - ejection
+  scope: Namespaced
+  versions:
+    - additionalPrinterColumns:
+        - jsonPath: .spec.serviceName
+          name: serviceName
+          type: string
+        - jsonPath: .spec.exceptionType
+          name: exceptionType
+          type: string
+        - jsonPath: .spec.qpsLowerLimit
+          name: qpsLowerLimit
+          type: integer
+          format: int64
+        - jsonPath: .spec.errorLowerRatio
+          name: errorLowerRatio
+          type: integer
+          format: int64
+        - jsonPath: .spec.removalUpperRatio
+          name: removalUpperRatio
+          type: integer
+          format: int64
+        - jsonPath: .metadata.creationTimestamp
+          name: createTime
+          type: date
+      name: v1
+      schema:
+        openAPIV3Schema:
+          properties:
+            spec:
+              properties:
+                serviceName:
+                  type: string
+                strategyName:
+                  type: string
+                exceptionType:
+                  type: string
+                qpsLowerLimit:
+                  type: integer
+                  format: int64
+                errorLowerRatio:
+                  type: integer
+                  format: int64
+                removalUpperRatio:
+                  type: integer
+                  format: int64
+                recoveryUnitTime:
+                  type: integer
+                  format: int64
+                recoveryUpperLimit:
+                  type: integer
+                  format: int64
+                enabled:
+                  type: boolean
+                updateTime:
+                  type: string
+                  format: date-time
+              type: object
+            status:
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: { }

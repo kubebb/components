@@ -1,0 +1,90 @@
+{{- if .Values.global.host -}}
+apiVersion: iam.tenxcloud.com/v1alpha1
+kind: RoleTemplate
+metadata:
+  name: tapm-role-template
+  annotations:
+    displayName: "性能监控"
+    description: "性能监控平台项目级权限模板"
+  labels:
+    {{- include "apm.api.labels" . | nindent 4 }}
+spec:
+  kindType: Role
+  resources:
+    - category: "链路追踪"
+      displayName: "方法追踪"
+      rules:
+        - apiGroups:
+            - tapm.t7d.io
+          resources:
+            - swmethods
+          verbs:
+            - list
+            - delete
+            - update
+            - create
+    - category: "链路追踪"
+      displayName: "链路配置"
+      rules:
+        - apiGroups:
+            - tapm.t7d.io
+          resources:
+            - swcollections
+          verbs:
+            - list
+            - create
+            - update
+            - delete
+    - category: "链路追踪"
+      displayName: "jvm 监控"
+      rules:
+        - apiGroups:
+            - tapm.t7d.io
+          resources:
+            - swjvms
+          verbs:
+            - get
+    - category: "链路追踪"
+      displayName: "链路告警"
+      rules:
+        - apiGroups:
+            - tapm.t7d.io
+          resources:
+            - swalarms
+          verbs:
+            - list
+            - create
+            - update
+            - delete
+    - category: "链路追踪"
+      displayName: "服务监控"
+      rules:
+        - apiGroups:
+            - tapm.t7d.io
+          resources:
+            - swservices
+          verbs:
+            - list
+            - get
+    - category: "链路追踪"
+      displayName: "接口监控"
+      rules:
+        - apiGroups:
+            - tapm.t7d.io
+          resources:
+            - swinterfaces
+          verbs:
+            - list
+    - category: "应用诊断"
+      displayName: "在线诊断"
+      rules:
+        - apiGroups:
+            - tapm.t7d.io
+          resources:
+            - diagnosis
+          verbs:
+            - update
+            - list
+            - create
+            - delete
+{{- end }}
