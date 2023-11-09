@@ -6,7 +6,7 @@ metadata:
 spec:
   approved: true
   name: cluster-component
-  version: 0.1.3
+  version: 0.1.4
   override:
     set:
     - ingress-nginx.controller.nodeSelector.kubernetes\.io/hostname=kubebb-core-control-plane

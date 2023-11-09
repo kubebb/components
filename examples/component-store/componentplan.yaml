@@ -6,7 +6,7 @@ metadata:
 spec:
   approved: true
   name: component-store
-  version: 0.0.1
+  version: 0.0.2
   override:
     set:
       - ingressDomain=172.22.96.136.nip.io
