@@ -1,6 +1,6 @@
 apiVersion: v2
 name: hello-world
-version: 0.1.0
+version: 0.1.1
 appVersion: 0.1.0
 icon: https://avatars.githubusercontent.com/u/85277200?s=200&v=4
 description: demo portal init by @yunti/lowcode-code-generator with umijs template

@@ -11,6 +11,6 @@ resources:
 # ingress configurations for component
 ingress:
   # set enable to `true` to enable ingress
-  enable: false
+  enable: true
   ingressClassName: portal-ingress
   ingressDomain: 172.18.0.2.nip.io
