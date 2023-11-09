@@ -60,7 +60,9 @@ rules:
   - menus
   - portals
   - components
+  - repositories
   verbs:
+  - get
   - list
 - apiGroups:
   - extensions
