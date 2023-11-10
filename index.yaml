@@ -630,6 +630,36 @@ entries:
       core.kubebb.k8s.com.cn/restricted-namespaces: kubebb-system
     apiVersion: v2
     appVersion: v0.1.6
+    created: "2023-11-10T05:38:17.083010719Z"
+    description: Kubebb Core provides core implementations on Component Lifecycle
+      Management.Our design and development follows operator pattern which extends
+      kubernetes APIs.
+    digest: 7c406a358f7006f73b2589c3051e83b77e54cf35445871b4f5f0ced48508f6fa
+    icon: https://avatars.githubusercontent.com/u/85277200
+    keywords:
+    - repository
+    - helm
+    - lifecycle-management
+    maintainers:
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: kubebb-core
+    sources:
+    - https://github.com/kubebb/core
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/kubebb-core-v0.1.23/kubebb-core-v0.1.23.tgz
+    version: v0.1.23
+  - annotations:
+      core.kubebb.k8s.com.cn/displayname: 内核
+      core.kubebb.k8s.com.cn/restrict-tenants: system-tenant
+      core.kubebb.k8s.com.cn/restricted-namespaces: kubebb-system
+    apiVersion: v2
+    appVersion: v0.1.6
     created: "2023-11-01T10:10:50.040351885Z"
     description: Kubebb Core provides core implementations on Component Lifecycle
       Management.Our design and development follows operator pattern which extends
@@ -1829,4 +1859,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2023-11-09T10:15:59.962905968Z"
+generated: "2023-11-10T05:38:17.083229628Z"
