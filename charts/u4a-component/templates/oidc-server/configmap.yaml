@@ -24,7 +24,7 @@ data:
     additionalConfig:
       defaultUserGroups:
       - iam.tenxcloud.com
-      - obsevability
+      - observability
       - resource-reader
     connectors:
     {{- range .Values.oidcServer.connectors }}
