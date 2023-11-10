@@ -6,6 +6,8 @@ metadata:
   annotations:
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "6"
+  labels:
+    kubebb.repository.source: official
 spec:
   url: https://kubebb.github.io/components
   pullStategy:
