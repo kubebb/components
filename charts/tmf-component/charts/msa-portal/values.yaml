@@ -4,8 +4,8 @@
 replicaCount: 1
 
 image:
-  registry: 192.168.90.214
-  repository: system_containers/msa-portal
+  registry: 192.168.90.214/system_containers
+  repository: msa-portal
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v5.6.0"

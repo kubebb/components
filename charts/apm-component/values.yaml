@@ -3,7 +3,7 @@ global:
   host: true
 
   registry: &registry
-     docker.io
+     docker.io/refar
   # Ingress host name
   ingressHostName: &ingressHostName
     'portal.192.168.90.217.nip.io'
@@ -20,7 +20,7 @@ global:
 apm-portal:
   image:
     registry: *registry
-    repository: refar/apm-portal
+    repository: apm-portal
     tag: "v5.7.1"
   ingress:
     hostName: *ingressHostName
@@ -28,7 +28,7 @@ apm-portal:
 apm-api:
   image:
     registry: *registry
-    repository: refar/apm-api
+    repository: apm-api
     tag: "v5.7.1"
   ingress:
     hostName: *ingressHostName
@@ -36,5 +36,5 @@ apm-api:
 apm-operator:
   image:
     registry: *registry
-    repository: refar/apm-operator-server
+    repository: apm-operator-server
     tag: "v5.7.1"
