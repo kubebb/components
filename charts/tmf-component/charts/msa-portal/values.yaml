@@ -10,6 +10,9 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v5.6.0"
 
+cluster:
+  server: https://192.168.1.1
+
 imagePullSecrets: []
 nameOverride: "msa-portal"
 appName: "springcloud"

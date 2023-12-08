@@ -4,7 +4,9 @@ global:
 
   registry: &registry
     docker.io/refar
-
+  # Cluster server's url, it's the url of oidc proxy generally
+  clusterServer: &clusterServer
+    https://192.168.1.1
   # Ingress host name
   ingressHostName: &ingressHostName
     'portal.192.168.90.219.nip.io'
@@ -18,6 +20,8 @@ global:
 
 msa-portal:
   enabled: true
+  cluster:
+    server: *clusterServer
   image:
     registry: *registry
     repository: msa-portal
