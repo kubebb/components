@@ -3,6 +3,9 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: {{ .Release.Name }}-reliability-helm-lint
+  annotations:
+    rating.core.kubebb.k8s.com.cn/type: reliability
+    rating.core.kubebb.k8s.com.cn/weight: "1"
   namespace: {{ .Release.Namespace }}
 spec:
   params:
@@ -17,7 +20,7 @@ spec:
     type: string
   steps:
     - name: helm-lint
-      image: alpine/k8s:1.27.4
+      image: kubebb/rating:v0.1.3
       script: |
         #!/usr/bin/env sh
         # Download and untar chart package
@@ -34,6 +37,7 @@ metadata:
     tekton.dev/tags: {{ .Release.Name }}-reliability
     tekton.dev/displayName: "{{ .Release.Name }}"
     tekton.dev/platforms: "linux/amd64"
+    core.kubebb.k8s.com.cn/dimension: reliability
   namespace: {{ .Release.Namespace }}
 spec:
   description: >-
