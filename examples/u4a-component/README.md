@@ -29,7 +29,7 @@ kubectl get node kubebb-core-control-plane -owide
 
 2. Update values.yaml
 
-In values.yaml, we need to make the following substitutions
+You can find values.yaml at [here](https://github.com/kubebb/components/blob/main/charts/u4a-component/values.yaml), In values.yaml, we need to make the following substitutions
 
 If `172.18.0.2` is the ip for ingress-nginx,then replace `<replaced-ingress-nginx-ip>` with `172.18.0.2`
 
