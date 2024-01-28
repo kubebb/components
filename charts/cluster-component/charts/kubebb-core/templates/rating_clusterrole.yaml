@@ -1,0 +1,10 @@
+{{- if and (.Values.deployment.rating_enable) (.Capabilities.APIVersions.Has "tekton.dev/v1beta1" ) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ template "rating-name" . }}
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["*"]
+{{- end }}

@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubebb-core
+  namespace: {{ .Release.Namespace }}
+  labels:
+    control-plane: {{ .Release.Name }}-kubebb-core
+spec:
+  selector:
+    matchLabels:
+      control-plane:  {{ .Release.Name }}-kubebb-core
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        control-plane: {{ .Release.Name }}-kubebb-core
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        # TODO(user): For common cases that do not require escalating privileges
+        # it is recommended to ensure that all your Pods/Containers are restrictive.
+        # More info: https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted
+        # Please uncomment the following code if your project does NOT have to work on old Kubernetes
+        # versions < 1.19 or on vendors versions which do NOT support this field by default (i.e. Openshift < 4.11 ).
+        # seccompProfile:
+        #   type: RuntimeDefault
+      volumes:
+      - name: host-time
+        hostPath:
+          path: /etc/localtime
+{{- if .Values.storage.enable }}
+      - name: helm
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}
+{{- end }}
+{{- if .Values.webhook.enable }}
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: {{ .Release.Name }}-cert
+{{- end }}
+      containers:
+      - command:
+        - /manager
+        image: {{ .Values.deployment.image }}
+        imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+{{- if .Values.storage.enable }}
+        - name: HELM_CACHE_HOME
+          value: /opt/helm/cache/helm
+        - name: HELM_CONFIG_HOME
+          value: /opt/helm/config/helm
+        - name: HELM_DATA_HOME
+          value: /opt/helm/data/helm
+{{- end }}
+{{- if .Values.webhook.enable }}
+        - name: ENABLE_WEBHOOKS
+          value: "true"
+{{- end }}
+{{- if .Values.deployment.rating_enable }}
+        - name: RATING_ENABLE
+          value: "{{ .Values.deployment.rating_enable }}"
+        - name: RATING_SERVICEACCOUNT
+          value: {{ template "rating-name" . }}
+        - name: RATING_CLUSTERROLE
+          value: {{ template "rating-name" . }}
+        - name: RATING_CLUSTERROLEBINDING
+          value: {{ template "rating-name" . }}
+{{- end }}
+        name: manager
+        volumeMounts:
+        - name: host-time
+          mountPath: /etc/localtime
+          readOnly: true
+{{- if .Values.storage.enable }}
+        - mountPath: /opt/helm
+          name: helm
+{{- end }}
+{{- if .Values.webhook.enable }}
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+{{- end }}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - "ALL"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        # TODO(user): Configure the resources accordingly based on the project requirements.
+        # More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        resources: {{ toYaml .Values.deployment.resources | nindent 10 }} 
+      serviceAccountName: {{ .Release.Name }}
+      terminationGracePeriodSeconds: 10
