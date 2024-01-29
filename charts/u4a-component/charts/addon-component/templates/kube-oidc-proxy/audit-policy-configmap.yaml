@@ -22,14 +22,10 @@ data:
         - group: "" # core API group
           resources: ["serviceaccounts","clusterrolebindings","clusterroles","rolebindings","roles"]
       # 2. CRDs, only enable 'write' verbs audit log for user/tenants/sa/role management, etc ...
-        - group: "t7d.io" # API group
-          resources: ["tenants","roletemplates","users"]
         - group: "cluster.karmada.io"
           resources: ["clusters"]
         - group: "capsule.clastix.io"
           resources: ["tenants", "capsuleconfigurations"]
-        - group: "common.tenxcloud.com" # core API group
-          resources: ["licenses"]
         - group: "core.kubebb.k8s.com.cn"
           resources: ["portals", "menus"]
         - group: "iam.tenxcloud.com"

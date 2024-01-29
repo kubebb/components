@@ -141,6 +141,37 @@ status: {}
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Menu
 metadata:
+  creationTimestamp: null
+  labels:
+    portal: oidc
+  name: platform-management-cluster-roles
+spec:
+  getTitleForReplaceSider: {}
+  icon: '{"name":"nav-user","data":"<defs><style></style></defs><path d=\"M663.168
+    538.112c67.2-48.512 112-126.912 112-212.8C775.168 179.712 659.392 64 513.792 64S252.48
+    179.712 252.48 325.312c0 89.6 44.8 168 112 212.8a411.776 411.776 0 00-261.312
+    384.512V960h74.688v-37.312c0-186.688 149.312-336 336-336s336 149.312 336 336c0
+    11.2 0 26.112-3.712 37.312h74.688v-37.312c3.648-175.488-104.64-324.8-257.664-384.576zM513.792
+    512c-104.512 0-186.624-82.112-186.624-186.688s82.112-186.688 186.688-186.688 186.688
+    82.112 186.688 186.688S618.368 512 513.792 512z\"></path>"}'
+  parentOwnerReferences:
+    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+    blockOwnerDeletion: false
+    controller: false
+    kind: Menu
+    name: management-cluster
+    uid: ""
+  pathname: /oidc/management/clusters/:clusterID/roles
+  rankingInColumn: 500
+  tenant: true
+  text: 集群角色
+  textEn: Cluster Roles
+status: {}
+
+---
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Menu
+metadata:
   annotations:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-6"

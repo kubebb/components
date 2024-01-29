@@ -41,13 +41,16 @@ spec:
         - name: logos
           configMap:
             name: portal-logos
+        - name: bff-server-config-volume
+          configMap:
+            name: bff-server-config
       containers:
         - name: bff-server
           image: {{ .Values.registryServer }}/{{ .Values.bffServer.image }}
           livenessProbe:
             failureThreshold: 4
             httpGet:
-              path: /health
+              path: /bff/health
               port: 8022
               scheme: HTTP
             initialDelaySeconds: 10
@@ -57,7 +60,7 @@ spec:
           readinessProbe:
             failureThreshold: 4
             httpGet:
-              path: /health
+              path: /bff/health
               port: 8022
               scheme: HTTP
             initialDelaySeconds: 10
@@ -70,24 +73,22 @@ spec:
             - containerPort: 8023
               protocol: TCP
           env: # 主要是环境变量这里
-            - name: DEX_SERVER_URL # dex 服务地址
-              value: https://oidc-server:5556/oidc
-            - name: DEX_CONNECTOR_ID # 我们自定义的 dex connector id
-              value: {{ .Values.bffServer.connectorId }}
-            - name: DEX_CLIENT_ID # dex client id，用于 dock-app 接入 oidc
-              value: {{ .Values.bffServer.clientId }}
-            - name: DEX_CLIENT_SECRET # dex client secret
-              value: {{ .Values.bffServer.clientSecret }}
-            - name: K8S_OIDC_PROXY_URL # k8s 管理集群上 oidc-proxy 的地址
-              value: {{ .Values.k8s.hostK8sApiWithOidc }}
-            - name: K8S_API_TIMEOUT
-              value: "10"
+            - name: redis_password
+              valueFrom:
+                secretKeyRef:
+                  name: bff-secret
+                  key: redis_password
+            - name: basic_password
+              valueFrom:
+                secretKeyRef:
+                  name: bff-secret
+                  key: basic_password
           resources:
             limits:
               cpu: 1
               memory: 1Gi
             requests:
-              cpu: 200m
+              cpu: 100m
               memory: 512Mi
           imagePullPolicy: IfNotPresent
           volumeMounts:
@@ -103,6 +104,9 @@ spec:
             - mountPath: /usr/src/app/public/profile/img
               name: logos
               readOnly: true
+            - name: bff-server-config-volume
+              mountPath: /usr/src/app/configs/config.yaml
+              subPath: config.yaml
 ---
 apiVersion: v1
 kind: Service

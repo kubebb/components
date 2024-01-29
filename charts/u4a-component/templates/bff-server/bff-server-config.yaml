@@ -1,0 +1,130 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    # 当前 server 的默认配置
+    # ⚠⚠ 修改不会实时生效，需要重启 server，开发时也一样 ⚠⚠
+    # ⚠⚠ 注意名称必须采用小驼峰命名，不能使用下划线 ⚠⚠
+    # 以下配置也可通过环境变量设置，且环境变量的优先级更高，比如端口就可以通过环境变量 web_port: 8090 来设置
+    web:
+      # server 端口
+      port: 8022
+      # 静态文件配置
+      static:
+        # 缓存
+        cache:
+          # 默认为 1 年缓存，单位：秒
+          maxAge: 31536000
+    # 日志配置
+    log:
+      # 支持 log,error,warn,debug,verbose 5 个日志等级的组合
+      levels: log,error,warn
+    # 请求体解析器配置
+    # 详见 https://github.com/expressjs/body-parser#bodyparserjsonoptions
+    # bodyParser:
+    #   json:
+    #     inflate: true
+    #     limit: 5mb
+    oidc:
+      # oidc 服务端配置
+      server:
+        # oidc-server 的地址
+        url: https://oidc-server:5556/oidc
+        # oidc-server 的 ca 证书，默认不需要配置，会从 /etc/oidc-server/ca.crt 中读取
+        caCrt: ''
+      # oidc 测试客户端，用于调试
+      testClient:
+        id: ''
+        secret: ''
+        redirectUri: ''
+      connector:
+        id: {{ .Values.bffServer.connectorId }}
+      # 配置后会将 id token 设置到对应 cookie 中，用于类似 grafana 的 session cookie 认证场景
+      idTokenCookies:
+        # - key: grafana_session
+        #   # 更多配置见 http://expressjs.com/en/5x/api.html#res.cookie
+        #   path: /grafana
+        #   httpOnly: true
+    # iam-provider 的配置
+    iamProvider:
+      server:
+        url: https://oidc-server
+    # dock-app 配置
+    dockApp:
+      # oidc 客户端配置
+      oidcClient:
+        id: {{ .Values.bffServer.clientId }}
+        secret: {{ .Values.bffServer.clientSecret }}
+      tce:
+        # 设置为 true 时，开启适配 tce@5.4 的兼容模式
+        enabled: false
+        # TCE session 的名称
+        sessionKey: tce
+        # TCE 地址，用于适配 tce@5.4 的退出逻辑
+        url: ''
+    # session 配置，详见 https://github.com/expressjs/session#options
+    session:
+      secret: 23b4ca9d-6eae-4d67-befd-7e98e0bfc839
+      name: bff
+      resave: false
+      saveUninitialized: false
+      rolling: true
+      cookie:
+        httpOnly: true
+        path: /
+        # 如果有组件是部署在其他子域名下的，则需要设置 domain 为根域名，这样才能共享 session
+        # domain: .172.22.96.136.nip.io
+      # redis store 配置，详见 https://github.com/tj/connect-redis#options
+      redisStore:
+        prefix: 'sess:bff:'
+        # 有效期，单位是秒，默认是 6 小时
+        ttl: 21600
+    # 登录策略
+    loginPolicy:
+      # 需要输入验证码的登录失败次数，默认是 3 次，设置为 0 后，默认展示验证码，每次登录均需要输入验证
+      captchaEnabledLoginFailedTimes: 3
+      # 是否启用禁用登录的策略
+      disabledPolicyEnabled: false
+      # 禁用登录的登录失败次数，默认是 8 次
+      loginDisabledFailedTimes: 8
+      # 禁用登录的时间，单位是分钟，默认是 15
+      loginDisabledMinutes: 15
+      # 是否开启登录限制模式，默认为关闭
+        # 设置为 on：开启基于用户的登录限制模式，一个账户同时只允许有一个实例登录
+        # 设置为 ip：开启基于 ip 的登录限制模式，一个账户同一个 ip 下允许多个实例登录
+      loginRestrictionMode: off
+    # redis 配置，目前用于存储 session ，配置详见 https://redis.github.io/ioredis/index.html#RedisOptions
+    redis:
+      host: bff-server-session-redis
+      port: 6379
+      password: ""
+      db: 0
+      # redis 命令超时参数，否则网络异常时可能导致请求一直 hang 住 TCS-4224
+      commandTimeout: 5000
+    # basic 认证，用于一些特殊 api 的认证
+    basic:
+      username: bff-server
+      password: ""
+    # 调试时的相关配置
+    debug:
+      # 配置为 true 可以关闭 session 的检查，只检查 token
+      skipSessionCheck: false
+    kubernetes:
+      cluster:
+        name: kube-oidc-proxy
+        server: {{ .Values.k8s.hostK8sApiWithOidc }}
+        skipTLSVerify: true
+      # bff-server 调用 k8s api 的超时时间，单位：秒
+      timeout: 30
+      # 保存集群系统配置的 secret 所在的命名空间
+      secretSystemNamespace: cluster-system
+      # 保存集群配置的 secret 所在的命名空间
+      secretConfigsNamespace: u4a-system
+      # bff-server 自己的 service account token，仅开发时使用，生产环境时会从 k8s 注入的 sa 文件中读取
+      bffSaToken: ''
+      # 集群相关配置，例如 es 等配置，仅用于开发调试，生产环境会从挂载的 cluster-configs secrets 中读取
+      clusterConfigs: {}
+
+kind: ConfigMap
+metadata:
+  name: bff-server-config
+  namespace: {{ .Release.Namespace }}

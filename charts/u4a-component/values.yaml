@@ -52,9 +52,9 @@ ingress:
 # Optional but the default: Use Kubernetes CRD for user provider - iam provider
 iamProvider:
   enabled: true
-  image: kubebb/iam-provider:v0.1.6-20231102
+  image: kubebb/iam-provider:v0.2.0-20240128
   groupController:
-    image: kubebb/iam-controller:v0.1.0-20231024
+    image: kubebb/iam-controller:v0.2.0-20240128
 
 # Required: Use dex as the odic service
 oidcServer:
@@ -63,7 +63,7 @@ oidcServer:
   cert:
     ipAddresses: *oidcIPs
     dnsNames: *dnsNames
-  image: kubebb/oidc-server-ce:v0.1.0
+  image: kubebb/oidc-server:v0.2.0
   issuer: https://{{ .Values.deploymentConfig.bffHost }}/oidc
   storageType: kubernetes
   webHttps: 0.0.0.0:5556
@@ -79,6 +79,7 @@ oidcServer:
     - id: *clientId
       redirectURIs:
         - https://{{ .Values.deploymentConfig.bffHost }}/
+        - https://{{ .Values.deploymentConfig.bffHost }}/dock-app
       name: *clientName
       secret: *clientSecret
   # Enable and update the ip if nip.io is NOT accessible in deployed environment
@@ -94,7 +95,8 @@ oidcServer:
 # Optional but the default: BFF server for all API endpoints
 bffServer:
   enabled: true
-  image: kubebb/bff-server-ce:main
+  image: kubebb/bff-server:v0.2.0-20231204
+  sessionImage: kubebb/redis:5.0.1-alpine3.8
   host: *bffHost
   connectorId: k8scrd
   clientId: *clientId
@@ -116,7 +118,7 @@ k8s:
 # Install if it's host cluster
 resourceView:
   enabled: true
-  image: kubebb/resource-viewer-ce:v0.1.0
+  image: kubebb/resource-viewer:v0.2.0-20221024
 
 addon-component:
   enabled: true

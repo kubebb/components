@@ -38,6 +38,15 @@ spec:
           mountPath: /etc/oidc-server/cfg
         - name: tls
           mountPath: /etc/oidc-server/tls
+        readinessProbe:
+          httpGet:
+            {{- if .Values.oidcServer.debug }}
+            path: /healthz
+            {{- else }}
+            path: /oidc/healthz
+            {{- end }}
+            port: 5556
+            scheme: HTTPS
         resources:
           limits:
             cpu: 1
@@ -57,6 +66,13 @@ spec:
           value: {{ .Values.bffServer.connectorId }}
         - name: DEX_CLIENT_ID
           value: {{ .Values.bffServer.clientId }}
+        - name: basic_password
+          valueFrom:
+            secretKeyRef:
+              name: bff-secret
+              key: basic_password
+        - name: BFF_URL
+          value: {{ .Values.deploymentConfig.bffHost }}
         resources:
           limits:
             cpu: 1

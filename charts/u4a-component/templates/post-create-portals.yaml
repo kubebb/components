@@ -1,3 +1,4 @@
+{{- if .Values.oidcServer.enabled -}}
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Portal
 metadata:
@@ -8,3 +9,4 @@ metadata:
 spec:
   entry: /oidc-public/index.html
   path: /oidc
+{{- end }}

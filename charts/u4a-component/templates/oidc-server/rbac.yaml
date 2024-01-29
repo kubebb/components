@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: t7d.io.oidc-server
+  name: kubebb.oidc-server
   labels:
     system/component: u4a
     system/u4a: oidc-server
@@ -66,14 +66,14 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: t7d.io.oidc-server
+  name: kubebb.oidc-server
   labels:
     system/component: u4a
     system/u4a: oidc-server
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: t7d.io.oidc-server
+  name: kubebb.oidc-server
 subjects:
 - kind: ServiceAccount
   name: oidc-server

@@ -4,7 +4,7 @@
 
 # Rbac resource name of host or managed cluster's reader role
 # such as host-cluster-reader, managed-cluster-reader
-rbacResourceName: host-cluster-reader
+clusterResPrefix: host
 
 # Optional but the default: Use it if the managed Kubernetes didn't have OIDC configured on apiserver
 kubeOidcProxy:

@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: t7d.io.{{ .Values.rbacResourceName }}
+  name: kubebb.{{ .Values.clusterResPrefix }}-cluster-reader
 rules:
   - apiGroups:
       - capsule.clastix.io
@@ -62,32 +62,32 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: t7d.io.{{ .Values.rbacResourceName }}
+  name: kubebb.{{ .Values.clusterResPrefix }}-cluster-reader
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: t7d.io.{{ .Values.rbacResourceName }}
+  name: kubebb.{{ .Values.clusterResPrefix }}-cluster-reader
 subjects:
   - kind: ServiceAccount
-    name: {{ .Values.rbacResourceName }}
+    name: {{ .Values.clusterResPrefix }}-cluster-reader
     namespace: {{ .Release.Namespace }}
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ .Values.rbacResourceName }}
+  name: {{ .Values.clusterResPrefix }}-cluster-reader
   namespace: {{ .Release.Namespace }}
 {{- if semverCompare ">=1.24" .Capabilities.KubeVersion.Version }}
 secrets:
-  - name: {{ .Values.rbacResourceName }}-secret
+  - name: {{ .Values.clusterResPrefix }}-cluster-reader-secret
     namespace: {{ .Release.Namespace }}
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ .Values.rbacResourceName }}-secret
+  name: {{ .Values.clusterResPrefix }}-cluster-reader-secret
   namespace: {{ .Release.Namespace }}
   annotations:
-    kubernetes.io/service-account.name: {{ .Values.rbacResourceName }}
+    kubernetes.io/service-account.name: {{ .Values.clusterResPrefix }}-cluster-reader
 type: kubernetes.io/service-account-token
 {{- end }}
