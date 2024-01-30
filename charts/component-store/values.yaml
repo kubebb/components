@@ -4,8 +4,8 @@ image: kubebb/component-store:latest
 imagePullPolicy: IfNotPresent
 resources:
   limits:
-    cpu: 5000m
-    memory: 1280Mi
+    cpu: "1"
+    memory: 1024Mi
   requests:
-    cpu: 500m
-    memory: 512Mi
+    cpu: "100m"
+    memory: 128Mi
