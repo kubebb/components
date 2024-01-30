@@ -118,7 +118,7 @@ k8s:
 # Install if it's host cluster
 resourceView:
   enabled: true
-  image: kubebb/resource-viewer:v0.2.0-20221024
+  image: kubebb/resource-viewer:v0.2.0
 
 addon-component:
   enabled: true
