@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: {{ .Release.Name }}-reliability-helm-lint
+  name: rating-reliability-linting
   annotations:
     rating.core.kubebb.k8s.com.cn/type: reliability
     rating.core.kubebb.k8s.com.cn/weight: "1"
@@ -32,7 +32,7 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name:  {{ .Release.Name }}-reliability
+  name:  rating-reliability-pipeline
   annotations:
     tekton.dev/tags: {{ .Release.Name }}-reliability
     tekton.dev/displayName: "{{ .Release.Name }}"
@@ -46,18 +46,22 @@ spec:
     - name: COMPONENT_NAME
       description: >-
         component name
+      type: string
     - name: REPOSITORY_NAME
       description: repository name
       default: "kubebb"
+      type: string
     - name: VERSION
       description: component version
+      type: string
     - name: URL
       description: the full URL of the component tgz file.
+      type: string
   results:
   - name: HELM_LINT
-    value: $(tasks.{{ .Release.Name }}-helm-lint.results.LINT)
+    value: $(tasks.rating-reliability-linting.results.LINT)
   tasks:
-    - name: {{ .Release.Name }}-helm-lint
+    - name: rating-reliability-linting
       retries: 2
       taskRef:
         resolver: cluster
@@ -65,7 +69,7 @@ spec:
         - name: kind
           value: task
         - name: name
-          value: {{ .Release.Name }}-reliability-helm-lint
+          value: rating-reliability-linting
         - name: namespace
           value: {{ .Release.Namespace }}
       params:

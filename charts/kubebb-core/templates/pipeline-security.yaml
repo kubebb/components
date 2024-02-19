@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: {{ .Release.Name }}-security-rback
+  name: rating-security-rback
   annotations:
     rating.core.kubebb.k8s.com.cn/type: security
     rating.core.kubebb.k8s.com.cn/weight: "1"
@@ -16,6 +16,7 @@ spec:
   - name: version
     type: string
   - name: repository
+    type: string
   results:
   - name: RBACCM
     type: string
@@ -49,7 +50,7 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name:  {{ .Release.Name }}-security
+  name:  rating-security-pipeline
   annotations:
     tekton.dev/tags: {{ .Release.Name }}-security
     tekton.dev/displayName: "{{ .Release.Name }}"
@@ -63,18 +64,22 @@ spec:
     - name: COMPONENT_NAME
       description: >-
         component name
+      type: string
     - name: REPOSITORY_NAME
       description: repository name
       default: "kubebb"
+      type: string
     - name: VERSION
       description: component version
+      type: string
     - name: URL
       description: the full URL of the component tgz file.
+      type: string
   results:
   - name: RBACCM
-    value: $(tasks.{{ .Release.Name }}-rback.results.RBACCM)
+    value: $(tasks.rating-security-rback.results.RBACCM)
   tasks:
-    - name: {{ .Release.Name }}-rback
+    - name: rating-security-rback
       retries: 2
       taskRef:
         resolver: cluster
@@ -82,7 +87,7 @@ spec:
         - name: kind
           value: task
         - name: name
-          value: {{ .Release.Name }}-security-rback
+          value: rating-security-rback
         - name: namespace
           value: {{ .Release.Namespace }}
       params:
