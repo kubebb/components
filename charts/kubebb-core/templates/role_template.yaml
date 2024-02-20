@@ -15,7 +15,7 @@ spec:
     displayName: 安装计划
     rules:
     - apiGroups:
-      - core.kubebb.k8s.com.cn/v1alpha1
+      - core.kubebb.k8s.com.cn
       resources:
       - componentplans
       verbs:
@@ -26,7 +26,7 @@ spec:
       - patch
       - update
     - apiGroups:
-        - core.kubebb.k8s.com.cn/v1alpha1
+        - core.kubebb.k8s.com.cn
       resources:
         - componentplans/status
       verbs:
@@ -35,14 +35,14 @@ spec:
     displayName: 组件
     rules:
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - components
         verbs:
           - get
           - list
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - components/status
         verbs:
@@ -51,7 +51,7 @@ spec:
     displayName: 订阅计划
     rules:
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - subscriptions
         verbs:
@@ -62,7 +62,7 @@ spec:
           - patch
           - update
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - subscriptions/status
         verbs:
@@ -85,14 +85,14 @@ spec:
     displayName: 仓库
     rules:
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - repositories
         verbs:
           - get
           - list
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - repositories/status
         verbs:
@@ -101,7 +101,7 @@ spec:
     displayName: 安装计划
     rules:
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - componentplans
         verbs:
@@ -112,7 +112,7 @@ spec:
           - patch
           - update
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - componentplans/status
         verbs:
@@ -121,7 +121,7 @@ spec:
     displayName: 订阅计划
     rules:
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - subscriptions
         verbs:
@@ -132,7 +132,7 @@ spec:
           - patch
           - update
       - apiGroups:
-          - core.kubebb.k8s.com.cn/v1alpha1
+          - core.kubebb.k8s.com.cn
         resources:
           - subscriptions/status
         verbs:
