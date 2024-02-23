@@ -1,9 +1,9 @@
 dependencies:
 - name: addon-component
   repository: ""
-  version: 0.1.1
+  version: 0.1.2
 - name: crds
   repository: ""
   version: 0.1.2
-digest: sha256:16596d7adae9ba1bb03848782dc6d66f5833db5f09dbda8592e2f135eeb372c7
-generated: "2023-12-18T08:59:38.976366745Z"
+digest: sha256:e3e2e2c5997c15bcc63a87d81f27483253281c6efc7a692c05ad6c312507bdb5
+generated: "2024-02-20T16:26:45.632731+08:00"
