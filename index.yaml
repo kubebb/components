@@ -263,6 +263,42 @@ entries:
   cluster-component:
   - apiVersion: v2
     appVersion: 0.2.0
+    created: "2024-02-26T08:33:01.570305482Z"
+    dependencies:
+    - condition: cert-manager.enabled
+      name: cert-manager
+      repository: ""
+      version: 0.1.0
+    - condition: metallb.enabled
+      name: metallb
+      repository: ""
+      version: 0.1.0
+    - condition: ingress-nginx.enabled
+      name: ingress-nginx
+      repository: ""
+      version: 4.2.5
+    - condition: openebs.enabled
+      name: openebs
+      repository: ""
+      version: 3.3.1
+    description: A Helm chart for cluster-component
+    digest: 37ffa06c0f45c075484c2d7d11139e398407f84a67e0c069374e3e88438b2f53
+    maintainers:
+    - name: nkwangleiGIT
+      url: https://github.com/nkwangleiGIT
+    - name: bjwswang
+      url: https://github.com/bjwswang
+    - name: Abirdcfly
+      url: https://github.com/Abirdcfly
+    - name: 0xff-dev
+      url: https://github.com/0xff-dev
+    name: cluster-component
+    type: application
+    urls:
+    - https://github.com/kubebb/components/releases/download/cluster-component-0.2.1/cluster-component-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 0.2.0
     created: "2024-01-28T14:27:01.41123224Z"
     dependencies:
     - name: kubebb-core
@@ -2092,4 +2128,4 @@ entries:
     urls:
     - https://github.com/kubebb/components/releases/download/weaviate-16.3.0/weaviate-16.3.0.tgz
     version: 16.3.0
-generated: "2024-02-23T02:12:12.912221412Z"
+generated: "2024-02-26T08:33:01.570466504Z"
