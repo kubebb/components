@@ -6,24 +6,14 @@
 ingress-nginx:
   enabled: true
   # MUST update this value
-  deployedHost: &deployedHost
-    <replaced-ingress-node-name>
+  deployedHost: &deployedHost <replaced-ingress-node-name>
   controller:
     ingressClassResource:
       name: portal-ingress
     ingressClass: portal-ingress
     image:
-      repository: hub.tenxcloud.com/u4a-component/ingress-nginx-controller
+      repository: kubebb/ingress-nginx-controller
       tag: "v1.3.0"
-    admissionWebhooks:
-      enabled: false
-      patch:
-        enabled: true
-        image:
-          registry: hub.tenxcloud.com
-          image: u4a-component/kube-webhook-certgen
-          tag: "0.30.0"
-          digest: ""
     updateStrategy:
       type: Recreate
     extraArgs:
@@ -59,9 +49,9 @@ ingress-nginx:
 cert-manager:
   enabled: true
   # Required: Cert manager for certificate management
-  image: hub.tenxcloud.com/u4a-component/cert-manager-controller:v1.8.0
-  caInjectorImage: hub.tenxcloud.com/u4a-component/cert-manager-cainjector:v1.8.0
-  webhookImage: hub.tenxcloud.com/u4a-component/cert-manager-webhook:v1.8.0
+  image: kubebb/cert-manager-controller:v1.8.0
+  caInjectorImage: kubebb/cert-manager-cainjector:v1.8.0
+  webhookImage: kubebb/cert-manager-webhook:v1.8.0
 
 openebs:
   enabled: false
@@ -83,7 +73,7 @@ metallb:
   enabled: false
   # Must configure the available addresses if metallb is enabled
   ipAddresses:
-  - 192.168.1.10-192.168.90.15
+    - 192.168.1.10-192.168.90.15
   controller:
     image:
       repository: hub.tenxcloud.com/u4a-component/controller
