@@ -966,7 +966,6 @@ spec:
           args:
           - --v=2
           - --leader-election-namespace={{ .Release.Namespace }}
-          - --enable-certificate-owner-ref=true
           env:
           - name: POD_NAMESPACE
             valueFrom:
@@ -1027,6 +1026,7 @@ spec:
           - --v=2
           - --cluster-resource-namespace=$(POD_NAMESPACE)
           - --leader-election-namespace={{ .Release.Namespace }}
+          - --enable-certificate-owner-ref=true
           ports:
           - containerPort: 9402
             name: http-metrics
