@@ -91,7 +91,7 @@ spec:
             port: 443
             scheme: HTTPS
       - image: {{ .Values.registryServer }}/{{ .Values.iamProvider.groupController.image }}
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: iam-controller
         resources:
           limits:
