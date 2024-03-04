@@ -96,7 +96,7 @@ oidcServer:
 bffServer:
   enabled: true
   image: kubebb/bff-server:v0.2.0-20231204
-  sessionImage: kubebb/redis:5.0.1-alpine3.8
+  sessionImage: redis:5.0.1-alpine3.8
   host: *bffHost
   connectorId: k8scrd
   clientId: *clientId
