@@ -36,7 +36,7 @@ spec:
               name: bff-secret
               key: redis_password
         image: {{ .Values.registryServer }}/{{ .Values.bffServer.sessionImage }}
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         lifecycle:
           postStart:
             exec:
