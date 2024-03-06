@@ -72,7 +72,7 @@ data:
         httpOnly: true
         path: /
         # 如果有组件是部署在其他子域名下的，则需要设置 domain 为根域名，这样才能共享 session
-        # domain: .172.22.96.136.nip.io
+        domain: {{ .Values.bffServer.session.cookie.domain }}
       # redis store 配置，详见 https://github.com/tj/connect-redis#options
       redisStore:
         prefix: 'sess:bff:'
