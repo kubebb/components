@@ -97,6 +97,10 @@ bffServer:
   enabled: true
   image: kubebb/bff-server:v0.2.0-20231204
   sessionImage: redis:5.0.1-alpine3.8
+  # Configurations abount session
+  session:
+    cookie:
+      domain: .<replaced-ingress-nginx-ip>.nip.io
   host: *bffHost
   connectorId: k8scrd
   clientId: *clientId
