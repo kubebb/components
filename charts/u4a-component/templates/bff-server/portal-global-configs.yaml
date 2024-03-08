@@ -1,0 +1,15 @@
+{{- if .Values.bffServer.enabled -}}
+apiVersion: v1
+data:
+  global-configs: |
+    {
+      "theme": {
+        "primaryColor": "#4461eb"
+      },
+      "hideI18n": false
+    }
+kind: ConfigMap
+metadata:
+  name: portal-global-configs
+  namespace: {{ .Release.Namespace }}
+{{- end }}

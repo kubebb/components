@@ -38,9 +38,12 @@ spec:
         - name: cluster-configs-secret
           secret:
             secretName: cluster-configs
-        - name: logos
+        - name: portal-logos-volume
           configMap:
             name: portal-logos
+        - name: portal-global-configs-volume
+          configMap:
+            name: portal-global-configs
         - name: bff-server-config-volume
           configMap:
             name: bff-server-config
@@ -101,12 +104,15 @@ spec:
             - mountPath: /usr/src/app/configs/cluster-configs
               name: cluster-configs-secret
               readOnly: true
-            - mountPath: /usr/src/app/public/profile/img
-              name: logos
+            - mountPath: /usr/src/app/public/bff-public/profile/img
+              name: portal-logos-volume
               readOnly: true
             - name: bff-server-config-volume
               mountPath: /usr/src/app/configs/config.yaml
               subPath: config.yaml
+            - name: portal-global-configs-volume
+              mountPath: /usr/src/app/configs/global-configs
+              subPath: global-configs
 ---
 apiVersion: v1
 kind: Service
