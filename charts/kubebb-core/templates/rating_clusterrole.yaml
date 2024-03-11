@@ -5,6 +5,6 @@ metadata:
   name: {{ template "rating-name" . }}
 rules:
   - apiGroups: [""]
-    resources: ["configmaps"]
+    resources: ["configmaps", "pods"]
     verbs: ["*"]
 {{- end }}

@@ -21,31 +21,45 @@ spec:
   - name: RBACCM
     type: string
   steps:
-    - name: rback
-      image: kubebb/rating:v0.1.3
-      script: |
-        #!/usr/bin/env sh
-        # Download and untar chart package
-        helm pull --untar $(params.url)
+  - env:
+    - name: PODNAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    image: kubebb/rating:v0.1.3
+    name: rback
+    resources: {}
+    script: |
+      #!/usr/bin/env sh
+      # Download and untar chart package
+      echo "pod name: ${PODNAME}"
+      SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount
+      # Read this Pod's namespace
+      NAMESPACE=$(cat ${SERVICEACCOUNT}/namespace)
 
-        cat <<EOF | jq --argjson json "$(helm template $(params.component)|yq -o=json|jq --slurp)" '.items |= $json' | rback > r.dot
-        {"kind": "List","apiVersion": "v1","metadata": {},"items": []}
-        EOF
-        
-        # Path to ServiceAccount token
-        SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount
-        # Read this Pod's namespace
-        NAMESPACE=$(cat ${SERVICEACCOUNT}/namespace)
-        NAME=$(params.repository)"."$(params.component)"."$(params.version)
-        helm template $(params.component) |yq 'select(.kind=="ServiceAccount" or .kind=="ClusterRoleBinding" or .kind=="ClusterRole" or .kind=="Role" or .kind=="RoleBinding")' > rbac.yaml
-        cat <<EOF |jq --arg dot "$(cat r.dot |base64)" '.binaryData.r = $dot' \
-                  | jq --arg rbac "$(cat rbac.yaml |base64)" '.binaryData.rbac = $rbac' \
-                  | jq --arg name "$NAME" '.metadata.name = $name' \
-                  | jq --arg namespace "$NAMESPACE" '.metadata.namespace = $namespace' \
-                  | kubectl apply -f -
-        {"kind": "ConfigMap","apiVersion": "v1","metadata": {"name": "configmap","namespace": "default"},"binaryData": {"r": "","rbac": ""}}
-        EOF
-        echo ${NAME} | tee $(results.RBACCM.path)
+      podyaml=$(kubectl -n${NAMESPACE} get po ${PODNAME} -ojson|jq '.metadata.ownerReferences')
+      label="{\"rating.repository\": \"$(params.repository)\",\"rating.component\": \"$(params.repository).$(params.component)\",\"rating.version\": \"$(params.version)\"}"
+      echo "pod owner: ${podyaml}"
+      echo "cm labels: ${label}"
+      helm pull --untar $(params.url)
+
+      cat <<EOF | jq --argjson json "$(helm template $(params.component)|yq -o=json|jq --slurp)" '.items |= $json' | rback > r.dot
+      {"kind": "List","apiVersion": "v1","metadata": {},"items": []}
+      EOF
+
+      # Path to ServiceAccount token
+      NAME=$(params.repository)"."$(params.component)"."$(params.version)
+      helm template $(params.component) |yq 'select(.kind=="ServiceAccount" or .kind=="ClusterRoleBinding" or .kind=="ClusterRole" or .kind=="Role" or .kind=="RoleBinding")' > rbac.yaml
+      cat <<EOF |jq --arg dot "$(cat r.dot |base64)" '.binaryData.r = $dot' \
+                | jq --arg rbac "$(cat rbac.yaml |base64)" '.binaryData.rbac = $rbac' \
+                | jq --arg name "$NAME" '.metadata.name = $name' \
+                | jq --arg namespace "$NAMESPACE" '.metadata.namespace = $namespace' \
+                | jq --argjson owner "$podyaml" '.metadata.ownerReferences = $owner' \
+                | jq --argjson labels "$label" '.metadata.labels = $labels' \
+                | kubectl apply -f -
+      {"kind": "ConfigMap","apiVersion": "v1","metadata": {"name": "configmap","namespace": "default"},"binaryData": {"r": "","rbac": ""}}
+      EOF
+      echo ${NAME} | tee $(results.RBACCM.path)
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
