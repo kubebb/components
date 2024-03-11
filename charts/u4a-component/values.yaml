@@ -88,6 +88,7 @@ oidcServer:
     hostAliases:
       - hostnames:
           - *bffHost
+          - *hostK8sApiWithOidc
         ip: <replaced-ingress-nginx-ip>
   # only enable for debug purpose
   debug: false
@@ -111,6 +112,7 @@ bffServer:
     hostAliases:
       - hostnames:
           - *bffHost
+          - *hostK8sApiWithOidc
         ip: <replaced-ingress-nginx-ip>
 
 # Required: the host Kubernetes cluster with OIDC enabled
@@ -123,6 +125,14 @@ k8s:
 resourceView:
   enabled: true
   image: kubebb/resource-viewer:v0.2.0
+  # Enable and update the ip if nip.io is NOT accessible in deployed environment
+  hostConfig:
+    enabled: true
+    hostAliases:
+      - hostnames:
+          - *bffHost
+          - *hostK8sApiWithOidc
+        ip: <replaced-ingress-nginx-ip>
 
 addon-component:
   enabled: true
@@ -151,8 +161,8 @@ addon-component:
       enabled: true
       hostAliases:
         - hostnames:
-            # MUST update this value
-            - portal.<replaced-ingress-nginx-ip>.nip.io
+            - *bffHost
+            - *hostK8sApiWithOidc
           # MUST update this value
           ip: <replaced-ingress-nginx-ip>
 

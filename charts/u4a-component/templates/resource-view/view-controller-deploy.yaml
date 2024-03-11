@@ -126,6 +126,9 @@ spec:
       labels:
         resource-view-controller: controller-manager
     spec:
+      {{- if .Values.resourceView.hostConfig.enabled }}
+      hostAliases: {{ toYaml .Values.resourceView.hostConfig.hostAliases | nindent 6 }}
+      {{- end }}
       containers:
         - image: {{ .Values.registryServer }}/{{ .Values.resourceView.image }}
           env:
