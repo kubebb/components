@@ -59,7 +59,9 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: password
-                  name: pkcs12-password-secret              
+                  name: pkcs12-password-secret
+            - name: HARBOR_URL
+              value: {{ .Values.image.registry }}
           volumeMounts:
             - mountPath: /etc/localtime
               name: localtime

@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  registry: 192.168.90.214
-  repository: system_containers/framework-operator-server
+  registry: 192.168.90.214/system_containers
+  repository: framework-operator-server
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v5.6.0"
