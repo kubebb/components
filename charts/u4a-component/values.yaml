@@ -12,7 +12,7 @@ deploymentConfig:
   # BFF server info
   # The host Kubernetes cluster with OIDC enabled or use kube-oidc-proxy in front of k8s-apiserver
   # kube-oidc-proxy will be installed by default
-  hostK8sApiWithOidc: &hostK8sApiWithOidc https://k8s.<replaced-ingress-nginx-ip>.nip.io
+  hostK8sApiWithOidc: &hostK8sApiWithOidc k8s.<replaced-ingress-nginx-ip>.nip.io
   # Enable https for bff server
   bffHttpsEnabled: true
 
@@ -118,7 +118,7 @@ bffServer:
 # Required: the host Kubernetes cluster with OIDC enabled
 # or use kube-oidc-proxy in front of k8s-apiserver
 k8s:
-  hostK8sApiWithOidc: *hostK8sApiWithOidc
+  hostK8sApiWithOidc: https://{{ .Values.deploymentConfig.hostK8sApiWithOidc }}
 
 # Generate tenant/namespace/user view for query
 # Install if it's host cluster
