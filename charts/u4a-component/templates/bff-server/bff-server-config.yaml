@@ -112,7 +112,7 @@ data:
     kubernetes:
       cluster:
         name: kube-oidc-proxy
-        server: {{ .Values.k8s.hostK8sApiWithOidc }}
+        server: https://{{ .Values.deploymentConfig.hostK8sApiWithOidc }}
         skipTLSVerify: true
       # bff-server 调用 k8s api 的超时时间，单位：秒
       timeout: 30
