@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/enable-access-log: "false"
     nginx.ingress.kubernetes.io/enable-rewrite-log: "false"
     nginx.ingress.kubernetes.io/load-balance: round_robin
-    nginx.ingress.kubernetes.io/proxy-body-size: ""
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.bffServer.ingress.proxyBodySize }}
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/server-alias: ""
     nginx.ingress.kubernetes.io/upstream-vhost: $host
